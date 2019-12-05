@@ -1,8 +1,9 @@
 # Zeeslag
 TODO:
--Verschillende schepen maken van 2,3,4,5 lang
+CRC kaarten
 
--Elk schip een toString() met verschillende letter
--Methodes van elk schip
--Het bord initialiseren
+Al de klasses al beetje schrijven
+tegen 8/12/2019
+
+
 
