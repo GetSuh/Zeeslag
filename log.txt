@@ -1,0 +1,38 @@
+Log)
+
+5/12/2019
+16:52
+
+Speler
+//attributen
+
+//methodes
+//Plaatsen van het schip
+plaatsSchip
+reset
+//Eigenlijke spel
+vuren
+
+
+
+Bord
+//attributen
+Speler 
+lengte
+breedte
+//methodes
+
+
+Schip
+horizontaal/verticaal
+head
+lengte
+
+getHead
+getTail
+
+Computer
+
+CRC document opmaken en alle kandidaat klasses
+
+
