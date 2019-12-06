@@ -36,4 +36,18 @@ Computer
 
 CRC document opmaken en alle kandidaat klasses
 
+6/12/2019
+14:15
+Lance
+
+methode om de boot te plaatsen?
+
+public void plaatsbord (int lengte,int x,int y,boolean horizontaal)
+	if horizontaal == true {
+		fori lus 0 tot lengte // dit plaats de schip van het begin punt tot het eindpunt
+			x,y+i
+		
+// een andere bord gebruiken om de naam van het schip op het bord te plaatsen dat overeenkomt met de cellen
+
+
 
