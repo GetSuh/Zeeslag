@@ -1,8 +1,7 @@
-
 Log)
-Tamana
 5/12/2019
 16:52
+Lance
 
 Speler
 //attributen
@@ -13,7 +12,6 @@ plaatsSchip
 reset
 //Eigenlijke spel
 vuren
-
 
 
 Bord
@@ -48,6 +46,19 @@ public void plaatsbord (int lengte,int x,int y,boolean horizontaal)
 			x,y+i
 		
 // een andere bord gebruiken om de naam van het schip op het bord te plaatsen dat overeenkomt met de cellen
+
+7/12/2019
+14:30
+Lance
+
+bord-schip afhankelijkheid relatie
+Zeeslag-players compositie
+speler-bord compositie
+lijst van schepen zit in zeeslag en die moet constant zijn - Player heeft een lijst van schepen dus aggregatie
+bord-lijst van schepen op zeeslag aggregatie
+
+
+
 
 
 
