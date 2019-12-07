@@ -58,6 +58,21 @@ lijst van schepen zit in zeeslag en die moet constant zijn - Player heeft een li
 bord-lijst van schepen op zeeslag aggregatie
 
 
+public void fire(int x,int y){
+
+if board.matrix[x][y] != null{
+	s = board.matrx[x][y];
+	board.matrix[x][y] = null;
+	for x,y in board.matrix
+		if board.matrix[x][y] = s
+			sout HIT	
+			
+		else sout SINK, board.matrix[x][y] = s
+else {
+	sout MISS}
+}
+
+
 
 
 
