@@ -72,6 +72,18 @@ else {
 	sout MISS}
 }
 
+10/12/2019
+14:45
+
+CRC kaarten al af.TODO:
+-Klasse zoeken voor het beheren van de beurten van de beurten.
+-Klasse schrijven voor het beheren van het spel en alle input.
+-Bord klasse moet het bord kunnen tekenen en updaten adhv een gameLoop.
+-Als dat klaar dan moet de klasse diagram zeker tegen 15/12/2019 af zijn!!!
+
+
+
+
 
 
 
