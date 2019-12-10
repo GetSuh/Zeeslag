@@ -6,7 +6,7 @@ Schip klasse moet al af .
 
 
 
-De CRC kaarten tegen 10/12/2019
+De CRC kaarten tegen 12/12/2019
 
 
 
