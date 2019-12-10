@@ -1,9 +1,12 @@
 # Zeeslag
 TODO:
-CRC kaarten
+CRC kaarten !!!!
 
-Al de klasses al beetje schrijven
-tegen 8/12/2019
+Schip klasse moet al af .
+
+
+
+De CRC kaarten tegen 12/12/2019
 
 
 
