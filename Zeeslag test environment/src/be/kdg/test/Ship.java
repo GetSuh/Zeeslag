@@ -5,8 +5,8 @@ public class Ship {
     protected boolean horizontal;
     protected int length;
 
-    protected int x;
-    protected int y;
-
-
+    public Ship(boolean horizontal, int length) {
+        this.horizontal = horizontal;
+        this.length = length;
+    }
 }

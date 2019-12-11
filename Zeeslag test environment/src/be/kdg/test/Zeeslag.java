@@ -13,6 +13,7 @@ public class Zeeslag {
     }
     public void start(){
         player1.draw();
+        player2.draw();
 
     }
 
