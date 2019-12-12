@@ -12,11 +12,9 @@ public class Zeeslag {
         player2 = new Player();
     }
     public void start(){
-        player1.draw();
-        player2.draw();
 
     }
-
+//TODO:
     public void end(){
         System.exit(0);
     }

@@ -116,6 +116,51 @@ Deze methode is het vuren van de klasse Player
     }
 }
 
+12/12/2019
+13:30
+
+Gameloop schrijven.Wincon checken
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
