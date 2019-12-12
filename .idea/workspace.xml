@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc964ac8-74d1-45f0-9456-87db1250ea8e" name="Default Changelist" comment="" />
+    <list default="true" id="bc964ac8-74d1-45f0-9456-87db1250ea8e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zeeslag test environment/src/be/kdg/test/Zeeslag.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zeeslag test environment/src/be/kdg/test/Zeeslag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Computer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Ship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Ship_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Zeeslag.java" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +33,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1UQz4dSL1jmmxwKDpOoC7GikbKl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Zeeslag test environment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -96,6 +111,7 @@
       <workItem from="1575324754929" duration="4943000" />
       <workItem from="1575365678946" duration="745000" />
       <workItem from="1576050881742" duration="34000" />
+      <workItem from="1576167147203" duration="2046000" />
     </task>
     <servers />
   </component>
