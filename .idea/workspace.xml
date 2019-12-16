@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc964ac8-74d1-45f0-9456-87db1250ea8e" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/logLance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logLance.txt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/Zeeslag test environment/src/be/kdg/test/Zeeslag.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zeeslag test environment/src/be/kdg/test/Zeeslag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Computer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Ship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Ship_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Zeeslag.java" beforeDir="false" />
+>>>>>>> b6f5a8e3e7eaf495d7b3676f138958dbbf2508f5
+>>>>>>> c9bcb22abdf8f2d53150c5b0769d26ff1c7ee0c1
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,8 +118,18 @@
       <workItem from="1575324754929" duration="4943000" />
       <workItem from="1575365678946" duration="745000" />
       <workItem from="1576050881742" duration="34000" />
+<<<<<<< HEAD
       <workItem from="1576167147203" duration="2048000" />
       <workItem from="1576484477704" duration="345000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1576085744093" duration="42000" />
+      <workItem from="1576177155823" duration="35000" />
+      <workItem from="1576177214888" duration="41000" />
+=======
+      <workItem from="1576167147203" duration="2046000" />
+>>>>>>> b6f5a8e3e7eaf495d7b3676f138958dbbf2508f5
+>>>>>>> c9bcb22abdf8f2d53150c5b0769d26ff1c7ee0c1
     </task>
     <servers />
   </component>
