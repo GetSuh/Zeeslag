@@ -51,11 +51,7 @@ public void plaatsbord (int lengte,int x,int y,boolean horizontaal)
 14:30
 Lance
 
-bord-schip afhankelijkheid relatie
-Zeeslag-players compositie
-speler-bord compositie
-lijst van schepen zit in zeeslag en die moet constant zijn - Player heeft een lijst van schepen dus aggregatie
-bord-lijst van schepen op zeeslag aggregatie
+
 
 
 public void fire(int x,int y){
@@ -120,6 +116,45 @@ Deze methode is het vuren van de klasse Player
 13:30
 
 Gameloop schrijven.Wincon checken
+
+
+
+while(...)
+
+player2.draw
+scanner.next int ...
+player1.fire
+boolean
+
+player1.draw
+player2.fire
+scanner.next int
+boolean
+
+
+
+
+
+Zeeslag.start
+
+zeeslag.SchepenZetten(player1)
+zeeslag.SchepenZetten(player2)
+
+zeeslag.startVuren;
+
+
+WinCon > zeeslag.end
+
+
+
+bord-schip afhankelijkheid relatie
+Zeeslag-players compositie
+speler-bord compositie
+lijst van schepen zit in bord  - Bord heeft een lijst van schepen dus aggregatie
+bord-lijst van schepen op zeeslag aggregatie
+
+
+
 
 
 

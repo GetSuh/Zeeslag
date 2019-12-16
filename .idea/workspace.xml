@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc964ac8-74d1-45f0-9456-87db1250ea8e" name="Default Changelist" comment="" />
+    <list default="true" id="bc964ac8-74d1-45f0-9456-87db1250ea8e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/logLance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logLance.txt" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +102,7 @@
       <workItem from="1575365678946" duration="745000" />
       <workItem from="1576050881742" duration="34000" />
       <workItem from="1576167147203" duration="2048000" />
+      <workItem from="1576484477704" duration="345000" />
     </task>
     <servers />
   </component>
