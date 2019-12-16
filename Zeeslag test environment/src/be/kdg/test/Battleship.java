@@ -1,4 +1,4 @@
-package be.kdg;
+package be.kdg.test;
 
 import java.util.Scanner;
 
