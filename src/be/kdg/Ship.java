@@ -14,6 +14,11 @@ public class Ship {
 
     }
 
+    @Override
+    public String toString() {
+        return String.format("%c",naam.charAt(0));
+    }
+
     public void setHorizontal(boolean horizontal) {
         this.horizontal = horizontal;
     }
