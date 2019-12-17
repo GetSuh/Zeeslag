@@ -13,10 +13,7 @@ public class Board {
 
 
     public boolean inRange(int x,int y){
-        if (x < WIDTH && x >= 0 && y < HEIGTH && y >= 0){
-            return true;
-        }
-        return false;
+        return x < WIDTH && x >= 0 && y < HEIGTH && y >= 0;
 
     }
 }

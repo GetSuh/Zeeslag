@@ -6,7 +6,6 @@ import java.util.List;
 public class Player {
     protected Board board;
     protected List<Ship> shipOnBoard;
-    protected Boolean isLost = false;
 
 
     public Player() {
@@ -16,8 +15,8 @@ public class Player {
         shipOnBoard = new LinkedList<>();
 
         shipOnBoard.add(new Ship("Destroyer", true, 2));
-        shipOnBoard.add(new Ship("Above", true, 2));
-        shipOnBoard.add(new Ship("Ever", true, 2));
+        //shipOnBoard.add(new Ship("Above", true, 2));
+        //shipOnBoard.add(new Ship("Ever", false, 2));
 
     }
 
@@ -38,15 +37,18 @@ public class Player {
 
     }
 
-    public void fire(int x, int y,Player player) {
+    public void fire(int x, int y, Player player) {
         if (player.board.matrix[x][y] != null) {
             Ship temporaryShip = player.board.matrix[x][y];
-            player.board.matrix[x][y] = null;
+
+            Ship hit = new Ship("Hit", true, 1);
+            hit.setHit(true);
+            player.board.matrix[x][y] = hit;
 
             for (Ship ship[] : player.board.matrix) {
                 for (Ship ship1 : ship) {
 
-                    if (ship1 != null && ship1.naam == temporaryShip.naam) { // equals moet nog veranderen
+                    if (ship1 != null && ship1.getNaam().equalsIgnoreCase(temporaryShip.getNaam())) { // equals moet nog veranderen
                         System.out.println();
                         System.out.println("HIT");
                         return;
@@ -57,24 +59,27 @@ public class Player {
             System.out.println();
             System.out.println("SINK");
 
-        } else{
+        } else {
+            Ship miss = new Ship("Miss", true, 1);
+            player.board.matrix[x][y] = miss;
             System.out.println();
             System.out.println("MISS");
         }
-
-
     }
 
     public void drawBoard() {
         String spaties = new String("0");
-        String spaties1 = new String("1");
+        //String spaties1 = new String("1");
 
         for (Ship[] ship : board.matrix) {
             System.out.println();
             for (Ship ship1 : ship) {
                 if (ship1 == null) {
-                    System.out.print(String.format("%3s",spaties));
-                } else System.out.print(String.format("%3s",spaties1));
+                    System.out.print(String.format("%3s", spaties));
+                } else if (ship1.isHit) System.out.print(String.format("%3s", ship1.toString()));
+                else if (ship1.getNaam().equalsIgnoreCase("Miss"))
+                    System.out.print(String.format("%3s", ship1.toString()));
+                else System.out.print(String.format("%3s", spaties));
 
             }
 
@@ -85,7 +90,7 @@ public class Player {
     public boolean checkLost() {
         for (Ship[] ships : board.matrix) {
             for (Ship ship : ships) {
-                if (ship != null) {
+                if (ship != null && !ship.getNaam().equalsIgnoreCase("Hit") && !ship.getNaam().equalsIgnoreCase("Miss")) {
                     return false;
                 }
             }
@@ -93,7 +98,5 @@ public class Player {
         return true;
 
     }
-
-
 }
 

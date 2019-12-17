@@ -3,7 +3,7 @@ package be.kdg;
 public class Ship {
 
     protected boolean isHit = false;
-    protected String naam;
+    private String naam;
     protected boolean horizontal;
     protected int length;
 
@@ -29,5 +29,9 @@ public class Ship {
 
     public boolean isHit() {
         return isHit;
+    }
+
+    public String getNaam() {
+        return naam;
     }
 }
