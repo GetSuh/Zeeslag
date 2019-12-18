@@ -154,6 +154,13 @@ lijst van schepen zit in bord  - Bord heeft een lijst van schepen dus aggregatie
 bord-lijst van schepen op zeeslag aggregatie
 
 
+16/12/2019
+14:30
+
+
+Player draw board al gemaakt samen met 
+
+
 
 
 
