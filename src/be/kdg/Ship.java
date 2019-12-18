@@ -6,6 +6,9 @@ public class Ship {
     private String naam;
     protected boolean horizontal;
     protected int length;
+    protected boolean placement;
+
+
 
     public Ship(String naam, boolean horizontal, int length) {
         this.naam = naam;
@@ -33,5 +36,9 @@ public class Ship {
 
     public String getNaam() {
         return naam;
+    }
+
+    public void setPlacement(boolean placement) {
+        this.placement = placement;
     }
 }
