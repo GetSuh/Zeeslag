@@ -8,6 +8,7 @@ public class Battleship {
     private Player player1;
     private Player player2;
     private Scanner scanner = new Scanner(System.in);
+    private Random random = new Random();
 
 
     public Battleship() {
@@ -17,54 +18,82 @@ public class Battleship {
     }
 
     public void start() {
-        Random random = new Random();
 
-        for (int i = 0; i < player1.shipOnBoard.toArray().length; i++) {
-            player1.placeShip(random.nextInt(10), random.nextInt(10), player1.shipOnBoard.get(i));
-
+String string = new String("( ͡° ͜ʖ ͡°)");
+        for (int i = 0; i < 6; i++) {
+            System.out.print(string);
         }
-        for (int i = 0; i < player2.shipOnBoard.toArray().length; i++) {
-            player2.placeShip(0, 0, player2.shipOnBoard.get(i));
+        for (int i = 0; i < 5; i++) {
+            System.out.printf("%-50s %s\n",string,string);
+            if (i == 2) System.out.printf("%-25s %-24s %s\n",string,new String("Zeeslag"),string);
         }
-        do {
-            int x;
-            int y;
-            System.out.println();
-            System.out.println("Player 1");
-
-            player2.drawBoard();
-            System.out.println();
-
-
-            do {
-                System.out.println("x waarde:");
-                x = scanner.nextInt();
-                System.out.println("y waarde:");
-                y = scanner.nextInt();
-            }while (!player1.board.inRange(x,y));
-
-
-
-            player1.fire(x, y, player2);
-            if (player2.checkLost()) {
-                player2.drawBoard();
-                System.out.println();
-                System.out.println("Game over");
-                System.exit(0);
-            }
-
-
-
-
-            /*System.out.println("Player 2");
-            player1.drawBoard();
-            x = scanner.nextInt();
-            y = scanner.nextInt();
-            player2.fire(x, y);*/
-
-        } while (!player2.checkLost() && !player1.checkLost());
+        for (int i = 0; i < 7; i++) {
+            System.out.print(string);
+        }
         System.out.println();
-        System.out.println("Game over");
 
+
+
+        System.out.println("Naam player 1");
+        String naam = scanner.nextLine();
+        player1.setNaam(naam);
+        System.out.println("Naam player 2");
+        naam = scanner.nextLine();
+        player2.setNaam(naam);
+
+        placement(player1);
+        placement(player2);
+
+
+        do {
+            turn(player1,player2);
+            turn(player2,player1);
+
+        } while (!player1.checkLost() && !player2.checkLost());
+
+
+
+    }
+
+    public void turn(Player player, Player otherPlayer) {
+
+        int x;
+        int y;
+        System.out.println();
+        System.out.printf("%s ",player.naam);
+
+        otherPlayer.drawBoard();
+        System.out.println();
+        do {
+            System.out.println(" x coord:");
+            x = scanner.nextInt();
+            System.out.println(" y coord:");
+            y = scanner.nextInt();
+        } while (!otherPlayer.board.inRange(x, y));
+
+        player.fire(x, y, otherPlayer);
+        otherPlayer.drawBoard();
+        if (otherPlayer.checkLost()) {
+            System.out.println();
+            System.out.printf("Game over,%s won the match!",player.naam);
+            System.exit(0);
+        }
+    }
+    public void placement(Player player){
+        int x;
+        int y;
+
+        System.out.printf("%s ",player.naam);
+        for (int i = 0; i < player.shipOnBoard.toArray().length; i++) {
+            do {
+                System.out.printf("x coord (0-9) ship %d: ",i+1);
+                x = scanner.nextInt();
+                System.out.printf("y coord(0-9) ship %d: ",i+1);
+                y = scanner.nextInt();
+            } while (!player.board.inRange(x, y) && player.board.matrix[x][y] != null);
+            player.placeShip(x, y, player.shipOnBoard.get(i));
+
+
+        }
     }
 }

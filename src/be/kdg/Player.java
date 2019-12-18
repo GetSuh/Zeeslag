@@ -4,23 +4,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
+    protected String naam;
     protected Board board;
     protected List<Ship> shipOnBoard;
 
 
+
+
     public Player() {
+
 
 
         this.board = new Board();
         shipOnBoard = new LinkedList<>();
 
         shipOnBoard.add(new Ship("Destroyer", true, 2));
-        //shipOnBoard.add(new Ship("Above", true, 2));
+        shipOnBoard.add(new Ship("Above", true, 2));
         //shipOnBoard.add(new Ship("Ever", false, 2));
 
     }
 
     public void placeShip(int x, int y, Ship ship) {
+        ship.setPlacement(true);
 
         if (board.inRange(x, y)) {
             if (!ship.horizontal) {
@@ -79,7 +84,8 @@ public class Player {
                 } else if (ship1.isHit) System.out.print(String.format("%3s", ship1.toString()));
                 else if (ship1.getNaam().equalsIgnoreCase("Miss"))
                     System.out.print(String.format("%3s", ship1.toString()));
-                else System.out.print(String.format("%3s", spaties));
+                else if (ship1.placement)System.out.print(String.format("%3s", spaties));
+                else System.out.printf("%3s",ship1.toString());
 
             }
 
@@ -97,6 +103,9 @@ public class Player {
         }
         return true;
 
+    }
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
 }
 
