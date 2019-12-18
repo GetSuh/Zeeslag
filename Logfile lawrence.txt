@@ -3,3 +3,26 @@ Aanpassen CRC Ship 12-12-2019 13:20 - 13:40
 Maken van CRC Beurten 12-12-2019 13:40 - 14:00
 
 Maken van CRC alle inputs 12-12-2019 14:00 - 14:38
+
+
+Code van Each Turn 12-12-2019 18:55
+
+bij Player class:
+
+//EACH TURN
+
+public void Turn (Player opponent) {
+System.out.printf ("%n %n Player %d, Choose the coordinates that you want to attack (x y)" , id);
+Point point = new Point (Scanner.nextInt(), scanner.nextInt());
+
+while (targetHistory.get (point) != null) {
+System.out.printf ("This position you chose has already been used");
+point : new Point (scanner.nextInt(), scanner.nextInt());
+}
+
+
+
+exception voor verkeerde ship placement 18-12-2019 18:05 - 20:49
+
+board latn tekenen bij het placement ??-??-????
+
