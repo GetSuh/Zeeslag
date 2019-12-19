@@ -10,27 +10,18 @@ public class Player {
 
 
     public Player() {
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
         this.board = new Board();
         shipOnBoard = new LinkedList<>();
 
         shipOnBoard.add(new Ship("Destroyer", true, 2));
-        //shipOnBoard.add(new Ship("Above", true, 2));
+        shipOnBoard.add(new Ship("Above", true, 2));
         //shipOnBoard.add(new Ship("Ever", false, 2));
 
     }
 
-<<<<<<< HEAD
-    public void placeShip(int x, int y, Ship ship,boolean horizontal ) {
-        ship.setHorizontal(horizontal);
-
-=======
     public void placeShip(int x, int y, Ship ship) {
->>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
         if (board.inRange(x, y)) {
             if (!ship.horizontal) {
                 for (int i = 0; i < ship.length; i++){
@@ -102,11 +93,7 @@ public class Player {
                 } else if (ship1.isHit) System.out.print(String.format("%3s", ship1.toString()));
                 else if (ship1.getNaam().equalsIgnoreCase("Miss"))
                     System.out.print(String.format("%3s", ship1.toString()));
-<<<<<<< HEAD
-                else if (ship1.placement)System.out.printf("%3s",ship1.toString());
-=======
                 else if (show) System.out.printf("%3s", ship1.toString());
->>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
                 else System.out.print(String.format("%3s", spaties));
 
             }

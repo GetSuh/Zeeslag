@@ -131,6 +131,10 @@ player2.fire
 scanner.next int
 boolean
 
+
+
+
+
 Zeeslag.start
 
 zeeslag.SchepenZetten(player1)
@@ -154,24 +158,7 @@ bord-lijst van schepen op zeeslag aggregatie
 14:30
 
 
-Player draw board al gemaakt samen met player.placeship. De fire functie werd aangepast.
-Ship heeft een to string die getoond moet worden bij het plaatsen van de schepen. 
-
-17/12/2019
-13:00
-
-Battleship.start verder uitgewerkt.
-Bij HIT wordt er een letter H getoond op het bord. Bij miss wordt er een letter M getoond.
-
-Private packeges moet nog gemaakt worden
-
-
-18/12/2019
-Player 2 verder uitegwerkt zodat het speel meer speelbaar is.
-
-Exceptions en het tonen van het bord moet nog gedaan worden.
-
-
+Player draw board al gemaakt samen met 
 
 
 
