@@ -8,10 +8,13 @@ public class Computer extends Player {
 
 
     public Computer(Random random) {
+        super();
         this.random = random;
     }
 
     private void fireComputer(){
+
+
 
     }
 }

@@ -19,8 +19,11 @@ public class Battleship {
 
     public void start() {
 
+<<<<<<< HEAD
         System.out.println("Welcome to battleship!");
 
+=======
+>>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
         System.out.println("Naam player 1");
         String naam = scanner.nextLine();
         player1.setNaam(naam);
@@ -31,14 +34,16 @@ public class Battleship {
         placement(player1);
         placement(player2);
 
-
         do {
             turn(player1, player2);
             turn(player2, player1);
 
+<<<<<<< HEAD
         } while (!player1.checkLost() && !player2.checkLost()); // while true kan ook kijk naar turn methode...
 
 
+=======
+>>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
     }
 
     public void turn(Player player, Player otherPlayer) {
@@ -48,7 +53,6 @@ public class Battleship {
         System.out.println();
         System.out.printf("%s ", player.naam);
 
-        otherPlayer.drawBoard();
         System.out.println();
         do {
             System.out.println(" x coord:");
@@ -56,9 +60,12 @@ public class Battleship {
             System.out.println(" y coord:");
             y = scanner.nextInt();
         } while (!otherPlayer.board.inRange(x, y));
-
         player.fire(x, y, otherPlayer);
-        otherPlayer.drawBoard();
+        System.out.println("Your board");
+        player.drawBoard(true);
+        System.out.println("Enemy's board");
+        otherPlayer.drawBoard(false);
+
         if (otherPlayer.checkLost()) {
             System.out.println();
             System.out.printf("Game over,%s won the match!", player.naam);
@@ -74,18 +81,31 @@ public class Battleship {
         System.out.printf("%s ", player.naam);
         for (int i = 0; i < player.shipOnBoard.toArray().length; i++) {
             do {
+<<<<<<< HEAD
                 System.out.printf("Ship %d Horizontal?: ", i + 1);
                 horizontal = scanner.nextBoolean();
                 System.out.printf("x coord (0-9) ship %d: ", i + 1);
+=======
+                System.out.printf("Horizontal?(true/false): for ship %d",i+1);
+                horizontal = scanner.nextBoolean();
+                System.out.printf("x coord (0-9) ship %d: ",i+1);
+>>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
                 x = scanner.nextInt();
                 System.out.printf("y coord(0-9) ship %d: ", i + 1);
                 y = scanner.nextInt();
 
+<<<<<<< HEAD
             } while (!player.board.inRange(x, y) || player.board.matrix[x][y] != null);
             player.placeShip(x, y, player.shipOnBoard.get(i),horizontal);
             player.drawBoard();
 
 
+=======
+            } while (!player.board.inRange(x, y) && player.board.matrix[x][y] != null);
+            player.shipOnBoard.get(i).setHorizontal(horizontal);
+            player.placeShip(x, y, player.shipOnBoard.get(i));
+            player.drawBoard(true);
+>>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
         }
     }
 }

@@ -9,9 +9,12 @@ public class Player {
     protected List<Ship> shipOnBoard;
 
 
-
-
     public Player() {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
         this.board = new Board();
         shipOnBoard = new LinkedList<>();
 
@@ -21,16 +24,34 @@ public class Player {
 
     }
 
+<<<<<<< HEAD
     public void placeShip(int x, int y, Ship ship,boolean horizontal ) {
         ship.setHorizontal(horizontal);
 
+=======
+    public void placeShip(int x, int y, Ship ship) {
+>>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
         if (board.inRange(x, y)) {
             if (!ship.horizontal) {
-                for (int i = 0; i < ship.length; i++)
-                    if (board.inRange(x, y)) board.matrix[x + i][y] = ship;
+                for (int i = 0; i < ship.length; i++){
+
+                    try {
+                        if (board.inRange(x, y)) board.matrix[x + i][y] = ship;
+                    } catch (IndexOutOfBoundsException ioobe) {
+                        System.out.println("Ship does not fit!");
+                        return;
+                    }
+
+
+                }
+
             } else {
                 for (int i = 0; i < ship.length; i++) {
-                    if (board.inRange(x, y)) board.matrix[x][y + i] = ship;
+                    try {
+                        if (board.inRange(x, y)) board.matrix[x][y + i] = ship;
+                    } catch (IndexOutOfBoundsException ioobe) {
+                        System.out.println("Ship does not fit!");
+                    }
                 }
             }
         }
@@ -69,7 +90,7 @@ public class Player {
         }
     }
 
-    public void drawBoard() {
+    public void drawBoard(boolean show) {
         String spaties = new String("0");
         //String spaties1 = new String("1");
 
@@ -81,7 +102,11 @@ public class Player {
                 } else if (ship1.isHit) System.out.print(String.format("%3s", ship1.toString()));
                 else if (ship1.getNaam().equalsIgnoreCase("Miss"))
                     System.out.print(String.format("%3s", ship1.toString()));
+<<<<<<< HEAD
                 else if (ship1.placement)System.out.printf("%3s",ship1.toString());
+=======
+                else if (show) System.out.printf("%3s", ship1.toString());
+>>>>>>> 71e689e1fccbef85a9f9afb16c4a05801b559dc7
                 else System.out.print(String.format("%3s", spaties));
 
             }
@@ -102,6 +127,7 @@ public class Player {
         return true;
 
     }
+
     public void setNaam(String naam) {
         this.naam = naam;
     }
