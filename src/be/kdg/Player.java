@@ -12,20 +12,17 @@ public class Player {
 
 
     public Player() {
-
-
-
         this.board = new Board();
         shipOnBoard = new LinkedList<>();
 
         shipOnBoard.add(new Ship("Destroyer", true, 2));
-        shipOnBoard.add(new Ship("Above", true, 2));
+        //shipOnBoard.add(new Ship("Above", true, 2));
         //shipOnBoard.add(new Ship("Ever", false, 2));
 
     }
 
-    public void placeShip(int x, int y, Ship ship) {
-        ship.setPlacement(true);
+    public void placeShip(int x, int y, Ship ship,boolean horizontal ) {
+        ship.setHorizontal(horizontal);
 
         if (board.inRange(x, y)) {
             if (!ship.horizontal) {
@@ -84,12 +81,13 @@ public class Player {
                 } else if (ship1.isHit) System.out.print(String.format("%3s", ship1.toString()));
                 else if (ship1.getNaam().equalsIgnoreCase("Miss"))
                     System.out.print(String.format("%3s", ship1.toString()));
-                else if (ship1.placement)System.out.print(String.format("%3s", spaties));
-                else System.out.printf("%3s",ship1.toString());
+                else if (ship1.placement)System.out.printf("%3s",ship1.toString());
+                else System.out.print(String.format("%3s", spaties));
 
             }
 
         }
+        System.out.println();
 
     }
 
