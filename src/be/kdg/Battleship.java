@@ -68,8 +68,10 @@ public class Battleship {
         int y;
         boolean horizontal;
 
+
         System.out.printf("%s ",player.naam);
         for (int i = 0; i < player.shipOnBoard.toArray().length; i++) {
+            boolean badPlacement = true;
             do {
                 System.out.printf("Horizontal?(true/false): for ship %d",i+1);
                 horizontal = scanner.nextBoolean();
@@ -80,7 +82,17 @@ public class Battleship {
 
             } while (!player.board.inRange(x, y) && player.board.matrix[x][y] != null);
             player.shipOnBoard.get(i).setHorizontal(horizontal);
-            player.placeShip(x, y, player.shipOnBoard.get(i));
+            while (badPlacement){
+                try {
+                    player.placeShip(x, y, player.shipOnBoard.get(i));
+                    badPlacement = false;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
             player.drawBoard(true);
         }
     }

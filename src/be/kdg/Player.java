@@ -21,7 +21,7 @@ public class Player {
 
     }
 
-    public void placeShip(int x, int y, Ship ship) {
+    public void placeShip(int x, int y, Ship ship) throws Exception {
         if (board.inRange(x, y)) {
             if (!ship.horizontal) {
                 for (int i = 0; i < ship.length; i++){
@@ -42,6 +42,7 @@ public class Player {
                         if (board.inRange(x, y)) board.matrix[x][y + i] = ship;
                     } catch (IndexOutOfBoundsException ioobe) {
                         System.out.println("Ship does not fit!");
+                        return;
                     }
                 }
             }
