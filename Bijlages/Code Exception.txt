@@ -1,0 +1,37 @@
+private void placeShipsOnBoard() {
+        System.out.printf("%nAlright - Time to place out your ships%n%n");
+        Scanner s = new Scanner(System.in);
+
+for(int i = 0; i < ships.length; i++) {
+            Ship ship = ships[i];
+            boolean isShipPlacementLegal = false;
+
+            System.out.printf("%nEnter position of %s (length  %d): ", ship.getName(), ship.getSize());
+
+            while(!isShipPlacementLegal) {
+                try {
+                    Point from = new Point(s.nextInt(), s.nextInt());
+                    Point to = new Point(s.nextInt(), s.nextInt());
+
+                    while(ship.getSize() != Utils.distanceBetweenPoints(from, to)) {
+                        System.out.printf("The ship currently being placed on the board is of length: %d. Change your coordinates and try again",
+                                ship.getSize());
+
+                        from = new Point(s.nextInt(), s.nextInt());
+                        to = new Point(s.nextInt(), s.nextInt());
+                    }
+                    Position position = new Position(from, to);
+
+                    if(!isPositionOccupied(position)) {
+                        drawShipOnBoard(position);
+                        ship.setPosition(position);
+                        isShipPlacementLegal = true;
+                    } else {
+                        System.out.println("A ship in that position already exists - try again");
+                    }
+
+                } catch(IndexOutOfBoundsException e) {
+                    System.out.println("Invalid coordinates - Outside board");
+                }
+            }
+        }
