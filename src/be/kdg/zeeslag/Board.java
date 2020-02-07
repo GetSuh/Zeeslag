@@ -1,4 +1,4 @@
-package be.kdg;
+package be.kdg.zeeslag;
 
 public class Board {
 
