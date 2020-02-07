@@ -22,8 +22,15 @@ point : new Point (scanner.nextInt(), scanner.nextInt());
 
 
 
-exception voor verkeerde ship placement 18-12-2019 18:05 - 20:49
+GEPROBEERD
+Exception Wrong Ship placement 19-12-2019 20:00 - 21:00
 
-board laten tekenen bij het placement 19-12-2019 09:00 - 
-10:17
+Exception Wrong Ship placement 20-12-2019 00:18   21-12-2019 02:04  
+21-12-2019 10:43 - 11:24
+
+(try catch) Board placement on Ship 21-12-2019 11:20 - 13:10
+
+
+
+
 

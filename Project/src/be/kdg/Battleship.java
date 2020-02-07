@@ -30,8 +30,8 @@ public class Battleship {
         placement(player2);
 
         do {
-            turn(player1,player2);
-            turn(player2,player1);
+            turn(player1, player2);
+            turn(player2, player1);
 
         } while (!player1.checkLost() && !player2.checkLost());
 
@@ -41,46 +41,71 @@ public class Battleship {
 
         int x;
         int y;
+        int aantalIteraties = 0;
         System.out.println();
-        System.out.printf("%s ",player.naam);
+        System.out.printf("%s ", player.naam);
 
         System.out.println();
+
+
+        System.out.printf("%s's board",otherPlayer.naam);
+        otherPlayer.drawBoard(false);
+        System.out.println();
+        System.out.printf("%s's board",player.naam);
+        player.drawBoard(true);
         do {
+
+            if (aantalIteraties > 0){
+                System.out.println("OUT OF BOUNDARY");
+            }
+
             System.out.println(" x coord:");
             x = scanner.nextInt();
             System.out.println(" y coord:");
             y = scanner.nextInt();
+            aantalIteraties++;
         } while (!otherPlayer.board.inRange(x, y));
+
+
+
         player.fire(x, y, otherPlayer);
-        System.out.println("Your board");
-        player.drawBoard(true);
-        System.out.println("Enemy's board");
+
+        System.out.printf("%s's board",otherPlayer.naam);
         otherPlayer.drawBoard(false);
+        System.out.println();
+        System.out.printf("%s's board",player.naam);
+        player.drawBoard(true);
 
         if (otherPlayer.checkLost()) {
             System.out.println();
-            System.out.printf("Game over,%s won the match!",player.naam);
+            System.out.printf("Game over,%s won the match!", player.naam);
             System.exit(0);
         }
     }
-    public void placement(Player player){
+
+    public void placement(Player player) {
         int x;
         int y;
         boolean horizontal;
 
-        System.out.printf("%s ",player.naam);
+
+        System.out.printf("%s ", player.naam);
         for (int i = 0; i < player.shipOnBoard.toArray().length; i++) {
+
             do {
-                System.out.printf("Horizontal?(true/false): for ship %d",i+1);
+                System.out.printf("Horizontal?(true/false): for ship %d (%d long)", i + 1,player.shipOnBoard.get(i).length);
                 horizontal = scanner.nextBoolean();
-                System.out.printf("x coord (0-9) ship %d: ",i+1);
+                System.out.printf("x coord (0-9) ship %d: ", i + 1);
                 x = scanner.nextInt();
-                System.out.printf("y coord(0-9) ship %d: ",i+1);
+                System.out.printf("y coord(0-9) ship %d: ", i + 1);
                 y = scanner.nextInt();
 
-            } while (!player.board.inRange(x, y) && player.board.matrix[x][y] != null);
+            } while (!player.placeAble(x, y, player.shipOnBoard.get(i)));
             player.shipOnBoard.get(i).setHorizontal(horizontal);
+
+
             player.placeShip(x, y, player.shipOnBoard.get(i));
+
             player.drawBoard(true);
         }
     }
