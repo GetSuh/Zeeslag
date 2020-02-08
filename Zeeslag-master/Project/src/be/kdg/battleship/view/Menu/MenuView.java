@@ -20,7 +20,7 @@ public class MenuView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        btnStart = new Button("Start");
+        btnStart = new Button("P1 Vs. P2");
     }
 
     public Button getBtnStart() {

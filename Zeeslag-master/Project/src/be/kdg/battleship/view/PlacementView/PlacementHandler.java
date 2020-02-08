@@ -4,6 +4,7 @@ import be.kdg.battleship.model.Battleship;
 import be.kdg.battleship.view.Menu.MenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.canvas.GraphicsContext;
 
 
 public class PlacementHandler {

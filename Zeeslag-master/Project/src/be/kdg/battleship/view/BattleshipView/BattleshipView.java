@@ -1,4 +1,4 @@
-package be.kdg.battleship;
+package be.kdg.battleship.view.BattleshipView;
 
 import javafx.scene.layout.BorderPane;
 
