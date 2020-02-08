@@ -1,11 +1,11 @@
 package be.kdg.battleship;
 
 import be.kdg.battleship.model.Battleship;
-import be.kdg.battleship.view.BattleshipView;
-import be.kdg.battleship.view.Handler;
+
+import be.kdg.battleship.view.Menu.MenuHandler;
+import be.kdg.battleship.view.Menu.MenuView;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -20,17 +20,16 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Battleship battleship = new Battleship();
-        BattleshipView battleshipView = new BattleshipView();
-        Handler handler = new Handler(battleship,battleshipView);
-        Label label = new Label("fef");
+        MenuView menuView = new MenuView();
+        MenuHandler handler = new MenuHandler(battleship,menuView);
 
-
-        Scene scene = new Scene(label);
+        Scene scene = new Scene(menuView);
         stage.setScene(scene);
 
 
         stage.setTitle("BattleShip");
-        stage.setFullScreen(true);
+        stage.setWidth(1920);
+        stage.setHeight(1080);
         stage.show();
 
 
