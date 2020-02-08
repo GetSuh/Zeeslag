@@ -1,0 +1,213 @@
+Log)
+5/12/2019
+16:52
+Lance
+
+Speler
+//attributen
+
+//methodes
+//Plaatsen van het schip
+plaatsSchip
+reset
+//Eigenlijke spel
+vuren
+
+
+Bord
+//attributen
+Speler 
+lengte
+breedte
+//methodes
+
+
+Schip
+horizontaal/verticaal
+head
+lengte
+
+getHead
+getTail
+
+Computer
+
+CRC document opmaken en alle kandidaat klasses
+
+6/12/2019
+14:15
+Lance
+
+methode om de boot te plaatsen?
+
+public void plaatsbord (int lengte,int x,int y,boolean horizontaal)
+	if horizontaal == true {
+		fori lus 0 tot lengte // dit plaats de schip van het begin punt tot het eindpunt
+			x,y+i
+		
+// een andere bord gebruiken om de naam van het schip op het bord te plaatsen dat overeenkomt met de cellen
+
+7/12/2019
+14:30
+Lance
+
+
+
+
+public void fire(int x,int y){
+
+if board.matrix[x][y] != null{
+	s = board.matrx[x][y];
+	board.matrix[x][y] = null;
+	for x,y in board.matrix
+		if board.matrix[x][y] = s
+			sout HIT	
+			
+		else sout SINK, board.matrix[x][y] = s
+else {
+	sout MISS}
+}
+
+10/12/2019
+14:45
+
+CRC kaarten al af.TODO:
+-Klasse zoeken voor het beheren van de beurten van de beurten.
+-Klasse schrijven voor het beheren van het spel en alle input.
+-Bord klasse moet het bord kunnen tekenen en updaten adhv een gameLoop.
+-Als dat klaar dan moet de klasse diagram zeker tegen 15/12/2019 af zijn!!!
+
+11/12/2019
+08:20
+
+De methode inRange van de klasse board kan je gebruike of de coördinaten nog steeds in range zijn.
+Dus als x en y kleiner zijn dan breedte/lengte en groter dan 0.
+
+Deze methode checkt of de speler nog boten heeft op het spel bord.
+    public boolean update() {
+        if (shipLinkedList.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
+
+Deze methode is het vuren van de klasse Player
+ public void fire(int x,int y){
+        if (board.matrix[x][y] != null){
+            Ship temporaryShip = board.matrix[x][y];
+            board.matrix[x][y] = null;
+
+            for (Ship ship[] : board.matrix) {
+                for (Ship ship1 : ship) {
+                    if (ship1 == temporaryShip){ // equals moet nog veranderen
+                        System.out.println("HIT");
+                        break;
+                    }
+                    else System.out.println("SINK");
+                }
+            }
+        }
+        else System.out.println("MISS");
+    }
+}
+
+12/12/2019
+13:30
+
+Gameloop schrijven.Wincon checken
+
+
+
+while(...)
+
+player2.draw
+scanner.next int ...
+player1.fire
+boolean
+
+player1.draw
+player2.fire
+scanner.next int
+boolean
+
+
+
+
+
+Zeeslag.start
+
+zeeslag.SchepenZetten(player1)
+zeeslag.SchepenZetten(player2)
+
+zeeslag.startVuren;
+
+
+WinCon > zeeslag.end
+
+
+
+bord-schip afhankelijkheid relatie
+Zeeslag-players compositie
+speler-bord compositie
+lijst van schepen zit in bord  - Bord heeft een lijst van schepen dus aggregatie
+bord-lijst van schepen op zeeslag aggregatie
+
+
+16/12/2019
+14:30
+
+
+Player draw board al gemaakt samen met 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
