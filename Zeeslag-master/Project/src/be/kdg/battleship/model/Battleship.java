@@ -7,7 +7,6 @@ public class Battleship {
 
     public Player player1;
     public Player player2;
-    private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
 
 

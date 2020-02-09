@@ -28,9 +28,13 @@ public class PlacementView extends GridPane {
     }
 
     private void layoutNodes() {
-        super.add(btnTest,5,5);
-        setHalignment(btnTest, HPos.CENTER);
-        super.add(hBox,0,0);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                super.add(rectangles[i][j],i,j);
+            }
+        }
+
+        //super.add(hBox,0,0);
 
 
 
@@ -44,9 +48,9 @@ public class PlacementView extends GridPane {
 
     private void initialiseNodes() {
         btnTest = new Button("test");
-        VBox vBox = new VBox();
+        //VBox vBox = new VBox();
         for (int i = 0; i < 10; i++) {
-            HBox row = new HBox();
+            //HBox row = new HBox();
             for (int j = 0; j < 10; j++) {
                 Rectangle r = new Rectangle();
                 r.setX(i);
@@ -57,14 +61,14 @@ public class PlacementView extends GridPane {
                 rectangles[i][j] = r;
 
 
-                row.getChildren().add(r);
+                //row.getChildren().add(r);
 
 
             }
-            vBox.getChildren().add(row);
+            //vBox.getChildren().add(row);
         }
 
-         hBox= new HBox(50,vBox);
+         //hBox= new HBox(50,vBox);
 
 
     }
