@@ -5,13 +5,16 @@ import java.util.Scanner;
 
 public class Battleship {
 
-    private Player player1;
-    private Player player2;
+    public Player player1;
+    public Player player2;
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
 
 
     public Battleship() {
+        this.player1 = new Player();
+        this.player2 = new Player();
+
 
 
     }
@@ -36,7 +39,7 @@ public class Battleship {
 
     }*/
 
-    public void turn(Player player, Player otherPlayer) {
+    /*public void turn(Player player, Player otherPlayer) {
 
         int x;
         int y;
@@ -80,9 +83,9 @@ public class Battleship {
             System.out.printf("Game over,%s won the match!", player.naam);
             System.exit(0);
         }
-    }
+    }*/
 
-    public void placement(Player player) {
+    /*public void placement(Player player) {
         int x;
         int y;
         boolean horizontal;
@@ -107,5 +110,5 @@ public class Battleship {
 
             player.drawBoard(true);
         }
-    }
+    }*/
 }

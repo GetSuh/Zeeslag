@@ -1,78 +1,125 @@
 package be.kdg.battleship.model;
 
+import javafx.geometry.Point2D;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
-    protected String naam;
+
     protected Board board;
     protected List<Ship> shipOnBoard;
+
 
 
     public Player() {
 
 
         this.board = new Board();
-        shipOnBoard = new LinkedList<>();
+        this.shipOnBoard = new LinkedList<>();
 
-        shipOnBoard.add(new Ship("A", true, 2));
-        shipOnBoard.add(new Ship("B", true, 2));
-        shipOnBoard.add(new Ship("C", true, 3));
-        shipOnBoard.add(new Ship("D", true, 4));
-        shipOnBoard.add(new Ship("E", true, 5));
+        shipOnBoard.add(new Ship(3,true));
+
+
+
+
+
 
     }
 
-    public void placeShip(int x, int y, Ship ship) {
+    public boolean placeShip(int x, int y, Ship ship) {
         if (placeAble(x, y, ship)) {
-            if (!ship.horizontal) {
-                for (int i = 0; i < ship.length; i++) {
+            int length = ship.getType();
 
-                    board.matrix[x + i][y] = ship;
-                }
-
-            } else {
-                for (int i = 0; i < ship.length; i++) {
-
-                    board.matrix[x][y + i] = ship;
+            if (ship.isHorizontal()){
+                for (int i = x; i < x + length ; i++) {
+                    Cell cell = getCell(i,y);
+                    cell.setShip(ship);
                 }
             }
+            else {
+                for (int i = y; i < y+ length ; i++) {
+                    Cell cell = getCell(x,i);
+                    cell.setShip(ship);
+                }
+            }return true;
         }
+        return false;
 
 
         //board.matrix[x][y] = shipOnBoard.get(0);
     }
-
+//TODO: placement methods
     public boolean placeAble(int x, int y, Ship ship) {
+        int length = ship.getType();
 
-        for (int i = 0; i < ship.length; i++) {
-            if (ship.horizontal) {
-                if (!board.inRange(x+i, y)){
-                    System.out.println("OUT OF BOUNDARY");
+        if (ship.isHorizontal()){
+            for (int i = x; i <x + length ; i++) {
+                if (!isValidPoint(i,y)){
                     return false;
                 }
-                if(board.matrix[x + i][y] != null) {
-                    System.out.println("ALREADY A SHIP");
+                Cell cell = getCell(i,y);
+                if (cell.getShip() != null){
                     return false;
                 }
+                for (Cell neighbor : getNeighbors(i, y)) {
+                    if (!isValidPoint(i, y))
+                        return false;
 
-            } else {
-                if (!board.inRange(x, y+i)){
-                    System.out.println("OUT OF BOUNDARY");
-                    return false;
-                }
-                if(board.matrix[x][y+i] != null) {
-                    System.out.println("ALREADY A SHIP");
-                    return false;
+                    if (neighbor.getShip() != null)
+                        return false;
                 }
 
+            }
+        }
+        else {
+            for (int i = y; i < y + length; i++) {
+                if (!isValidPoint(x, i))
+                    return false;
+
+                Cell cell = getCell(x, i);
+                if (cell.getShip() != null)
+                    return false;
+
+                for (Cell neighbor : getNeighbors(x, i)) {
+                    if (!isValidPoint(x, i))
+                        return false;
+
+                    if (neighbor.getShip() != null)
+                        return false;
+                }
             }
 
         }
         return true;
+
+
+    }
+    public Cell getCell(int x ,int y){
+        return board.getMatrix()[x][y];
+    }
+    private Cell [] getNeighbors(int x,int y){
+        Point2D[] points = new Point2D[] {
+                new Point2D(x - 1, y),
+                new Point2D(x + 1, y),
+                new Point2D(x, y - 1),
+                new Point2D(x, y + 1)
+        };
+
+        List<Cell> neighbors = new ArrayList<Cell>();
+
+        for (Point2D p : points) {
+            if (isValidPoint(p)) {
+                neighbors.add(getCell((int)p.getX(), (int)p.getY()));
+            }
+        }
+
+        return neighbors.toArray(new Cell[0]);
     }
 
-    public void fire(int x, int y, Player player) {
+
+    /*public void fire(int x, int y, Player player) {
         //if (player.board.matrix[x][y] == )
         if (player.board.matrix[x][y] != null) {
             Ship temporaryShip = player.board.matrix[x][y];
@@ -101,9 +148,9 @@ public class Player {
             System.out.println();
             System.out.println("MISS");
         }
-    }
+    }*/
 
-    public void drawBoard(boolean show) {
+    /*public void drawBoard(boolean show) {
         String spaties = new String("0");
         //String spaties1 = new String("1");
 
@@ -123,9 +170,9 @@ public class Player {
         }
         System.out.println();
 
-    }
+    }*/
 
-    public boolean checkLost() {
+    /*public boolean checkLost() {
         for (Ship[] ships : board.matrix) {
             for (Ship ship : ships) {
                 if (ship != null && !ship.getNaam().equalsIgnoreCase("Hit") && !ship.getNaam().equalsIgnoreCase("Miss")) {
@@ -135,10 +182,20 @@ public class Player {
         }
         return true;
 
+    }*/
+
+    /*public void setNaam(String naam) {
+        this.naam = naam;
+    }*/
+    public boolean isValidPoint(double x,double y){
+        return x >=0 && x < 10 && y >=0 && y < 10;
+    }
+    private boolean isValidPoint(Point2D point) {
+        return isValidPoint(point.getX(), point.getY());
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public List<Ship> getShipOnBoard() {
+        return shipOnBoard;
     }
 }
 

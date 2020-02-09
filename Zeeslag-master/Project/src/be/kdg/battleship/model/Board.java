@@ -6,10 +6,12 @@ public class Board {
     public static final int WIDTH = 10;
     public static final int HEIGTH = 10;
 
-    protected Ship[][] matrix;
+    public int ships = 5;
+
+    protected Cell[][] matrix;
 
     public Board() {
-        this.matrix = new Ship[WIDTH][HEIGTH];
+        this.matrix = new Cell[WIDTH][HEIGTH];
     }
 
 
@@ -18,4 +20,7 @@ public class Board {
 
     }
 
+    public Cell[][] getMatrix() {
+        return matrix;
+    }
 }

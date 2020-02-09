@@ -1,44 +1,31 @@
 package be.kdg.battleship.model;
 
-public class Ship extends BoardObject {
-
-    protected boolean isHit = false;
-    private String naam;
-    protected boolean horizontal;
-    protected int length;
-    protected boolean placement;
+public class Ship {
 
 
+    private int type;
+    private boolean horizontal;
+    private int health;
 
-    public Ship(String naam, boolean horizontal, int length) {
-        this.naam = naam;
+
+    public Ship(int type, boolean horizontal) {
+        this.type = type;
         this.horizontal = horizontal;
-        this.length = length;
-
+        this.health = type;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%c",naam.charAt(0));
+    public void hit(){
+        health--;
+    }
+    public boolean isAlive(){
+        return health > 0;
     }
 
-    public void setHorizontal(boolean horizontal) {
-        this.horizontal = horizontal;
+    public int getType() {
+        return type;
     }
 
-    public void setHit(boolean hit) {
-        isHit = hit;
-    }
-
-    public boolean isHit() {
-        return isHit;
-    }
-
-    public String getNaam() {
-        return naam;
-    }
-
-    public void setPlacement(boolean placement) {
-        this.placement = placement;
+    public boolean isHorizontal() {
+        return horizontal;
     }
 }
