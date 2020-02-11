@@ -24,29 +24,26 @@ public class Player {
     }
 
     public boolean placeShip(int x, int y, Ship ship) {
-        if (!placeAble(x, y, ship)) {
+        if (placeAble(x, y, ship)) {
             int length = ship.getType();
 
             if (ship.isHorizontal()){
                 for (int i = y; i < y + length ; i++) {
                     //Cell cell = getCell(x,i);
-                    Cell cell = new Cell(x,i,this.board);
+                    this.board.getMatrix()[x][i].setShip(ship);
 
-                    cell.setShip(ship);
-
-                    this.board.getMatrix()[x][i] = cell;
                 }
             }
             else {
                 for (int i = x; i < x+ length ; i++) {
                     //Cell cell = getCell(i,y);
-                    Cell cell = new Cell(i,y,this.board);
-                    cell.setShip(ship);
-                    board.getMatrix()[i][y] = cell;
+
+                    this.board.getMatrix()[i][y].setShip(ship);
                 }
-            }return true;
+            }
+            return true;
         }
-        return true;
+        return false;
 
 
         //board.matrix[x][y] = shipOnBoard.get(0);
@@ -58,11 +55,11 @@ public class Player {
         if (ship.isHorizontal()){
             for (int i = y; i <y + length ; i++) {
                 if (!isValidPoint(x,i)){
-                    return true;
+                    return false;
                 }
                 Cell cell = getCell(x,i);
                 if (cell.getShip() != null){
-                    return true;
+                    return false;
                 }
                 /*for (Cell neighbor : getNeighbors(i, y)) {
                     if (!isValidPoint(i, y))
@@ -74,14 +71,14 @@ public class Player {
 
             }
         }
-        else {
+        else if (!ship.isHorizontal()) {
             for (int i = x; i < x + length; i++) {
                 if (!isValidPoint(i, y))
-                    return true;
+                    return false;
 
-                Cell cell = getCell(i, y);
+                Cell cell = board.matrix[i][y]; //getCell(i, y);
                 if (cell.getShip() != null)
-                    return true;
+                    return false;
 
                 /*for (Cell neighbor : getNeighbors(x, i)) {
                     if (!isValidPoint(x, i))
@@ -94,6 +91,7 @@ public class Player {
 
         }
         return true;
+
 
 
     }
