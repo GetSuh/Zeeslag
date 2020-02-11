@@ -40,7 +40,13 @@ public class PlacementHandler {
                         System.out.println(y);
                         //System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
-                        battleship.player1.placeShip(x,y,new Ship(2,false));
+
+
+                        battleship.player1.placeShip(x,y,new Ship(battleship.player1.getShipsToPlace(),false));
+                        int length = battleship.player1.getShipsToPlace();
+
+                        --length;
+                        battleship.player1.setShipsToPlace(length);
                         System.out.println(battleship.player1.getBoard().getMatrix()[x][y].getShip().getType());
 
 

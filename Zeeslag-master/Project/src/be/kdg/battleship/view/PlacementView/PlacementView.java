@@ -55,8 +55,8 @@ public class PlacementView extends GridPane {
                 Rectangle r = new Rectangle();
                 r.setX(i);
                 r.setY(j);
-                r.setWidth(35);
-                r.setHeight(35);
+                r.setWidth(45);
+                r.setHeight(45);
                 r.setStroke(Color.WHITE);
                 rectangles[i][j] = r;
 

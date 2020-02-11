@@ -26,8 +26,8 @@ public class MenuHandler {
                 PlacementHandler placementHandler = new PlacementHandler(battleship,placementView);
                 menuView.getScene().setRoot(placementView);
                 //placementView.getScene().getWindow().sizeToScene();
-                placementView.getScene().getWindow().setWidth(500);
-                placementView.getScene().getWindow().setHeight(500);
+                placementView.getScene().getWindow().setWidth(525);
+                placementView.getScene().getWindow().setHeight(525);
 
             }
         });

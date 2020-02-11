@@ -9,7 +9,7 @@ import java.util.List;
 public class Player {
 
     protected Board board;
-    protected List<Ship> shipOnBoard;
+    protected int shipsToPlace;
 
 
 
@@ -17,9 +17,8 @@ public class Player {
 
 
         this.board = new Board();
-        this.shipOnBoard = new LinkedList<>();
+        shipsToPlace = 5;
 
-        shipOnBoard.add(new Ship(3,true));
 
     }
 
@@ -193,8 +192,12 @@ public class Player {
         return isValidPoint(point.getX(), point.getY());
     }
 
-    public List<Ship> getShipOnBoard() {
-        return shipOnBoard;
+    public void setShipsToPlace(int shipsToPlace) {
+        this.shipsToPlace = shipsToPlace;
+    }
+
+    public int getShipsToPlace() {
+        return shipsToPlace;
     }
 
     public Board getBoard() {
