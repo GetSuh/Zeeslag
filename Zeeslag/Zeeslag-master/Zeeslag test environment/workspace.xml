@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc964ac8-74d1-45f0-9456-87db1250ea8e" name="Default Changelist" comment="">
+<<<<<<< HEAD:.idea/workspace.xml
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/logLance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logLance.txt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/Zeeslag test environment/src/be/kdg/test/Zeeslag.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zeeslag test environment/src/be/kdg/test/Zeeslag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Computer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Ship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Ship_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/kdg/Zeeslag/Zeeslag.java" beforeDir="false" />
+>>>>>>> b6f5a8e3e7eaf495d7b3676f138958dbbf2508f5
+>>>>>>> c9bcb22abdf8f2d53150c5b0769d26ff1c7ee0c1
+>>>>>>> 8d5e204c404ce9be15ef3d6a899fc4d66ed2c04e:Zeeslag test environment/workspace.xml
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1UQz4dSL1jmmxwKDpOoC7GikbKl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="be.kdg.Zeeslag.Main" />
+      <module name="Zeeslag" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="be.kdg.Zeeslag.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Zeeslag" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="be.kdg.Zeeslag.Zeeslag" />
+      <module name="Zeeslag" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="be.kdg.Zeeslag.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Zeeslag" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc964ac8-74d1-45f0-9456-87db1250ea8e" name="Default Changelist" comment="" />
+      <created>1575303416485</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575303416485</updated>
+      <workItem from="1575303419780" duration="4219000" />
+      <workItem from="1575324754929" duration="4943000" />
+      <workItem from="1575365678946" duration="745000" />
+<<<<<<< HEAD:.idea/workspace.xml
+      <workItem from="1576167068257" duration="10000" />
+      <workItem from="1576167145194" duration="1278000" />
+      <workItem from="1576485332329" duration="172000" />
+=======
+      <workItem from="1576050881742" duration="34000" />
+<<<<<<< HEAD
+      <workItem from="1576167147203" duration="2048000" />
+      <workItem from="1576484477704" duration="345000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1576085744093" duration="42000" />
+      <workItem from="1576177155823" duration="35000" />
+      <workItem from="1576177214888" duration="41000" />
+=======
+      <workItem from="1576167147203" duration="2046000" />
+>>>>>>> b6f5a8e3e7eaf495d7b3676f138958dbbf2508f5
+>>>>>>> c9bcb22abdf8f2d53150c5b0769d26ff1c7ee0c1
+>>>>>>> 8d5e204c404ce9be15ef3d6a899fc4d66ed2c04e:Zeeslag test environment/workspace.xml
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
