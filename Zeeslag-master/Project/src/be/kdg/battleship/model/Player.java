@@ -21,31 +21,32 @@ public class Player {
 
         shipOnBoard.add(new Ship(3,true));
 
-
-
-
-
-
     }
 
     public boolean placeShip(int x, int y, Ship ship) {
-        if (placeAble(x, y, ship)) {
+        if (!placeAble(x, y, ship)) {
             int length = ship.getType();
 
             if (ship.isHorizontal()){
-                for (int i = x; i < x + length ; i++) {
-                    Cell cell = getCell(i,y);
+                for (int i = y; i < y + length ; i++) {
+                    //Cell cell = getCell(x,i);
+                    Cell cell = new Cell(x,i,this.board);
+
                     cell.setShip(ship);
+
+                    this.board.getMatrix()[x][i] = cell;
                 }
             }
             else {
-                for (int i = y; i < y+ length ; i++) {
-                    Cell cell = getCell(x,i);
+                for (int i = x; i < x+ length ; i++) {
+                    //Cell cell = getCell(i,y);
+                    Cell cell = new Cell(i,y,this.board);
                     cell.setShip(ship);
+                    board.getMatrix()[i][y] = cell;
                 }
             }return true;
         }
-        return false;
+        return true;
 
 
         //board.matrix[x][y] = shipOnBoard.get(0);
@@ -55,40 +56,40 @@ public class Player {
         int length = ship.getType();
 
         if (ship.isHorizontal()){
-            for (int i = x; i <x + length ; i++) {
-                if (!isValidPoint(i,y)){
-                    return false;
+            for (int i = y; i <y + length ; i++) {
+                if (!isValidPoint(x,i)){
+                    return true;
                 }
-                Cell cell = getCell(i,y);
+                Cell cell = getCell(x,i);
                 if (cell.getShip() != null){
-                    return false;
+                    return true;
                 }
-                for (Cell neighbor : getNeighbors(i, y)) {
+                /*for (Cell neighbor : getNeighbors(i, y)) {
                     if (!isValidPoint(i, y))
                         return false;
 
                     if (neighbor.getShip() != null)
                         return false;
-                }
+                }*/
 
             }
         }
         else {
-            for (int i = y; i < y + length; i++) {
-                if (!isValidPoint(x, i))
-                    return false;
+            for (int i = x; i < x + length; i++) {
+                if (!isValidPoint(i, y))
+                    return true;
 
-                Cell cell = getCell(x, i);
+                Cell cell = getCell(i, y);
                 if (cell.getShip() != null)
-                    return false;
+                    return true;
 
-                for (Cell neighbor : getNeighbors(x, i)) {
+                /*for (Cell neighbor : getNeighbors(x, i)) {
                     if (!isValidPoint(x, i))
                         return false;
 
                     if (neighbor.getShip() != null)
                         return false;
-                }
+                }*/
             }
 
         }
@@ -196,6 +197,10 @@ public class Player {
 
     public List<Ship> getShipOnBoard() {
         return shipOnBoard;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }
 

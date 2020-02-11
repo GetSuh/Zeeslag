@@ -33,9 +33,19 @@ public class PlacementHandler {
                     public void handle(MouseEvent mouseEvent) {
                         Rectangle rectangle = (Rectangle) mouseEvent.getSource();
                         //battleship.player1.getCell((int)rectangle.getX(),(int)rectangle.getY()).setShip(new Ship(1,true));
+                        updateView();
+                        int x = (int) rectangle.getX();
+                        int y = (int) rectangle.getY();
+                        System.out.println(x);
+                        System.out.println(y);
+                        System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
+                        battleship.player1.placeShip(x,y,new Ship(1,false));
+                        System.out.println(battleship.player1.getBoard().getMatrix()[x][y].getShip());
+
+                        System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
 
 
-                        placementView.getRectangles()[(int) rectangle.getX()][(int) rectangle.getY()].setFill(Color.RED);
+                        //placementView.getRectangles()[(int) rectangle.getX()][(int) rectangle.getY()].setFill(Color.RED);
                         updateView();
 
 
@@ -46,9 +56,19 @@ public class PlacementHandler {
     }
 
     private void updateView() {
+
 //TODO: event voor plaatsen
 
 
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (battleship.player1.getBoard().getMatrix()[i][j] == null) {
+                    placementView.getRectangles()[i][j].setFill(Color.RED);
+                }
+                else  placementView.getRectangles()[i][j].setFill(Color.BLACK);
+            }
+        }
 
 
     }
