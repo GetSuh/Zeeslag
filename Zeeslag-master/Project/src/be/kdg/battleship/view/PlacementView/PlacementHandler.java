@@ -26,6 +26,19 @@ public class PlacementHandler {
     }
 
     private void addEventHandlers() {
+
+
+        placementView.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+
+
+
+
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 placementView.getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -42,11 +55,11 @@ public class PlacementHandler {
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
 
 
-                        battleship.player1.placeShip(x,y,new Ship(battleship.player1.getShipsToPlace(),false));
-                        int length = battleship.player1.getShipsToPlace();
+                        battleship.player1.placeShip(x,y,battleship.player1.getShipsToPlace().get(0));
+                        //int length = battleship.player1.getShipsToPlace();
 
-                        --length;
-                        battleship.player1.setShipsToPlace(length);
+                        //--length;
+                        //battleship.player1.setShipsToPlace(length);
                         System.out.println(battleship.player1.getBoard().getMatrix()[x][y].getShip().getType());
 
 

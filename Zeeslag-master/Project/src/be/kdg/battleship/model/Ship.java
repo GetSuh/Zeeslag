@@ -28,4 +28,8 @@ public class Ship {
     public boolean isHorizontal() {
         return horizontal;
     }
+
+    public void setHorizontal(boolean horizontal) {
+        this.horizontal = horizontal;
+    }
 }

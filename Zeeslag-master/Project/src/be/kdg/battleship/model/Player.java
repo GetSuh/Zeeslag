@@ -9,7 +9,8 @@ import java.util.List;
 public class Player {
 
     protected Board board;
-    protected int shipsToPlace;
+    //TODO: shipsToPlace
+    private List <Ship> shipsToPlace;
 
 
 
@@ -17,7 +18,10 @@ public class Player {
 
 
         this.board = new Board();
-        shipsToPlace = 5;
+        shipsToPlace = new LinkedList<>();
+        for (int i = 1; i <= 5; i++) {
+            shipsToPlace.add(new Ship(i,true));
+        }
 
 
     }
@@ -97,6 +101,7 @@ public class Player {
     public Cell getCell(int x ,int y){
         return board.getMatrix()[x][y];
     }
+    //TODO: Neighbour methode anders uitwerken
     private Cell [] getNeighbors(int x,int y){
         Point2D[] points = new Point2D[] {
                 new Point2D(x - 1, y),
@@ -192,11 +197,7 @@ public class Player {
         return isValidPoint(point.getX(), point.getY());
     }
 
-    public void setShipsToPlace(int shipsToPlace) {
-        this.shipsToPlace = shipsToPlace;
-    }
-
-    public int getShipsToPlace() {
+    public List<Ship> getShipsToPlace() {
         return shipsToPlace;
     }
 

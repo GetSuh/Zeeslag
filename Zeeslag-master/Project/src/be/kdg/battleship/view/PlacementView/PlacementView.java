@@ -15,6 +15,7 @@ import java.util.List;
 
 
 public class PlacementView extends GridPane {
+    //TODO: Button voor horizontaal of verticaal
     private Button btnTest;
     private HBox hBox;
     private Rectangle[][] rectangles = new Rectangle[10][10];
@@ -33,6 +34,7 @@ public class PlacementView extends GridPane {
                 super.add(rectangles[i][j],i,j);
             }
         }
+        super.add(btnTest,20,20);
 
         //super.add(hBox,0,0);
 
@@ -47,7 +49,7 @@ public class PlacementView extends GridPane {
 
 
     private void initialiseNodes() {
-        btnTest = new Button("test");
+        btnTest = new Button("horizontal");
         //VBox vBox = new VBox();
         for (int i = 0; i < 10; i++) {
             //HBox row = new HBox();
@@ -74,6 +76,10 @@ public class PlacementView extends GridPane {
     }
     public HBox gethBox() {
         return hBox;
+    }
+
+    public Button getBtnTest() {
+        return btnTest;
     }
 
     public Rectangle[][] getRectangles() {
