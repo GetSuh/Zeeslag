@@ -1,5 +1,6 @@
 package be.kdg.battleship.view.MenuView;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 //import javafx.scene.image.Image;
@@ -26,6 +27,9 @@ public class MenuView extends BorderPane {
         vBox.getChildren().addAll(btnStart,btnStart2,btnOption,btnExit);
         setCenter(vBox);
         setAlignment(vBox,Pos.CENTER);
+        vBox.setPadding(new Insets(10,50,50,50));
+        vBox.setSpacing(30);
+        vBox.setAlignment(Pos.CENTER);
 
         /*setAlignment(btnStart, Pos.CENTER);
         setCenter(btnStart2);
