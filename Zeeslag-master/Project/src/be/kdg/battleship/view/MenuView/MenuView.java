@@ -1,4 +1,4 @@
-package be.kdg.battleship.view.Menu;
+package be.kdg.battleship.view.MenuView;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

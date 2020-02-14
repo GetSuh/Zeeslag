@@ -1,17 +1,11 @@
 package be.kdg.battleship.view.PlacementView;
 
 import be.kdg.battleship.model.Battleship;
-import be.kdg.battleship.model.Cell;
-import be.kdg.battleship.model.Ship;
-import be.kdg.battleship.view.Menu.MenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import java.awt.*;
 
 
 public class PlacementPresenter {

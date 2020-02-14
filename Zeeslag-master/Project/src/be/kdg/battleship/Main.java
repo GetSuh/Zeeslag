@@ -2,8 +2,8 @@ package be.kdg.battleship;
 
 import be.kdg.battleship.model.Battleship;
 
-import be.kdg.battleship.view.Menu.MenuPresenter;
-import be.kdg.battleship.view.Menu.MenuView;
+import be.kdg.battleship.view.MenuView.MenuPresenter;
+import be.kdg.battleship.view.MenuView.MenuView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

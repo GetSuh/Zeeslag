@@ -1,4 +1,4 @@
-package be.kdg.battleship.view.Menu;
+package be.kdg.battleship.view.MenuView;
 
 import be.kdg.battleship.model.Battleship;
 import be.kdg.battleship.view.PlacementView.PlacementPresenter;

@@ -41,4 +41,8 @@ public class Cell {
     public int getY() {
         return y;
     }
+
+    public void setWasShot(boolean wasShot) {
+        this.wasShot = wasShot;
+    }
 }

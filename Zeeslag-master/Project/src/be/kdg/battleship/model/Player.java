@@ -154,43 +154,20 @@ public class Player {
         }
     }*/
 
-    /*public void drawBoard(boolean show) {
-        String spaties = new String("0");
-        //String spaties1 = new String("1");
 
-        for (Ship[] ship : board.matrix) {
-            System.out.println();
-            for (Ship ship1 : ship) {
-                if (ship1 == null) {
-                    System.out.print(String.format("%3s", spaties));
-                } else if (ship1.isHit) System.out.print(String.format("%3s", ship1.toString()));
-                else if (ship1.getNaam().equalsIgnoreCase("Miss"))
-                    System.out.print(String.format("%3s", ship1.toString()));
-                else if (show) System.out.printf("%3s", ship1.toString());
-                else System.out.print(String.format("%3s", spaties));
 
-            }
+    public void fire(int x,int y, Player otherPlayer){
+        if (otherPlayer.board.getMatrix()[x][y].getShip() != null){
+            //Ship bijhouden voor type
+            Ship temporaryShip = otherPlayer.board.getMatrix()[x][y].getShip();
+            //Cell markeren
+            otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+
 
         }
-        System.out.println();
 
-    }*/
+    }
 
-    /*public boolean checkLost() {
-        for (Ship[] ships : board.matrix) {
-            for (Ship ship : ships) {
-                if (ship != null && !ship.getNaam().equalsIgnoreCase("Hit") && !ship.getNaam().equalsIgnoreCase("Miss")) {
-                    return false;
-                }
-            }
-        }
-        return true;
-
-    }*/
-
-    /*public void setNaam(String naam) {
-        this.naam = naam;
-    }*/
     public boolean isValidPoint(double x,double y){
         return x >=0 && x < 10 && y >=0 && y < 10;
     }
