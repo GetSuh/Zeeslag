@@ -2,7 +2,7 @@ package be.kdg.battleship;
 
 import be.kdg.battleship.model.Battleship;
 
-import be.kdg.battleship.view.Menu.MenuHandler;
+import be.kdg.battleship.view.Menu.MenuPresenter;
 import be.kdg.battleship.view.Menu.MenuView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -21,7 +21,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Battleship battleship = new Battleship();
         MenuView menuView = new MenuView();
-        MenuHandler handler = new MenuHandler(battleship,menuView);
+        MenuPresenter handler = new MenuPresenter(battleship,menuView);
 
         Scene scene = new Scene(menuView);
         stage.setScene(scene);

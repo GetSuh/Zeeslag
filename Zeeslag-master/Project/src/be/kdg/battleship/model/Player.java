@@ -35,16 +35,17 @@ public class Player {
                     //Cell cell = getCell(x,i);
                     this.board.getMatrix()[x][i].setShip(ship);
 
-                }
+                }shipsToPlace.remove(ship);
             }
             else {
                 for (int i = x; i < x+ length ; i++) {
                     //Cell cell = getCell(i,y);
 
                     this.board.getMatrix()[i][y].setShip(ship);
-                }
+                }shipsToPlace.remove(ship);
             }
             return true;
+
         }
         return false;
 
