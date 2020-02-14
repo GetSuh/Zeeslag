@@ -1,22 +1,20 @@
-package be.kdg.battleship.view.PlacementView;
+package be.kdg.battleship.view.Placement2View;
 
 import be.kdg.battleship.model.Battleship;
-import be.kdg.battleship.view.Placement2View.Placement2Presenter;
-import be.kdg.battleship.view.Placement2View.Placement2View;
+import be.kdg.battleship.view.PlacementView.PlacementView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-
-public class PlacementPresenter {
+public class Placement2Presenter {
     private Battleship battleship;
-    private PlacementView placementView;
+    private Placement2View placement2View;
 
-    public PlacementPresenter(Battleship battleship, PlacementView placementView) {
+    public Placement2Presenter(Battleship battleship, Placement2View placement2View) {
         this.battleship = battleship;
-        this.placementView = placementView;
+        this.placement2View = placement2View;
         addEventHandlers();
         updateView();
     }
@@ -24,22 +22,18 @@ public class PlacementPresenter {
     private void addEventHandlers() {
 
 
-        placementView.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
+        placement2View.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                battleship.player1.getShipsToPlace().get(0).setHorizontal(!battleship.player1.getShipsToPlace().get(0).isHorizontal());
+                battleship.player2.getShipsToPlace().get(0).setHorizontal(!battleship.player2.getShipsToPlace().get(0).isHorizontal());
 
             }
         });
-        if (battleship.player1.getShipsToPlace().size() != 0){
-            placementView.getBtnNext().setOnAction(new EventHandler<ActionEvent>() {
+        if (battleship.player2.getShipsToPlace().size() != 0){
+            placement2View.getBtnNext().setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    Placement2View placement2View = new Placement2View();
-                    Placement2Presenter placement2Presenter = new Placement2Presenter(battleship,placement2View);
-                    placementView.getScene().setRoot(placement2View);
-                    placement2View.getScene().getWindow().setWidth(525);
-                    placement2View.getScene().getWindow().setHeight(525);
+
                 }
             });
         }
@@ -50,7 +44,7 @@ public class PlacementPresenter {
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                placementView.getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
+                placement2View.getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         Rectangle rectangle = (Rectangle) mouseEvent.getSource();
@@ -62,8 +56,8 @@ public class PlacementPresenter {
                         System.out.println(y);
                         //System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
-                        if (battleship.player1.getShipsToPlace().size() != 0){
-                            battleship.player1.placeShip(x,y,battleship.player1.getShipsToPlace().get(0));
+                        if (battleship.player2.getShipsToPlace().size() != 0){
+                            battleship.player2.placeShip(x,y,battleship.player2.getShipsToPlace().get(0));
                         }
 
 
@@ -97,11 +91,11 @@ public class PlacementPresenter {
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (battleship.player1.getBoard().getMatrix()[i][j].getShip() == null) {
-                    placementView.getRectangles()[i][j].setFill(Color.BLACK);
+                if (battleship.player2.getBoard().getMatrix()[i][j].getShip() == null) {
+                    placement2View.getRectangles()[i][j].setFill(Color.BLACK);
                 }
                 else{
-                    placementView.getRectangles()[i][j].setFill(Color.RED);
+                    placement2View.getRectangles()[i][j].setFill(Color.BLUE);
 
                 }
             }

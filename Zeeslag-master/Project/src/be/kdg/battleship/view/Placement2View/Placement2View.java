@@ -1,21 +1,12 @@
-package be.kdg.battleship.view.PlacementView;
+package be.kdg.battleship.view.Placement2View;
 
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.util.LinkedList;
-import java.util.List;
-
-
-public class PlacementView extends GridPane {
-    //TODO: Button voor horizontaal of verticaal
+public class Placement2View  extends GridPane {
     private Button btnTest;
     private Button btnNext;
     private HBox hBox;
@@ -24,7 +15,7 @@ public class PlacementView extends GridPane {
 
 
 
-    public PlacementView() {
+    public Placement2View() {
         initialiseNodes();
         layoutNodes();
     }
@@ -36,7 +27,6 @@ public class PlacementView extends GridPane {
             }
         }
         super.add(btnTest,20,20);
-        super.add(btnNext,21,21);
 
         //super.add(hBox,0,0);
 
@@ -73,7 +63,7 @@ public class PlacementView extends GridPane {
             //vBox.getChildren().add(row);
         }
 
-         //hBox= new HBox(50,vBox);
+        //hBox= new HBox(50,vBox);
 
 
     }
