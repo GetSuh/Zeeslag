@@ -1,9 +1,11 @@
 package be.kdg.battleship.view.MenuView;
 
+import be.kdg.battleship.view.OptionView.OptionPresenter;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 //import javafx.scene.image.Image;
+
 import javafx.scene.layout.*;
 
 
@@ -13,7 +15,6 @@ public class MenuView extends BorderPane {
     private Button btnStart2;
     private Button btnOption;
     private Button btnExit;
-
 
     //private BackgroundImage violeta;
 
@@ -30,6 +31,7 @@ public class MenuView extends BorderPane {
         vBox.setPadding(new Insets(10,50,50,50));
         vBox.setSpacing(30);
         vBox.setAlignment(Pos.CENTER);
+
 
         /*setAlignment(btnStart, Pos.CENTER);
         setCenter(btnStart2);
@@ -54,4 +56,5 @@ public class MenuView extends BorderPane {
     public Button getBtnStart() {
         return btnStart;
     }
+
 }

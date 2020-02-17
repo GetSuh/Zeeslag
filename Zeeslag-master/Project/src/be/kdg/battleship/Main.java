@@ -26,14 +26,10 @@ public class Main extends Application {
         Scene scene = new Scene(menuView);
         stage.setScene(scene);
 
-
         stage.setTitle("BattleShip");
         stage.setWidth(1280);
         stage.setHeight(720);
         stage.show();
-
-
-
 
     }
 }
