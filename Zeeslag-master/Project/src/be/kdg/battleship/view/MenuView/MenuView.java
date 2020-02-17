@@ -57,4 +57,15 @@ public class MenuView extends BorderPane {
         return btnStart;
     }
 
+    public Button getBtnStart2() {
+        return btnStart2;
+    }
+
+    public Button getBtnOption() {
+        return btnOption;
+    }
+
+    public Button getBtnExit() {
+        return btnExit;
+    }
 }

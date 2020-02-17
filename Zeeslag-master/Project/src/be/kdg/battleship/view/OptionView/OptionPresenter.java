@@ -1,5 +1,8 @@
 package be.kdg.battleship.view.OptionView;
 
+import be.kdg.battleship.model.Battleship;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -8,30 +11,36 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.util.EventListener;
+
 public class OptionPresenter {
-    private VBox makeSlider(int value) {
-        Text text = new Text();
-        text.setFont(new Font("sans-serif", 10));
-        Slider slider = new Slider();
-        slider.setOrientation(Orientation.VERTICAL);
-        slider.setPrefHeight(150);
-        slider.setShowTickMarks(true);
-        slider.setMajorTickUnit(10);
-        slider.setMinorTickCount(0);
-        slider.setShowTickLabels(false);
-        slider.valueProperty().addListener(
-                (observable, oldvalue, newvalue) ->
-                {
-                    int i = newvalue.intValue();
-                    text.setText(Integer.toString(i));
-                } );
-        slider.setValue(value);
-        VBox box = new VBox(10, slider, text);
-        box.setPadding(new Insets(10));
-        box.setAlignment(Pos.CENTER);
-        box.setMinWidth(30);
-        box.setPrefWidth(30);
-        box.setMaxWidth(30);
-        return box;
+    private Battleship model;
+    private OptionView optionView;
+
+
+    //CONSTRUCTOR
+
+    public OptionPresenter(Battleship model, OptionView optionView) {
+        this.model = model;
+        this.optionView = optionView;
+        addEventHandlers();
+        updateView();
+
+    }
+
+    private void updateView() {
+        //Informatie van view ophalen en doorsturen naar model.
+
+
+    }
+
+    private void addEventHandlers() {
+    //Nodes van de view ophalen, en event erop zetten.
+        optionView.getSldBoard().valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+
+            }
+        });
     }
 }

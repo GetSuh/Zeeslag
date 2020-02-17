@@ -1,6 +1,8 @@
 package be.kdg.battleship.view.MenuView;
 
 import be.kdg.battleship.model.Battleship;
+import be.kdg.battleship.view.OptionView.OptionPresenter;
+import be.kdg.battleship.view.OptionView.OptionView;
 import be.kdg.battleship.view.PlacementView.PlacementPresenter;
 import be.kdg.battleship.view.PlacementView.PlacementView;
 import javafx.event.ActionEvent;
@@ -19,6 +21,20 @@ public class MenuPresenter {
     }
 
     private void addEventHandlers() {
+        menuView.getBtnOption().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                OptionView optionView = new OptionView();
+                OptionPresenter optionPresenter = new OptionPresenter(battleship, optionView);
+                menuView.getScene().setRoot(optionView);
+                optionView.getScene().getWindow().setWidth(1280);
+                optionView.getScene().getWindow().setHeight(720);
+
+            }
+        });
+
+
+
         menuView.getBtnStart().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -28,7 +44,6 @@ public class MenuPresenter {
                 //placementView.getScene().getWindow().sizeToScene();
                 placementView.getScene().getWindow().setWidth(1280);
                 placementView.getScene().getWindow().setHeight(720);
-
             }
         });
 
