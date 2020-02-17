@@ -1,6 +1,7 @@
 package be.kdg.battleship.view.PlacementView;
 
 import be.kdg.battleship.model.Battleship;
+import be.kdg.battleship.model.Ship;
 import be.kdg.battleship.view.Placement2View.Placement2Presenter;
 import be.kdg.battleship.view.Placement2View.Placement2View;
 import javafx.event.ActionEvent;
@@ -27,22 +28,27 @@ public class PlacementPresenter {
         placementView.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                battleship.player1.getShipsToPlace().get(0).setHorizontal(!battleship.player1.getShipsToPlace().get(0).isHorizontal());
+                for (Ship ship : battleship.player1.getShipsToPlace()) {
+                    ship.setHorizontal(!ship.isHorizontal());
+                }
 
             }
         });
-        if (battleship.player1.getShipsToPlace().size() != 0){
             placementView.getBtnNext().setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    Placement2View placement2View = new Placement2View();
-                    Placement2Presenter placement2Presenter = new Placement2Presenter(battleship,placement2View);
-                    placementView.getScene().setRoot(placement2View);
-                    placement2View.getScene().getWindow().setWidth(525);
-                    placement2View.getScene().getWindow().setHeight(525);
+                    if (battleship.player1.getShipsToPlace().size() <= 0){
+                        Placement2View placement2View = new Placement2View();
+                        Placement2Presenter placement2Presenter = new Placement2Presenter(battleship,placement2View);
+                        placementView.getScene().setRoot(placement2View);
+                        placement2View.getScene().getWindow().setWidth(1280);
+                        placement2View.getScene().getWindow().setHeight(720);
+                    }
+
+
                 }
             });
-        }
+
 
 
 
@@ -64,6 +70,7 @@ public class PlacementPresenter {
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
                         if (battleship.player1.getShipsToPlace().size() != 0){
                             battleship.player1.placeShip(x,y,battleship.player1.getShipsToPlace().get(0));
+
                         }
 
 

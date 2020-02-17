@@ -160,9 +160,25 @@ public class Player {
         if (otherPlayer.board.getMatrix()[x][y].getShip() != null){
             //Ship bijhouden voor type
             Ship temporaryShip = otherPlayer.board.getMatrix()[x][y].getShip();
-            //Cell markeren
+            //Cell markeren net geschoten
             otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+            //Alle cellen checken
+            for (Cell[] matrix : board.getMatrix()) {
+                for (Cell cell : matrix) {
+                    if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()){ // equals ?
+                        cell.setMarked(true); //HIT
+                        return;
 
+                    }
+                }
+            }
+            System.out.println("Sink");
+
+
+
+
+        }
+        else {
 
         }
 

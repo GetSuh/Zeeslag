@@ -40,14 +40,7 @@ public class PlacementView extends GridPane {
 
         //super.add(hBox,0,0);
 
-
-
-
-
-
-
     }
-
 
 
     private void initialiseNodes() {

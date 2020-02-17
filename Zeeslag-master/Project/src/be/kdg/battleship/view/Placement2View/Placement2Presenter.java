@@ -1,6 +1,7 @@
 package be.kdg.battleship.view.Placement2View;
 
 import be.kdg.battleship.model.Battleship;
+import be.kdg.battleship.model.Ship;
 import be.kdg.battleship.view.PlacementView.PlacementView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,7 +26,9 @@ public class Placement2Presenter {
         placement2View.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                battleship.player2.getShipsToPlace().get(0).setHorizontal(!battleship.player2.getShipsToPlace().get(0).isHorizontal());
+                for (Ship ship : battleship.player2.getShipsToPlace()) {
+                    ship.setHorizontal(!ship.isHorizontal());
+                }
 
             }
         });

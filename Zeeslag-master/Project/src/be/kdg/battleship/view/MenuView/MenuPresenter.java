@@ -26,8 +26,8 @@ public class MenuPresenter {
                 PlacementPresenter placementPresenter = new PlacementPresenter(battleship,placementView);
                 menuView.getScene().setRoot(placementView);
                 //placementView.getScene().getWindow().sizeToScene();
-                placementView.getScene().getWindow().setWidth(525);
-                placementView.getScene().getWindow().setHeight(525);
+                placementView.getScene().getWindow().setWidth(1280);
+                placementView.getScene().getWindow().setHeight(720);
 
             }
         });
