@@ -6,12 +6,15 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 //import javafx.scene.image.Image;
 
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 
 public class MenuView extends BorderPane {
     //TODO:Menu
     private Button btnStart;
+    private ImageView ivPvP;
+
     private Button btnStart2;
     private Button btnOption;
     private Button btnExit;
@@ -25,7 +28,7 @@ public class MenuView extends BorderPane {
 
     private void layoutNodes() {
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(btnStart,btnStart2,btnOption,btnExit);
+        vBox.getChildren().addAll(btnStart,btnStart2,btnOption,btnExit,ivPvP);
         setCenter(vBox);
         setAlignment(vBox,Pos.CENTER);
         vBox.setPadding(new Insets(10,50,50,50));
@@ -44,6 +47,8 @@ public class MenuView extends BorderPane {
     }
 
     private void initialiseNodes() {
+        ivPvP = new ImageView("/1P VS 2P.png");
+
         btnStart = new Button("P1 Vs. P2");
         btnStart2 = new Button("P1 VS CPU");
         btnOption = new Button("Options");
@@ -67,5 +72,9 @@ public class MenuView extends BorderPane {
 
     public Button getBtnExit() {
         return btnExit;
+    }
+
+    public ImageView getIvPvP() {
+        return ivPvP;
     }
 }

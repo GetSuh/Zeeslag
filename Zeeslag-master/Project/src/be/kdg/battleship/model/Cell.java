@@ -17,6 +17,7 @@ public class Cell {
         this.y = y;
         this.board = board;
         //this.ship = null;
+        this.missed = true;
 
         this.wasShot = false;
         this.marked = false;

@@ -166,7 +166,7 @@ public class Player {
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
                     if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()){ // equals ?
-                        cell.setMissed(false); //HIT
+                        //cell.setMissed(false); //HIT
                         System.out.println("HIT");
                         return;
 

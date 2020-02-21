@@ -55,14 +55,13 @@ public class BattleshipPresenter {
                                 if (model.player2.getBoard().getMatrix()[k][l].isMarked()){
                                     model.player2.getBoard().getMatrix()[k][l].setMarked(false);
                                     //TODO: andere manier zoeken
-                                    view.getRectangles()[k][l].setFill(Color.BLACK);
+                                    //view.getRectangles()[k][l].setFill(Color.BLACK);
                                     updateView();
 
 
                                 }
                             }
                         }
-                        updateView();
 
 
                         model.player2.getBoard().getMatrix()[x][y].setMarked(true);
@@ -84,13 +83,15 @@ public class BattleshipPresenter {
                 }
 
 
-                else if (model.player2.getBoard().getMatrix()[i][j].isWasShot() && model.player2.getBoard().getMatrix()[i][j].isMissed() ){
+                else if (model.player2.getBoard().getMatrix()[i][j].isMissed() && model.player2.getBoard().getMatrix()[i][j].isWasShot() ){
                     view.getRectangles()[i][j].setFill(Color.PURPLE);
                     return;
                 }
                 else if (model.player2.getBoard().getMatrix()[i][j].isMarked()){
                     view.getRectangles()[i][j].setFill(Color.ORANGE);
                     return;
+                } else {
+                    view.getRectangles()[i][j].setFill(Color.BLACK);
                 }
 
             }

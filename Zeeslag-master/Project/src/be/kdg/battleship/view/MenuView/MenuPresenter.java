@@ -7,6 +7,7 @@ import be.kdg.battleship.view.PlacementView.PlacementPresenter;
 import be.kdg.battleship.view.PlacementView.PlacementView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
 
 public class MenuPresenter {
@@ -46,6 +47,19 @@ public class MenuPresenter {
                 placementView.getScene().getWindow().setHeight(720);
             }
         });
+        menuView.getIvPvP().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                PlacementView placementView = new PlacementView();
+                PlacementPresenter placementPresenter = new PlacementPresenter(battleship,placementView);
+                menuView.getScene().setRoot(placementView);
+                //placementView.getScene().getWindow().sizeToScene();
+                placementView.getScene().getWindow().setWidth(1280);
+                placementView.getScene().getWindow().setHeight(720);
+            }
+        });
+
+
 
 
 
