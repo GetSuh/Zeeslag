@@ -1,0 +1,37 @@
+TODO:
+
+-menuView
+
+-PlacementView
+
+player.getneighburs ?
+
+Gridpane in een Borderpane
+gridpane links voor bord
+borderpane buttons
+
+-battleShipView & model
+player.fire method
+
+fire(int x,int y,Player otherPlayer)
+1)Als boardobject != null (ship)
+2)Ship bijhouden
+3)boardobject op cell plaatsen met HIT
+4)Cell hit op true zetten
+5)Board checken of er nog cellen zijn van dezelfde soort ship
+if true > HIT
+else > SINK
+
+
+
+battleshipView
+
+board in een vbox zetten
+
+
+
+-OptionView & Presenter
+
+-Naam bijhouden
+
+

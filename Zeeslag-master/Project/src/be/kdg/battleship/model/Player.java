@@ -9,7 +9,6 @@ import java.util.List;
 public class Player {
 
     protected Board board;
-    //TODO: shipsToPlace
     private List <Ship> shipsToPlace;
 
 
@@ -52,7 +51,6 @@ public class Player {
 
         //board.matrix[x][y] = shipOnBoard.get(0);
     }
-//TODO: placement methods
     public boolean placeAble(int x, int y, Ship ship) {
         int length = ship.getType();
 
@@ -161,24 +159,26 @@ public class Player {
             //Ship bijhouden voor type
             Ship temporaryShip = otherPlayer.board.getMatrix()[x][y].getShip();
             //Cell markeren net geschoten
+            otherPlayer.board.getMatrix()[x][y].setShip(null);
             otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+
             //Alle cellen checken
-            for (Cell[] matrix : board.getMatrix()) {
+            for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
                     if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()){ // equals ?
-                        cell.setMarked(true); //HIT
+                        cell.setMissed(false); //HIT
+                        System.out.println("HIT");
                         return;
 
                     }
                 }
             }
-            System.out.println("Sink");
-
-
-
+            System.out.println("Sink");// aparte gif voor sink
 
         }
         else {
+            otherPlayer.board.getMatrix()[x][y].setMissed(true);
+            System.out.println("MISS");//MISS
 
         }
 

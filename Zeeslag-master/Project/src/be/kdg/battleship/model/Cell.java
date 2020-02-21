@@ -6,6 +6,7 @@ public class Cell {
     private Ship ship = null;
     private boolean wasShot;
     private boolean marked;
+    private boolean missed;
 
     private Board board;
 
@@ -16,6 +17,7 @@ public class Cell {
         this.y = y;
         this.board = board;
         //this.ship = null;
+
         this.wasShot = false;
         this.marked = false;
     }
@@ -50,5 +52,21 @@ public class Cell {
 
     public void setWasShot(boolean wasShot) {
         this.wasShot = wasShot;
+    }
+
+    public void setMissed(boolean missed) {
+        this.missed = missed;
+    }
+
+    public boolean isWasShot() {
+        return wasShot;
+    }
+
+    public boolean isMarked() {
+        return marked;
+    }
+
+    public boolean isMissed() {
+        return missed;
     }
 }
