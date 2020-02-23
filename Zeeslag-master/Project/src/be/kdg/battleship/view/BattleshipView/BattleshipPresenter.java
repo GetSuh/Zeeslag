@@ -19,7 +19,6 @@ public class BattleshipPresenter {
     }
 
 
-
     private void addEventHandlers() {
         view.getBtnFire().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -28,10 +27,10 @@ public class BattleshipPresenter {
 
                 for (int i = 0; i < 10; i++) {
                     for (int j = 0; j < 10; j++) {
-                        if ( model.player2.getBoard().getMatrix()[i][j].isMarked()){
+                        if (model.player2.getBoard().getMatrix()[i][j].isMarked()) {
                             int x = model.player2.getBoard().getMatrix()[i][j].getX();
                             int y = model.player2.getBoard().getMatrix()[i][j].getY();
-                            model.player1.fire(x,y,model.player2);
+                            model.player1.fire(x, y, model.player2);
                         }
                     }
                 }
@@ -52,11 +51,10 @@ public class BattleshipPresenter {
                         int y = (int) rectangle.getY();
                         for (int k = 0; k < 10; k++) {
                             for (int l = 0; l < 10; l++) {
-                                if (model.player2.getBoard().getMatrix()[k][l].isMarked()){
+                                if (model.player2.getBoard().getMatrix()[k][l].isMarked()) {
                                     model.player2.getBoard().getMatrix()[k][l].setMarked(false);
                                     //TODO: andere manier zoeken
                                     //view.getRectangles()[k][l].setFill(Color.BLACK);
-                                    updateView();
 
 
                                 }
@@ -68,28 +66,22 @@ public class BattleshipPresenter {
                         updateView();
 
 
-
                     }
                 });
             }
         }
     }
+
     private void updateView() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-
-                if (model.player2.getBoard().getMatrix()[i][j].isWasShot()){
+                if (model.player2.getBoard().getMatrix()[i][j].isWasShot()) {
                     view.getRectangles()[i][j].setFill(Color.LIME);
-                }
-
-
-                else if (model.player2.getBoard().getMatrix()[i][j].isMissed() && model.player2.getBoard().getMatrix()[i][j].isWasShot() ){
+                } else if (model.player2.getBoard().getMatrix()[i][j].isMissed()) {
                     view.getRectangles()[i][j].setFill(Color.PURPLE);
-                    return;
-                }
-                else if (model.player2.getBoard().getMatrix()[i][j].isMarked()){
+                } else if (model.player2.getBoard().getMatrix()[i][j].isMarked()) {
                     view.getRectangles()[i][j].setFill(Color.ORANGE);
-                    return;
+
                 } else {
                     view.getRectangles()[i][j].setFill(Color.BLACK);
                 }
@@ -97,8 +89,8 @@ public class BattleshipPresenter {
             }
         }
 
-    }
 
+    }
 
 
 }

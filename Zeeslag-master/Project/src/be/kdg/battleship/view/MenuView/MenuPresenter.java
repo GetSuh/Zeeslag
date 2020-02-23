@@ -22,31 +22,17 @@ public class MenuPresenter {
     }
 
     private void addEventHandlers() {
-        menuView.getBtnOption().setOnAction(new EventHandler<ActionEvent>() {
+        menuView.getIvOptions().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
+            public void handle(MouseEvent mouseEvent) {
                 OptionView optionView = new OptionView();
                 OptionPresenter optionPresenter = new OptionPresenter(battleship, optionView);
                 menuView.getScene().setRoot(optionView);
                 optionView.getScene().getWindow().setWidth(1280);
                 optionView.getScene().getWindow().setHeight(720);
-
             }
         });
 
-
-
-        menuView.getBtnStart().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                PlacementView placementView = new PlacementView();
-                PlacementPresenter placementPresenter = new PlacementPresenter(battleship,placementView);
-                menuView.getScene().setRoot(placementView);
-                //placementView.getScene().getWindow().sizeToScene();
-                placementView.getScene().getWindow().setWidth(1280);
-                placementView.getScene().getWindow().setHeight(720);
-            }
-        });
         menuView.getIvPvP().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -58,10 +44,12 @@ public class MenuPresenter {
                 placementView.getScene().getWindow().setHeight(720);
             }
         });
-
-
-
-
+        menuView.getIvExit().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.exit(0);
+            }
+        });
 
     }
 

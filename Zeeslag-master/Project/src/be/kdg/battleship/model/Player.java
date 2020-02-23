@@ -160,7 +160,7 @@ public class Player {
             Ship temporaryShip = otherPlayer.board.getMatrix()[x][y].getShip();
             //Cell markeren net geschoten
             otherPlayer.board.getMatrix()[x][y].setShip(null);
-            otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+
 
             //Alle cellen checken
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
@@ -168,12 +168,14 @@ public class Player {
                     if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()){ // equals ?
                         //cell.setMissed(false); //HIT
                         System.out.println("HIT");
+                        otherPlayer.board.getMatrix()[x][y].setWasShot(true);
                         return;
 
                     }
                 }
             }
             System.out.println("Sink");// aparte gif voor sink
+            otherPlayer.board.getMatrix()[x][y].setWasShot(true);
 
         }
         else {

@@ -123,23 +123,7 @@ public class PlacementPresenter {
 
 
 
-/*
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
 
-                //Player 1
-                if (battleship.player1.getBoard().getMatrix()[i][j].getShip() == null) {
-                    placementView.getRectangles()[i][j].setFill(Color.BLACK);
-                } else placementView.getRectangles()[i][j].setFill(Color.RED);
-
-                //Player 2
-                if (battleship.player2.getBoard().getMatrix()[i][j].getShip() == null) {
-                    placementView.getRectangles()[i][j].setFill(Color.BLACK);
-                } else placementView.getRectangles()[i][j].setFill(Color.BLUE);
-
-
-            }
-        }*/
 
 
     }
