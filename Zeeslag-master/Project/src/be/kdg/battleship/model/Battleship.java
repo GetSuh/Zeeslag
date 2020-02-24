@@ -7,14 +7,14 @@ public class Battleship {
 
     public Player player1;
     public Player player2;
-    private Random random = new Random();
+    private Player currentPlayer;
+    //TODO: Refactor currentPlayer in functie voor de view.
+
 
 
     public Battleship() {
         this.player1 = new Player();
         this.player2 = new Player();
-
-
 
     }
 
