@@ -1,6 +1,10 @@
 package be.kdg.battleship.view.BattleshipView;
 
 import be.kdg.battleship.model.Battleship;
+import be.kdg.battleship.view.EndScreenView.EndScreenPresenter;
+import be.kdg.battleship.view.EndScreenView.EndScreenView;
+import be.kdg.battleship.view.PlacementView.PlacementPresenter;
+import be.kdg.battleship.view.PlacementView.PlacementView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +18,7 @@ public class BattleshipPresenter {
     public BattleshipPresenter(Battleship model, BattleshipView view) {
         this.model = model;
         this.view = view;
+        model.setPlayers(model.player1,model.player2);
         addEventHandlers();
         updateView();
     }
@@ -23,18 +28,38 @@ public class BattleshipPresenter {
         view.getBtnFire().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
-
+                int x = 0;
+                int y = 0;
                 for (int i = 0; i < 10; i++) {
                     for (int j = 0; j < 10; j++) {
-                        if (model.player2.getBoard().getMatrix()[i][j].isMarked()) {
-                            int x = model.player2.getBoard().getMatrix()[i][j].getX();
-                            int y = model.player2.getBoard().getMatrix()[i][j].getY();
-                            model.player1.fire(x, y, model.player2);
+                        if (model.otherPlayer.getBoard().getMatrix()[i][j].isMarked()) {
+                            x = model.otherPlayer.getBoard().getMatrix()[i][j].getX();
+                            y = model.otherPlayer.getBoard().getMatrix()[i][j].getY();
+                            model.currentPlayer.fire(x, y, model.otherPlayer);
                         }
                     }
                 }
                 updateView();
+                //TODO: beurten
+                if (model.otherPlayer.getBoard().getMatrix()[x][y].isMissed()){
+                    model.switchPlayer();
+                    updateView();
+                }
+                else {
+                    if (model.checkWin()){
+                        /*EndScreenView endScreenView = new EndScreenView();
+                        EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
+
+                        view.getScene().setRoot(endScreenView);
+                        //placementView.getScene().getWindow().sizeToScene();
+                        endScreenView.getScene().getWindow().setWidth(1280);
+                        endScreenView.getScene().getWindow().setHeight(720);*/
+
+
+                    }
+                }
+
+
 
 
             }
@@ -51,8 +76,8 @@ public class BattleshipPresenter {
                         int y = (int) rectangle.getY();
                         for (int k = 0; k < 10; k++) {
                             for (int l = 0; l < 10; l++) {
-                                if (model.player2.getBoard().getMatrix()[k][l].isMarked()) {
-                                    model.player2.getBoard().getMatrix()[k][l].setMarked(false);
+                                if (model.otherPlayer.getBoard().getMatrix()[k][l].isMarked()) {
+                                    model.otherPlayer.getBoard().getMatrix()[k][l].setMarked(false);
                                     //TODO: andere manier zoeken
                                     //view.getRectangles()[k][l].setFill(Color.BLACK);
 
@@ -62,7 +87,7 @@ public class BattleshipPresenter {
                         }
 
 
-                        model.player2.getBoard().getMatrix()[x][y].setMarked(true);
+                        model.otherPlayer.getBoard().getMatrix()[x][y].setMarked(true);
                         updateView();
 
 
@@ -75,11 +100,11 @@ public class BattleshipPresenter {
     private void updateView() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (model.player2.getBoard().getMatrix()[i][j].isWasShot()) {
+                if (model.otherPlayer.getBoard().getMatrix()[i][j].isWasShot()) {
                     view.getRectangles()[i][j].setFill(Color.LIME);
-                } else if (model.player2.getBoard().getMatrix()[i][j].isMissed()) {
+                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
                     view.getRectangles()[i][j].setFill(Color.PURPLE);
-                } else if (model.player2.getBoard().getMatrix()[i][j].isMarked()) {
+                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMarked()) {
                     view.getRectangles()[i][j].setFill(Color.ORANGE);
 
                 } else {

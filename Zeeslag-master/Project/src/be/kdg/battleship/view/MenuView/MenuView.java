@@ -30,7 +30,7 @@ public class MenuView extends BorderPane {
     }
 
     private void layoutNodes() {
-        lblTitle.setFont(new Font("Comic Sans MS",50));
+        lblTitle.setFont(new Font("Terminal",50));
 
 
         setTop(lblTitle);
@@ -57,7 +57,7 @@ public class MenuView extends BorderPane {
 
 
     private void initialiseNodes() {
-        lblTitle = new Label("\uD83D\uDE02 WONYOUNG STANS \uD83D\uDE02");
+        lblTitle = new Label(" Zeeslag ");
 
 
         ivPvP = new ImageView("/1P VS 2P.png");
