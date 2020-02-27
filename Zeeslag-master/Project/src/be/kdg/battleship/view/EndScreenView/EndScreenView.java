@@ -24,26 +24,27 @@ public class EndScreenView extends BorderPane {
     private void layoutNodes() {
         // In de 'Pane' zetten.
         BorderPane bpVictory = new BorderPane(); //
-        bpVictory.setTop(new Label("Victory"));
-        bpVictory.setLeft(bpVictory); // Text aan linkerkant plaatsen
+        Label lblVictory = new Label("Victory");
+        bpVictory.setTop(lblVictory);
+        this.setLeft(bpVictory);
 
 
         BorderPane bpDefeat = new BorderPane();
-        bpVictory.setTop(new Label("Defeat"));
-        bpVictory.setRight(bpDefeat);
+        Label lblDefeat = new Label("Defeat");
+        bpDefeat.setTop(lblDefeat);
+        this.setRight(bpDefeat);
+
 
         Text text = new Text();
         text.setFont(new Font("sans-serif", 10));
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(btnSave, btnMenu);
+        vBox.getChildren().addAll(btnSave, btnMenu,text);
         setCenter(vBox);
         setAlignment(vBox, Pos.CENTER);
         vBox.setPadding(new Insets(10,50,50,50));
         vBox.setSpacing(30);
         vBox.setAlignment(Pos.CENTER);
-        BorderPane.setAlignment(vBox, Pos.CENTER);
-        BorderPane.setAlignment(bpVictory, Pos.TOP_LEFT);
-        BorderPane.setAlignment(bpDefeat, Pos.TOP_RIGHT);
+
 
     }
 

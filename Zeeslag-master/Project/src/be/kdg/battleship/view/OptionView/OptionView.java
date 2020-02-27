@@ -1,10 +1,11 @@
 package be.kdg.battleship.view.OptionView;
 
 
-
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -16,6 +17,8 @@ public class OptionView extends BorderPane {
     private Slider sldBoard;
     private Slider sldNumberShips;
     private VBox vBox;
+    private Group root;
+    private Label lblValSlider;
 
 
     public OptionView() {
@@ -28,7 +31,7 @@ public class OptionView extends BorderPane {
     private void layoutNodes() {
         //In de 'Pane' zetten.
 
-        Text text = new Text();
+        /*Text text = new Text();
         text.setFont(new Font("sans-serif", 10));
         VBox box = new VBox(10, text);
 
@@ -38,20 +41,33 @@ public class OptionView extends BorderPane {
         box.setPrefWidth(30); // Dat userfriendly is
         box.setMaxWidth(30); //Maximum breedte
         box.getChildren().add(sldBoard); // Je steekt je slider in een box en de box steek je in een pane.
-        //box.getChildren().add(sldNumberShips);
-        BorderPane.setAlignment(box, Pos.CENTER); // Klassemethodes gebruiken.
+        //box.getChildren().add(sldNumberShips);*/
+
+        // Klassemethodes gebruiken.
+        setCenter(vBox);
 
     }
 
     private void initialiseNodes() {
         //Nodes maken zoals slider = new slider, en eigenschappen toevoegen van grootte,
 
-        sldBoard = new Slider(); //
-        sldBoard.setOrientation(Orientation.VERTICAL); //
-        sldBoard.setPrefHeight(150); //
-        sldBoard.setShowTickMarks(true); //
-        sldBoard.setMajorTickUnit(10); //
-        sldBoard.setMinorTickCount(0); //
+
+        Label lblSlider = new Label("Board width/height");
+        lblValSlider = new Label(" ");
+
+
+        sldBoard = new Slider(10, 20, 15); //
+        sldBoard.setShowTickLabels(true);
+        sldBoard.setValue(10);
+        sldBoard.setMinorTickCount(1);
+
+
+        vBox = new VBox();
+        vBox.setPadding(new Insets(20));
+        vBox.setSpacing(10);
+        vBox.getChildren().addAll(lblSlider, sldBoard, lblValSlider);
+
+
        /* slider.setShowTickLabels(false);
                 (observable, oldvalue, newvalue) ->
                 {
@@ -106,5 +122,9 @@ public class OptionView extends BorderPane {
 
     public Slider getSldNumberShips() {
         return sldNumberShips;
+    }
+
+    public Label getLblValSlider() {
+        return lblValSlider;
     }
 }

@@ -10,6 +10,8 @@ public class Player {
 
     protected Board board;
     private List<Ship> shipsToPlace;
+    private String name;
+
 
 
     public Player() {
@@ -20,6 +22,7 @@ public class Player {
         for (int i = 1; i <= 5; i++) {
             shipsToPlace.add(new Ship(i, true));
         }
+        this.name = null;
 
 
     }
@@ -101,27 +104,9 @@ public class Player {
         return board.getMatrix()[x][y];
     }
 
-    //TODO: Neighbour methode anders uitwerken
-    /*private Cell [] getNeighbors(int x,int y){
-        Point2D[] points = new Point2D[] {
-                new Point2D(x - 1, y),
-                new Point2D(x + 1, y),
-                new Point2D(x, y - 1),
-                new Point2D(x, y + 1)
-        };
 
-        List<Cell> neighbors = new ArrayList<Cell>();
-
-        for (Point2D p : points) {
-            if (isValidPoint(p)) {
-                neighbors.add(getCell((int)p.getX(), (int)p.getY()));
-            }
-        }
-
-        return neighbors.toArray(new Cell[0]);
-    }*/
-    public Cell[] getNeighbors(int x, int y) {
-        //TODO: Deze methode refactoren naar een andere Class
+    public List<Cell> getNeighbors(int x, int y) {
+     //TODO: anders uitwerken
 
         List<Cell> neighbours = new ArrayList<>();
         System.out.println("x = " + x + " Y = " + y);
@@ -149,7 +134,7 @@ public class Player {
             neighbours.add(currentCell);
             System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = "+ neighbourCell.getY());
         }
-        return  neighbours.toArray(new Cell[0]);
+        return  neighbours;
 
 
     }
@@ -196,6 +181,14 @@ public class Player {
 
     public Board getBoard() {
         return board;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
 

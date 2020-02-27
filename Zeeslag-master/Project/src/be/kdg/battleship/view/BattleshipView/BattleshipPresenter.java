@@ -40,20 +40,19 @@ public class BattleshipPresenter {
                     }
                 }
                 updateView();
-                //TODO: beurten
                 if (model.otherPlayer.getBoard().getMatrix()[x][y].isMissed()){
                     model.switchPlayer();
                     updateView();
                 }
                 else {
                     if (model.checkWin()){
-                        /*EndScreenView endScreenView = new EndScreenView();
+                        EndScreenView endScreenView = new EndScreenView();
                         EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
                         view.getScene().setRoot(endScreenView);
                         //placementView.getScene().getWindow().sizeToScene();
                         endScreenView.getScene().getWindow().setWidth(1280);
-                        endScreenView.getScene().getWindow().setHeight(720);*/
+                        endScreenView.getScene().getWindow().setHeight(720);
 
 
                     }
@@ -78,7 +77,6 @@ public class BattleshipPresenter {
                             for (int l = 0; l < 10; l++) {
                                 if (model.otherPlayer.getBoard().getMatrix()[k][l].isMarked()) {
                                     model.otherPlayer.getBoard().getMatrix()[k][l].setMarked(false);
-                                    //TODO: andere manier zoeken
                                     //view.getRectangles()[k][l].setFill(Color.BLACK);
 
 

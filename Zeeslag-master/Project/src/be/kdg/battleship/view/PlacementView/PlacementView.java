@@ -1,8 +1,6 @@
 package be.kdg.battleship.view.PlacementView;
 
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -10,17 +8,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class PlacementView extends GridPane {
-    //TODO: Button voor horizontaal of verticaal
     private TextField txtFieldNaam;
     private Label lblNaam;
 
     private Button btnTest;
     private Button btnNext;
+    private Button btnSwitchPlayer;
     private HBox hboxBoard;
     private HBox hBox;
     private Rectangle[][] rectangles = new Rectangle[10][10];
@@ -103,5 +99,9 @@ public class PlacementView extends GridPane {
 
     public Rectangle[][] getRectangles() {
         return rectangles;
+    }
+
+    public TextField getTxtFieldNaam() {
+        return txtFieldNaam;
     }
 }

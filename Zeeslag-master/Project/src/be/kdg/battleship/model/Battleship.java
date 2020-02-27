@@ -10,7 +10,6 @@ public class Battleship {
     public Player currentPlayer;
     public Player otherPlayer;
 
-    //TODO: Refactor currentPlayer in functie voor de view.
 
 
 

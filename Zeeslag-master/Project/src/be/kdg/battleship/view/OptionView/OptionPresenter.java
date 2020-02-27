@@ -39,6 +39,11 @@ public class OptionPresenter {
         optionView.getSldBoard().valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                optionView.getLblValSlider().setText("Value: " + t1);
+
+
+
+
 
             }
         });

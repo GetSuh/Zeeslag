@@ -7,6 +7,8 @@ import be.kdg.battleship.view.BattleshipView.BattleshipView;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -19,11 +21,23 @@ public class PlacementPresenter {
     public PlacementPresenter(Battleship battleship, PlacementView placementView) {
         this.battleship = battleship;
         this.placementView = placementView;
+        battleship.setPlayers(battleship.player1,battleship.player2);
         addEventHandlers();
         updateView();
     }
 
     private void addEventHandlers() {
+
+        placementView.getTxtFieldNaam().setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER){
+                    String text = placementView.getTxtFieldNaam().getText();
+                    battleship.currentPlayer.setName(text);
+                    //TODO: set name
+                }
+            }
+        });
 
 
         placementView.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
@@ -75,6 +89,7 @@ public class PlacementPresenter {
                         System.out.println(y);
                         //System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
+                        //TODO:refactor
                         if (battleship.player1.getShipsToPlace().size() != 0) {
                             battleship.player1.placeShip(x, y, battleship.player1.getShipsToPlace().get(0));
 
@@ -85,12 +100,6 @@ public class PlacementPresenter {
                             }
                         }
                         updateView();
-
-
-
-
-
-
                     }
                 });
             }
@@ -98,11 +107,6 @@ public class PlacementPresenter {
     }
 
     private void updateView() {
-
-
-//TODO: event voor plaatsen
-
-
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (battleship.player1.getShipsToPlace().size() > 0){

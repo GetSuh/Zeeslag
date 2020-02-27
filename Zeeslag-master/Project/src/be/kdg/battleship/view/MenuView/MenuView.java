@@ -13,7 +13,6 @@ import javafx.scene.text.Font;
 
 
 public class MenuView extends BorderPane {
-    //TODO:Menu
 
     private Label lblTitle;
 
@@ -43,18 +42,7 @@ public class MenuView extends BorderPane {
         vBox.setSpacing(30);
         vBox.setAlignment(Pos.CENTER);
 
-
-        /*setAlignment(btnStart, Pos.CENTER);
-        setCenter(btnStart2);
-        setAlignment(btnStart2, Pos.CENTER);
-        setCenter(btnOption);
-        setAlignment(btnOption,Pos.CENTER);
-        setCenter(btnExit);
-        setAlignment(btnExit,Pos.CENTER);*/
-        //setBackground(new Background(violeta));
     }
-
-
 
     private void initialiseNodes() {
         lblTitle = new Label(" Zeeslag ");
