@@ -15,16 +15,29 @@ public class Computer extends Player {
 
     public boolean computerFire(){
         //TODO: Na hit , loopen over neighbour > 4 mogelijkheden > als hit dan alleen 2 mogelijkheden
-        int x = roll();
-        int y = roll();
+        int x = roll(this.getBoard().matrix.length);
+        int y = roll(this.getBoard().matrix.length);
+        //TODO: CELL COORDINAAT BIHOUDEN
+
+        Cell cell;
+
+
+        fire(x,y,player1); //FIRE
+        cell = new Cell(x,y,this.board);
 
 
 
-
-        fire(x,y,player1);
         if (player1.board.getMatrix()[x][y].isWasShot()){
             List<Cell> listWithNeighbours = getNeighbors(x,y);
-            fire(listWithNeighbours.get(random.nextInt(listWithNeighbours.size())).getX(),listWithNeighbours.get(random.nextInt(listWithNeighbours.size())).getY(),player1);
+            x = listWithNeighbours.get(roll(listWithNeighbours.size())).getX();
+            y = listWithNeighbours.get(roll(listWithNeighbours.size())).getY();
+            fire(x,y,player1);
+            if (player1.board.getMatrix()[x][y].isWasShot()){
+
+            }
+
+
+
 
         }
         return true;
@@ -32,13 +45,13 @@ public class Computer extends Player {
     public void placeShipComputer(){
         do {
             if (getShipsToPlace().get(0) != null){
-                placeShip(roll(),roll(),getShipsToPlace().get(0));
+                placeShip(roll(this.getBoard().matrix.length),roll(this.getBoard().matrix.length),getShipsToPlace().get(0));
             }
         }while (getShipsToPlace().size()>0);
 
     }
-    public int roll(){
-        return random.nextInt(10);
+    public int roll(int bound){
+        return random.nextInt(bound);
     }
 
 

@@ -12,14 +12,12 @@ public class Player {
     private List<Ship> shipsToPlace;
     private String name;
 
-
-
     public Player() {
 
 
         this.board = new Board();
         shipsToPlace = new LinkedList<>();
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 2; i <= 5; i++) {
             shipsToPlace.add(new Ship(i, true));
         }
         this.name = null;

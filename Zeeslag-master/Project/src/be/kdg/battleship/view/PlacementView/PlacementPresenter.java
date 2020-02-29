@@ -21,20 +21,32 @@ public class PlacementPresenter {
     public PlacementPresenter(Battleship battleship, PlacementView placementView) {
         this.battleship = battleship;
         this.placementView = placementView;
-        battleship.setPlayers(battleship.player1,battleship.player2);
+        battleship.setPlayers(battleship.player1, battleship.player2);
         addEventHandlers();
         updateView();
     }
 
     private void addEventHandlers() {
 
+        placementView.getBtnSwitchPlayer().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                battleship.switchPlayer();
+                updateView();
+            }
+        });
+
+
+
+
         placementView.getTxtFieldNaam().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                if (keyEvent.getCode() == KeyCode.ENTER){
+                if (keyEvent.getCode() == KeyCode.ENTER) {
                     String text = placementView.getTxtFieldNaam().getText();
                     battleship.currentPlayer.setName(text);
                     //TODO: set name
+                    placementView.getTxtFieldNaam().clear();
                 }
             }
         });
@@ -43,6 +55,8 @@ public class PlacementPresenter {
         placementView.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
+                /*
                 if (battleship.player1.getShipsToPlace().size() != 0) {
                     for (Ship ship : battleship.player1.getShipsToPlace()) {
                         ship.setHorizontal(!ship.isHorizontal());
@@ -51,6 +65,10 @@ public class PlacementPresenter {
                     for (Ship ship : battleship.player2.getShipsToPlace()) {
                         ship.setHorizontal(!ship.isHorizontal());
                     }
+                }*/
+
+                for (Ship ship : battleship.currentPlayer.getShipsToPlace()) {
+                    ship.setHorizontal(!ship.isHorizontal());
                 }
 
 
@@ -65,8 +83,7 @@ public class PlacementPresenter {
                     placementView.getScene().setRoot(battleshipView);
                     battleshipView.getScene().getWindow().setWidth(1280);
                     battleshipView.getScene().getWindow().setHeight(720);
-                }
-                else {
+                } else {
 
                 }
 
@@ -90,15 +107,11 @@ public class PlacementPresenter {
                         //System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
                         //TODO:refactor
-                        if (battleship.player1.getShipsToPlace().size() != 0) {
-                            battleship.player1.placeShip(x, y, battleship.player1.getShipsToPlace().get(0));
-
-                        } else {
-                            if (battleship.player2.getShipsToPlace().size() != 0) {
-                                battleship.player2.placeShip(x, y, battleship.player2.getShipsToPlace().get(0));
-
-                            }
+                        if (!battleship.currentPlayer.getShipsToPlace().isEmpty()){
+                            battleship.currentPlayer.placeShip(x, y, battleship.currentPlayer.getShipsToPlace().get(0));
                         }
+
+
                         updateView();
                     }
                 });
@@ -107,6 +120,9 @@ public class PlacementPresenter {
     }
 
     private void updateView() {
+        /*
+
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (battleship.player1.getShipsToPlace().size() > 0){
@@ -120,14 +136,17 @@ public class PlacementPresenter {
                     }else placementView.getRectangles()[i][j].setFill(Color.BLACK);
 
                 }
+            }*/
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (battleship.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
+                    placementView.getRectangles()[i][j].setFill(Color.GREEN);
+                }else placementView.getRectangles()[i][j].setFill(Color.BLACK);
+
             }
+
+
         }
-
-
-
-
-
-
 
 
     }

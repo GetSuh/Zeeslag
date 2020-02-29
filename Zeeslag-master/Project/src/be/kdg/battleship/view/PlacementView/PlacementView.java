@@ -1,6 +1,7 @@
 package be.kdg.battleship.view.PlacementView;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -35,8 +36,9 @@ public class PlacementView extends GridPane {
         }*/
         super.add(txtFieldNaam, 1, 0);
         super.add(lblNaam,0,0);
+        super.add(btnSwitchPlayer,7,1);
 
-        super.add(hboxBoard, 0, 1);
+        super.add(hboxBoard, 0, 3);
 
         super.add(btnTest, 5, 1);
         super.add(btnNext, 6, 1);
@@ -44,6 +46,8 @@ public class PlacementView extends GridPane {
 
         setHgap(5);
         setMargin(hboxBoard, new Insets(5));
+
+        setAlignment(Pos.CENTER);
         setGridLinesVisible(true);
 
         //super.add(hBox,0,0);
@@ -54,6 +58,7 @@ public class PlacementView extends GridPane {
     private void initialiseNodes() {
         txtFieldNaam = new TextField("");
         lblNaam = new Label("Name");
+        btnSwitchPlayer = new Button("Switch Player");
 
 
         btnTest = new Button("horizontal");
@@ -83,6 +88,10 @@ public class PlacementView extends GridPane {
 
     public HBox gethBox() {
         return hBox;
+    }
+
+    public Button getBtnSwitchPlayer() {
+        return btnSwitchPlayer;
     }
 
     public Button getBtnTest() {
