@@ -15,7 +15,7 @@ public class PlacementView extends GridPane {
     private TextField txtFieldNaam;
     private Label lblNaam;
 
-    private Button btnTest;
+    private Button btnHorizontal;
     private Button btnNext;
     private Button btnSwitchPlayer;
     private HBox hboxBoard;
@@ -40,7 +40,7 @@ public class PlacementView extends GridPane {
 
         super.add(hboxBoard, 0, 3);
 
-        super.add(btnTest, 5, 1);
+        super.add(btnHorizontal, 5, 1);
         super.add(btnNext, 6, 1);
 
 
@@ -61,7 +61,7 @@ public class PlacementView extends GridPane {
         btnSwitchPlayer = new Button("Switch Player");
 
 
-        btnTest = new Button("horizontal");
+        btnHorizontal = new Button("horizontal");
         btnNext = new Button("Play");
         hboxBoard = new HBox();
         for (int i = 0; i < 10; i++) {
@@ -94,8 +94,8 @@ public class PlacementView extends GridPane {
         return btnSwitchPlayer;
     }
 
-    public Button getBtnTest() {
-        return btnTest;
+    public Button getBtnHorizontal() {
+        return btnHorizontal;
     }
 
     public HBox getHboxBoard() {

@@ -2,6 +2,7 @@ package be.kdg.battleship.view.BattleshipView;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -27,12 +28,20 @@ public class BattleshipView extends GridPane {
     }
 
     public void layoutNodes() {
-        add(hboxBoard,1,1);
         setGridLinesVisible(true);
-        add(lblSatus,1,2);
-        add(btnFire,3,10);
 
+        add(hboxBoard,1,3);
         setMargin(hboxBoard,new Insets(10));
+
+        add(lblSatus,1,2);
+
+
+        add(btnFire,3,3);
+        setValignment(btnFire, VPos.TOP);
+        setMargin(btnFire,new Insets(10));
+
+
+        this.setHgap(10);
         setAlignment(Pos.CENTER_LEFT);
 
 

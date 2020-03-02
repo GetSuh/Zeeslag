@@ -84,7 +84,6 @@ public class BattleshipPresenter {
                             }
                         }
 
-
                         model.otherPlayer.getBoard().getMatrix()[x][y].setMarked(true);
                         updateView();
 
@@ -96,11 +95,17 @@ public class BattleshipPresenter {
     }
 
     private void updateView() {
+        //TODO:SINK KLEUR
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (model.otherPlayer.getBoard().getMatrix()[i][j].isWasShot()) {
                     view.getRectangles()[i][j].setFill(Color.LIME);
-                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
+
+                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
+                    view.getRectangles()[i][j].setFill(Color.RED);
+                }
+                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
                     view.getRectangles()[i][j].setFill(Color.PURPLE);
                 } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMarked()) {
                     view.getRectangles()[i][j].setFill(Color.ORANGE);

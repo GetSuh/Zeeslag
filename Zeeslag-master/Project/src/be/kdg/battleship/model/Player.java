@@ -159,7 +159,18 @@ public class Player {
                 }
             }
             System.out.println("Sink");// aparte gif voor sink
+            //TODO: SINK boolean
             otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+            for (Cell[] matrix : otherPlayer.board.getMatrix()) {
+                for (Cell cell : matrix) {
+                    
+                    if (cell.getShip().getType() ==  otherPlayer.board.getMatrix()[x][y].getShip().getType()){
+
+                    }
+
+                }
+            }
+
 
         } else {
             otherPlayer.board.getMatrix()[x][y].setMissed(true);

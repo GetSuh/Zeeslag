@@ -7,6 +7,7 @@ public class Cell {
     private boolean wasShot;
     private boolean marked;
     private boolean missed;
+    private boolean sunken;
 
     private Board board;
 
@@ -18,9 +19,9 @@ public class Cell {
         this.board = board;
         //this.ship = null;
         this.missed = false;
-
         this.wasShot = false;
         this.marked = false;
+        this.sunken = false;
     }
 
     public Ship getShip() {
@@ -61,6 +62,14 @@ public class Cell {
 
     public boolean isWasShot() {
         return wasShot;
+    }
+
+    public boolean isSunken() {
+        return sunken;
+    }
+
+    public void setSunken(boolean sunken) {
+        this.sunken = sunken;
     }
 
     public boolean isMarked() {

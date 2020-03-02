@@ -52,7 +52,7 @@ public class PlacementPresenter {
         });
 
 
-        placementView.getBtnTest().setOnAction(new EventHandler<ActionEvent>() {
+        placementView.getBtnHorizontal().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
@@ -106,7 +106,7 @@ public class PlacementPresenter {
                         System.out.println(y);
                         //System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
-                        //TODO:refactor
+
                         if (!battleship.currentPlayer.getShipsToPlace().isEmpty()){
                             battleship.currentPlayer.placeShip(x, y, battleship.currentPlayer.getShipsToPlace().get(0));
                         }
@@ -120,23 +120,7 @@ public class PlacementPresenter {
     }
 
     private void updateView() {
-        /*
 
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (battleship.player1.getShipsToPlace().size() > 0){
-                    if (battleship.player1.getBoard().getMatrix()[i][j].getShip() != null){
-                        placementView.getRectangles()[i][j].setFill(Color.RED);
-                    } else placementView.getRectangles()[i][j].setFill(Color.BLACK);
-                }
-                else {
-                    if (battleship.player2.getBoard().getMatrix()[i][j].getShip() != null){
-                        placementView.getRectangles()[i][j].setFill(Color.BLUE);
-                    }else placementView.getRectangles()[i][j].setFill(Color.BLACK);
-
-                }
-            }*/
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (battleship.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
