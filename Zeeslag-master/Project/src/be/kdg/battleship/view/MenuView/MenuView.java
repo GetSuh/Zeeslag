@@ -56,7 +56,6 @@ public class MenuView extends BorderPane {
 
 
         //Image image = new Image("");
-        //violeta = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
     }
     public ImageView getIvPvCPU() {
         return ivPvCPU;

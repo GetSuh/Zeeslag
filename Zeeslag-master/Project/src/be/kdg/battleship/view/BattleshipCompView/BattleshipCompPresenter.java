@@ -10,7 +10,7 @@ public class BattleshipCompPresenter {
     public BattleshipCompPresenter(Battleship model, BattleshipCompView view) {
         this.model = model;
         this.view = view;
-        model.setPlayers(model.player1,new Computer());
+        model.setPlayers(model.player1,new Computer(model.options));
         addEventHandlers();
         updateView();
 

@@ -1,5 +1,6 @@
 package be.kdg.battleship.view.PlacementView;
 
+import be.kdg.battleship.Option;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -12,18 +13,25 @@ import javafx.scene.shape.Rectangle;
 
 
 public class PlacementView extends GridPane {
+
+
+
+
+
     private TextField txtFieldNaam;
     private Label lblNaam;
-
     private Button btnHorizontal;
     private Button btnNext;
     private Button btnSwitchPlayer;
     private HBox hboxBoard;
     private HBox hBox;
-    private Rectangle[][] rectangles = new Rectangle[10][10];
+    private Rectangle[][] rectangles;
+    private Option options;
 
 
-    public PlacementView() {
+    public PlacementView(Option option) {
+        this.options = option;
+        rectangles = new Rectangle[options.widthBoard][options.widthBoard];
         initialiseNodes();
         layoutNodes();
     }
@@ -64,9 +72,9 @@ public class PlacementView extends GridPane {
         btnHorizontal = new Button("horizontal");
         btnNext = new Button("Play");
         hboxBoard = new HBox();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < options.widthBoard; i++) {
             VBox row = new VBox();
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < options.widthBoard; j++) {
                 Rectangle r = new Rectangle();
                 r.setX(i);
                 r.setY(j);

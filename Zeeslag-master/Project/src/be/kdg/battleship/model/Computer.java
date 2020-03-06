@@ -1,5 +1,7 @@
 package be.kdg.battleship.model;
 
+import be.kdg.battleship.Option;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -8,12 +10,16 @@ public class Computer extends Player {
     private Random random;
     private Player player1;
     private Board smartBoard;
+    private Option option;
 
-    public Computer() {
-        super();
+    public Computer(Option option) {
+        super(option);
+        player1 = new Player(option);
+        this.option = option;
+
         random = new Random();
-        player1 = new Player();
-        smartBoard = new Board();
+
+        smartBoard = new Board(option);
     }
 
     public boolean computerFire(){

@@ -1,5 +1,6 @@
 package be.kdg.battleship.view.BattleshipView;
 
+import be.kdg.battleship.Option;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -12,17 +13,23 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+
 public class BattleshipView extends GridPane {
+    private Option option;
+
+
     private Label lblSatus;
 
     private HBox hboxBoard;
     private Button btnFire;
     private Button btnNextTurn;
-    private Rectangle[][] rectangles = new Rectangle[10][10];
+    private Rectangle[][] rectangles;
 
 
 
-    public BattleshipView() {
+    public BattleshipView(Option option) {
+        this.option = option;
+        rectangles = new Rectangle[option.widthBoard][option.widthBoard];
         initialiseNodes();
         layoutNodes();
     }
@@ -52,9 +59,9 @@ public class BattleshipView extends GridPane {
         btnFire = new Button("Fire");
         lblSatus = new Label("");
         hboxBoard = new HBox();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < option.widthBoard; i++) {
             VBox row = new VBox();
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < option.widthBoard; j++) {
                 Rectangle r = new Rectangle();
                 r.setX(i);
                 r.setY(j);

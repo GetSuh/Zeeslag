@@ -30,8 +30,8 @@ public class BattleshipPresenter {
             public void handle(ActionEvent actionEvent) {
                 int x = 0;
                 int y = 0;
-                for (int i = 0; i < 10; i++) {
-                    for (int j = 0; j < 10; j++) {
+                for (int i = 0; i < model.options.getWidthBoard(); i++) {
+                    for (int j = 0; j < model.options.getWidthBoard(); j++) {
                         if (model.otherPlayer.getBoard().getMatrix()[i][j].isMarked()) {
                             x = model.otherPlayer.getBoard().getMatrix()[i][j].getX();
                             y = model.otherPlayer.getBoard().getMatrix()[i][j].getY();
@@ -58,15 +58,12 @@ public class BattleshipPresenter {
                     }
                 }
 
-
-
-
             }
         });
 
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < model.options.getWidthBoard(); i++) {
+            for (int j = 0; j < model.options.getWidthBoard(); j++) {
                 view.getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
@@ -79,14 +76,12 @@ public class BattleshipPresenter {
                                     model.otherPlayer.getBoard().getMatrix()[k][l].setMarked(false);
                                     //view.getRectangles()[k][l].setFill(Color.BLACK);
 
-
                                 }
                             }
                         }
 
                         model.otherPlayer.getBoard().getMatrix()[x][y].setMarked(true);
                         updateView();
-
 
                     }
                 });
@@ -95,15 +90,17 @@ public class BattleshipPresenter {
     }
 
     private void updateView() {
-        //TODO:SINK KLEUR
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (model.otherPlayer.getBoard().getMatrix()[i][j].isWasShot()) {
-                    view.getRectangles()[i][j].setFill(Color.LIME);
+        for (int i = 0; i < model.options.getWidthBoard(); i++) {
+            for (int j = 0; j < model.options.getWidthBoard(); j++) {
 
-                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
+
+                if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
                     view.getRectangles()[i][j].setFill(Color.RED);
+                }
+
+                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isWasShot()){
+                    view.getRectangles()[i][j].setFill(Color.LIME);
                 }
                 else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
                     view.getRectangles()[i][j].setFill(Color.PURPLE);

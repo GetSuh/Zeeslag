@@ -56,17 +56,6 @@ public class PlacementPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                /*
-                if (battleship.player1.getShipsToPlace().size() != 0) {
-                    for (Ship ship : battleship.player1.getShipsToPlace()) {
-                        ship.setHorizontal(!ship.isHorizontal());
-                    }
-                } else {
-                    for (Ship ship : battleship.player2.getShipsToPlace()) {
-                        ship.setHorizontal(!ship.isHorizontal());
-                    }
-                }*/
-
                 for (Ship ship : battleship.currentPlayer.getShipsToPlace()) {
                     ship.setHorizontal(!ship.isHorizontal());
                 }
@@ -78,12 +67,13 @@ public class PlacementPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (battleship.player1.getShipsToPlace().size() <= 0 && battleship.player2.getShipsToPlace().size() <= 0) {
-                    BattleshipView battleshipView = new BattleshipView();
+                    BattleshipView battleshipView = new BattleshipView(battleship.options);
                     BattleshipPresenter placement2Presenter = new BattleshipPresenter(battleship, battleshipView);
                     placementView.getScene().setRoot(battleshipView);
                     battleshipView.getScene().getWindow().setWidth(1280);
                     battleshipView.getScene().getWindow().setHeight(720);
                 } else {
+                    //TODO: EXCEPTION
 
                 }
 
@@ -92,8 +82,8 @@ public class PlacementPresenter {
         });
 
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < battleship.options.getWidthBoard(); i++) {
+            for (int j = 0; j < battleship.options.getWidthBoard(); j++) {
                 placementView.getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
@@ -121,8 +111,8 @@ public class PlacementPresenter {
 
     private void updateView() {
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < battleship.options.getWidthBoard(); i++) {
+            for (int j = 0; j < battleship.options.getWidthBoard(); j++) {
                 if (battleship.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
                     placementView.getRectangles()[i][j].setFill(Color.GREEN);
                 }else placementView.getRectangles()[i][j].setFill(Color.BLACK);

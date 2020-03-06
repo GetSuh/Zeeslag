@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
@@ -18,6 +19,8 @@ public class OptionView extends BorderPane {
     private Slider sldNumberShips;
     private VBox vBox;
     private Group root;
+
+    private Button btnBack;
     private Label lblValSlider;
 
 
@@ -45,11 +48,14 @@ public class OptionView extends BorderPane {
 
         // Klassemethodes gebruiken.
         setCenter(vBox);
+        setBottom(btnBack);
 
     }
 
     private void initialiseNodes() {
         //Nodes maken zoals slider = new slider, en eigenschappen toevoegen van grootte,
+        btnBack = new Button("Go back");
+
 
 
         Label lblSlider = new Label("Board width/height");
@@ -126,5 +132,9 @@ public class OptionView extends BorderPane {
 
     public Label getLblValSlider() {
         return lblValSlider;
+    }
+
+    public Button getBtnBack() {
+        return btnBack;
     }
 }

@@ -1,6 +1,6 @@
 package be.kdg.battleship.model;
 
-import javafx.geometry.Point2D;
+import be.kdg.battleship.Option;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,11 +11,13 @@ public class Player {
     protected Board board;
     private List<Ship> shipsToPlace;
     private String name;
+    private Option options;
 
-    public Player() {
+    public Player(Option option) {
 
 
-        this.board = new Board();
+        this.options = option;
+        this.board = new Board(this.options);
         shipsToPlace = new LinkedList<>();
         for (int i = 2; i <= 5; i++) {
             shipsToPlace.add(new Ship(i, true));
@@ -33,6 +35,8 @@ public class Player {
                 for (int i = y; i < y + length; i++) {
                     //Cell cell = getCell(x,i);
                     this.board.getMatrix()[x][i].setShip(ship);
+                    this.board.getMatrix()[x][i].setType(ship.getType());
+
 
                 }
                 shipsToPlace.remove(ship);
@@ -41,6 +45,7 @@ public class Player {
                     //Cell cell = getCell(i,y);
 
                     this.board.getMatrix()[i][y].setShip(ship);
+                    this.board.getMatrix()[x][i].setType(ship.getType());
                 }
                 shipsToPlace.remove(ship);
             }
@@ -104,35 +109,35 @@ public class Player {
 
 
     public List<Cell> getNeighbors(int x, int y) {
-     //TODO: anders uitwerken
+        //TODO: anders uitwerken
 
         List<Cell> neighbours = new ArrayList<>();
         System.out.println("x = " + x + " Y = " + y);
-        NeighbourCell neighbourCell = new NeighbourCell(x +1,y);
-        if (isValidPoint(neighbourCell.getX(),neighbourCell.getY())){
+        NeighbourCell neighbourCell = new NeighbourCell(x + 1, y);
+        if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = "+ neighbourCell.getY());
+            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
         }
-        neighbourCell = new NeighbourCell(x -1,y);
-        if (isValidPoint(neighbourCell.getX(),neighbourCell.getY())){
+        neighbourCell = new NeighbourCell(x - 1, y);
+        if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = "+ neighbourCell.getY());
+            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
         }
-        neighbourCell = new NeighbourCell(x,y+1);
-        if (isValidPoint(neighbourCell.getX(),neighbourCell.getY())){
+        neighbourCell = new NeighbourCell(x, y + 1);
+        if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = "+ neighbourCell.getY());
+            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
         }
-        neighbourCell = new NeighbourCell(x,y-1);
-        if (isValidPoint(neighbourCell.getX(),neighbourCell.getY())){
+        neighbourCell = new NeighbourCell(x, y - 1);
+        if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = "+ neighbourCell.getY());
+            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
         }
-        return  neighbours;
+        return neighbours;
 
 
     }
@@ -141,6 +146,8 @@ public class Player {
     public void fire(int x, int y, Player otherPlayer) {
         if (otherPlayer.board.getMatrix()[x][y].getShip() != null) {
             //Ship bijhouden voor type
+            int type = otherPlayer.board.getMatrix()[x][y].getShip().getType();
+
             Ship temporaryShip = otherPlayer.board.getMatrix()[x][y].getShip();
             //Cell markeren net geschoten
             otherPlayer.board.getMatrix()[x][y].setShip(null);
@@ -148,25 +155,28 @@ public class Player {
 
             //Alle cellen checken
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
+
                 for (Cell cell : matrix) {
                     if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()) { // equals ?
                         //cell.setMissed(false); //HIT
                         System.out.println("HIT");
                         otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+                        System.out.println(otherPlayer.board.getMatrix()[x][y].getType());
                         return;
 
                     }
                 }
             }
-            System.out.println("Sink");// aparte gif voor sink
-            //TODO: SINK boolean
+            //TODO: ALERT sunken
             otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
-                    
-                    if (cell.getShip().getType() ==  otherPlayer.board.getMatrix()[x][y].getShip().getType()){
+                    if (cell.getType() == type) {
 
+                        cell.setSunken(true);
                     }
+
 
                 }
             }
@@ -181,7 +191,7 @@ public class Player {
     }
 
     public boolean isValidPoint(double x, double y) {
-        return x >= 0 && x < 10 && y >= 0 && y < 10;
+        return x >= 0 && x < options.getWidthBoard() && y >= 0 && y < options.getWidthBoard();
     }
 
     public List<Ship> getShipsToPlace() {

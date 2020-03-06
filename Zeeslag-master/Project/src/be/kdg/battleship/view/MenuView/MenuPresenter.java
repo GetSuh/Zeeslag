@@ -50,7 +50,7 @@ public class MenuPresenter {
         menuView.getIvPvP().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                PlacementView placementView = new PlacementView();
+                PlacementView placementView = new PlacementView(battleship.options);
                 PlacementPresenter placementPresenter = new PlacementPresenter(battleship,placementView);
                 menuView.getScene().setRoot(placementView);
                 //placementView.getScene().getWindow().sizeToScene();

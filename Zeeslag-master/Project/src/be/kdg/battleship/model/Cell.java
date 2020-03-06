@@ -3,6 +3,7 @@ package be.kdg.battleship.model;
 public class Cell {
     private int x;
     private int y;
+    private int type;
     private Ship ship = null;
     private boolean wasShot;
     private boolean marked;
@@ -18,6 +19,7 @@ public class Cell {
         this.y = y;
         this.board = board;
         //this.ship = null;
+        this.type = 0;
         this.missed = false;
         this.wasShot = false;
         this.marked = false;
@@ -32,12 +34,12 @@ public class Cell {
         this.ship = ship;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public int getType() {
+        return type;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setType(int type) {
+        this.type = type;
     }
 
     public int getX() {

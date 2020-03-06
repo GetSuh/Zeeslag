@@ -31,7 +31,7 @@ public class EndScreenPresenter {
         endScreenView.getBtnMenu().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                PlacementView placementView = new PlacementView();
+                PlacementView placementView = new PlacementView(model.options);
                 PlacementPresenter placementPresenter = new PlacementPresenter(model,placementView);
                 endScreenView.getScene().setRoot(placementView); // nieuwe scene wordt aangemaakt
                 placementView.getScene().getWindow().setWidth(1600); // nieuwe scherm breedte en hoogte
