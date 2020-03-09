@@ -21,6 +21,7 @@ public class BattleshipCompPresenter {
 
     private void addEventHandlers() {
 
+
     }
     private void updateView() {
 

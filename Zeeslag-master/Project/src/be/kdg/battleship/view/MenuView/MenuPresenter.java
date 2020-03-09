@@ -1,6 +1,7 @@
 package be.kdg.battleship.view.MenuView;
 
 import be.kdg.battleship.model.Battleship;
+import be.kdg.battleship.model.Computer;
 import be.kdg.battleship.view.BattleshipCompView.BattleshipCompPresenter;
 import be.kdg.battleship.view.BattleshipCompView.BattleshipCompView;
 import be.kdg.battleship.view.OptionView.OptionPresenter;
@@ -27,11 +28,20 @@ public class MenuPresenter {
         menuView.getIvPvCPU().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                BattleshipCompView battleshipCompView = new BattleshipCompView();
-                BattleshipCompPresenter battleshipCompPresenter = new BattleshipCompPresenter(battleship,battleshipCompView);
-                menuView.getScene().setRoot(battleshipCompView);
-                battleshipCompView.getScene().getWindow().setWidth(1280);
-                battleshipCompView.getScene().getWindow().setHeight(720);
+                Computer computer = new Computer(battleship.options);
+                battleship.setComputer(computer);
+                battleship.player2.placeShip();
+
+
+
+
+
+                PlacementView placementView = new PlacementView(battleship.options);
+                PlacementPresenter placementPresenter = new PlacementPresenter(battleship,placementView);
+                menuView.getScene().setRoot(placementView);
+                //placementView.getScene().getWindow().sizeToScene();
+                placementView.getScene().getWindow().setWidth(1280);
+                placementView.getScene().getWindow().setHeight(720);
             }
         });
 

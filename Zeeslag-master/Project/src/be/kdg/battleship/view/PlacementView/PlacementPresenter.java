@@ -21,7 +21,9 @@ public class PlacementPresenter {
     public PlacementPresenter(Battleship battleship, PlacementView placementView) {
         this.battleship = battleship;
         this.placementView = placementView;
+
         battleship.setPlayers(battleship.player1, battleship.player2);
+
         addEventHandlers();
         updateView();
     }
@@ -43,7 +45,8 @@ public class PlacementPresenter {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
-                    if (battleship.currentPlayer.getName().equals("")){
+                    if (placementView.getTxtFieldNaam().equals("d")){
+                        System.out.println("no name");
 
                     }
                     String text = placementView.getTxtFieldNaam().getText();

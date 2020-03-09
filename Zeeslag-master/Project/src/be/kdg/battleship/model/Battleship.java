@@ -4,11 +4,11 @@ public class Battleship {
 
     public Player player1;
     public Player player2;
+
+
     public Player currentPlayer;
     public Player otherPlayer;
     public Option options;
-
-
 
 
     public Battleship() {
@@ -18,8 +18,8 @@ public class Battleship {
         currentPlayer = null;
         otherPlayer = null;
 
-
     }
+
 
     public void setPlayers(Player currentPlayer , Player otherPlayer) {
         this.currentPlayer = currentPlayer;
@@ -48,6 +48,10 @@ public class Battleship {
         return true;
 
     }
+    public void setComputer(Computer computer){
+        this.player2 = computer;
+    }
+
 
     public Option getOptions() {
         return options;

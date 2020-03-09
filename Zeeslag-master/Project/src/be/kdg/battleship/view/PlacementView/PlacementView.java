@@ -21,7 +21,6 @@ public class PlacementView extends GridPane {
 
     private TextField txtFieldNaam;
     private Label lblNaam;
-
     private Button btnHorizontal;
     private Button btnNext;
     private Button btnSwitchPlayer;

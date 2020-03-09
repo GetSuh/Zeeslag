@@ -1,6 +1,7 @@
 package be.kdg.battleship.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,10 +10,13 @@ public class Player {
     protected Board board;
 
 
-
     private boolean won;
     private List<Ship> shipsToPlace;
+    //TODO: naam,datum en beurten opslaan in txt bestand
     private String name;
+    private Date date;
+    private int turns;
+
     private Option options;
 
     public Player(Option option) {
@@ -30,8 +34,14 @@ public class Player {
 
     }
 
+    public void placeShip() {
+
+
+    }
+
     public boolean placeShip(int x, int y, Ship ship) {
         if (placeAble(x, y, ship)) {
+            System.out.println(ship.isHorizontal());
             int length = ship.getType();
 
             if (ship.isHorizontal()) {
@@ -158,7 +168,6 @@ public class Player {
 
             //Alle cellen checken
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
-
                 for (Cell cell : matrix) {
                     if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()) { // equals ?
                         //cell.setMissed(false); //HIT
@@ -172,16 +181,11 @@ public class Player {
             }
             //TODO: ALERT sunken
             otherPlayer.board.getMatrix()[x][y].setShot(true);
-
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
                     if (cell.getType() == type) {
-
                         cell.setSunken(true);
-
                     }
-
-
                 }
             }
 
