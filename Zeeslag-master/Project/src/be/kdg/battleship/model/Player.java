@@ -197,6 +197,9 @@ public class Player {
         }
 
     }
+    public void fire(){
+
+    }
 
     public boolean isValidPoint(double x, double y) {
         return x >= 0 && x < options.getWidthBoard() && y >= 0 && y < options.getWidthBoard();

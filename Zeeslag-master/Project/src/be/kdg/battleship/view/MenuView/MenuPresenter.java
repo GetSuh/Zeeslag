@@ -36,6 +36,7 @@ public class MenuPresenter {
 
 
 
+
                 PlacementView placementView = new PlacementView(battleship.options);
                 PlacementPresenter placementPresenter = new PlacementPresenter(battleship,placementView);
                 menuView.getScene().setRoot(placementView);

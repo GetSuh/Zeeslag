@@ -89,11 +89,8 @@ public class BattleshipPresenter {
     }
 
     private void updateView() {
-
         for (int i = 0; i < model.options.getWidthBoard(); i++) {
             for (int j = 0; j < model.options.getWidthBoard(); j++) {
-
-
                 if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
                     view.getRectangles()[i][j].setFill(Color.RED);
                 }
@@ -109,7 +106,6 @@ public class BattleshipPresenter {
                 } else {
                     view.getRectangles()[i][j].setFill(Color.BLACK);
                 }
-
             }
         }
         view.getLblStatus().setText(model.otherPlayer.getName());
