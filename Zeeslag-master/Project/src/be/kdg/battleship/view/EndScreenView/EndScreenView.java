@@ -37,6 +37,8 @@ public class EndScreenView extends BorderPane {
 
         Text text = new Text();
         text.setFont(new Font("sans-serif", 10));
+
+
         VBox vBox = new VBox();
         vBox.getChildren().addAll(btnSave, btnMenu,text);
         setCenter(vBox);

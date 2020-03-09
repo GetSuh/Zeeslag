@@ -1,7 +1,5 @@
 package be.kdg.battleship.model;
 
-import be.kdg.battleship.Option;
-
 public class Board {
     private Option option;
 

@@ -1,7 +1,5 @@
 package be.kdg.battleship.model;
 
-import be.kdg.battleship.Option;
-
 public class Battleship {
 
     public Player player1;
@@ -40,6 +38,7 @@ public class Battleship {
         for (int i = 0; i < options.getWidthBoard(); i++) {
             for (int j = 0; j < options.getWidthBoard(); j++) {
                 if (otherPlayer.getBoard().getMatrix()[i][j].getShip() != null){
+
                     return false;
 
                 }
@@ -47,6 +46,7 @@ public class Battleship {
             }
         }
         return true;
+
     }
 
     public Option getOptions() {

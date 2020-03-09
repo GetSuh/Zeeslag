@@ -1,4 +1,4 @@
-package be.kdg.battleship;
+package be.kdg.battleship.model;
 
 public class Option {
     private static final int DEFAULT = 10;

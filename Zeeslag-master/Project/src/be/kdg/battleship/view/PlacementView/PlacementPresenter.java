@@ -43,11 +43,21 @@ public class PlacementPresenter {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
+                    if (battleship.currentPlayer.getName().equals("")){
+
+                    }
                     String text = placementView.getTxtFieldNaam().getText();
                     battleship.currentPlayer.setName(text);
                     //TODO: set name
-                    placementView.getTxtFieldNaam().clear();
+
                 }
+            }
+        });
+
+        placementView.getBtnUndo().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
             }
         });
 
@@ -84,7 +94,7 @@ public class PlacementPresenter {
 
         for (int i = 0; i < battleship.options.getWidthBoard(); i++) {
             for (int j = 0; j < battleship.options.getWidthBoard(); j++) {
-                placementView.getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
+                placementView.getBoardView().getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         Rectangle rectangle = (Rectangle) mouseEvent.getSource();
@@ -114,8 +124,8 @@ public class PlacementPresenter {
         for (int i = 0; i < battleship.options.getWidthBoard(); i++) {
             for (int j = 0; j < battleship.options.getWidthBoard(); j++) {
                 if (battleship.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
-                    placementView.getRectangles()[i][j].setFill(Color.GREEN);
-                }else placementView.getRectangles()[i][j].setFill(Color.BLACK);
+                    placementView.getBoardView().getRectangles()[i][j].setFill(Color.GREEN);
+                }else placementView.getBoardView().getRectangles()[i][j].setFill(Color.BLACK);
 
             }
 

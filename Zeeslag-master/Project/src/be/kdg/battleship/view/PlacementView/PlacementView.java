@@ -1,6 +1,7 @@
 package be.kdg.battleship.view.PlacementView;
 
-import be.kdg.battleship.Option;
+import be.kdg.battleship.model.Option;
+import be.kdg.battleship.view.BoardView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -20,40 +21,39 @@ public class PlacementView extends GridPane {
 
     private TextField txtFieldNaam;
     private Label lblNaam;
+
     private Button btnHorizontal;
     private Button btnNext;
     private Button btnSwitchPlayer;
-    private HBox hboxBoard;
-    private HBox hBox;
-    private Rectangle[][] rectangles;
-    private Option options;
+    private Button btnUndo; //TODO:undo button
+    //TODO: Clickable images of ships
+
+
+
+    private BoardView boardView;
 
 
     public PlacementView(Option option) {
-        this.options = option;
-        rectangles = new Rectangle[options.widthBoard][options.widthBoard];
+        boardView = new BoardView(option);
         initialiseNodes();
         layoutNodes();
     }
 
     private void layoutNodes() {
-        /*for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                super.add(rectangles[i][j],i,j);
-            }
-        }*/
+
         super.add(txtFieldNaam, 1, 0);
+
         super.add(lblNaam,0,0);
+
+        super.add(boardView, 0, 3);
+
         super.add(btnSwitchPlayer,7,1);
-
-        super.add(hboxBoard, 0, 3);
-
         super.add(btnHorizontal, 5, 1);
         super.add(btnNext, 6, 1);
 
 
         setHgap(5);
-        setMargin(hboxBoard, new Insets(5));
+        setMargin(boardView, new Insets(5));
 
         setAlignment(Pos.CENTER);
         setGridLinesVisible(true);
@@ -66,36 +66,20 @@ public class PlacementView extends GridPane {
     private void initialiseNodes() {
         txtFieldNaam = new TextField("");
         lblNaam = new Label("Name");
+
         btnSwitchPlayer = new Button("Switch Player");
-
-
-        btnHorizontal = new Button("horizontal");
         btnNext = new Button("Play");
-        hboxBoard = new HBox();
-        for (int i = 0; i < options.widthBoard; i++) {
-            VBox row = new VBox();
-            for (int j = 0; j < options.widthBoard; j++) {
-                Rectangle r = new Rectangle();
-                r.setX(i);
-                r.setY(j);
-                r.setWidth(45);
-                r.setHeight(45);
-                r.setStroke(Color.WHITE);
-                rectangles[i][j] = r;
+        btnHorizontal = new Button("Horizontal/ Vertical");
+        btnUndo = new Button("Undo placement");
 
 
-                row.getChildren().add(r);
 
-
-            }
-            hboxBoard.getChildren().add(row);
-        }
 
 
     }
 
-    public HBox gethBox() {
-        return hBox;
+    public Button getBtnUndo() {
+        return btnUndo;
     }
 
     public Button getBtnSwitchPlayer() {
@@ -106,16 +90,14 @@ public class PlacementView extends GridPane {
         return btnHorizontal;
     }
 
-    public HBox getHboxBoard() {
-        return hboxBoard;
-    }
+
 
     public Button getBtnNext() {
         return btnNext;
     }
 
-    public Rectangle[][] getRectangles() {
-        return rectangles;
+    public BoardView getBoardView() {
+        return boardView;
     }
 
     public TextField getTxtFieldNaam() {

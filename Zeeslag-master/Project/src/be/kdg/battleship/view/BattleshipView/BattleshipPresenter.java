@@ -3,8 +3,6 @@ package be.kdg.battleship.view.BattleshipView;
 import be.kdg.battleship.model.Battleship;
 import be.kdg.battleship.view.EndScreenView.EndScreenPresenter;
 import be.kdg.battleship.view.EndScreenView.EndScreenView;
-import be.kdg.battleship.view.PlacementView.PlacementPresenter;
-import be.kdg.battleship.view.PlacementView.PlacementView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -46,6 +44,7 @@ public class BattleshipPresenter {
                 }
                 else {
                     if (model.checkWin()){
+                        model.currentPlayer.setWon(true);
                         EndScreenView endScreenView = new EndScreenView();
                         EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
@@ -99,7 +98,7 @@ public class BattleshipPresenter {
                     view.getRectangles()[i][j].setFill(Color.RED);
                 }
 
-                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isWasShot()){
+                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isShot()){
                     view.getRectangles()[i][j].setFill(Color.LIME);
                 }
                 else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
@@ -113,6 +112,7 @@ public class BattleshipPresenter {
 
             }
         }
+        view.getLblStatus().setText(model.otherPlayer.getName());
 
 
     }

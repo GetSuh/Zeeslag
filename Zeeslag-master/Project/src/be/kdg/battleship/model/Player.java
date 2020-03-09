@@ -1,7 +1,5 @@
 package be.kdg.battleship.model;
 
-import be.kdg.battleship.Option;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +7,10 @@ import java.util.List;
 public class Player {
 
     protected Board board;
+
+
+
+    private boolean won;
     private List<Ship> shipsToPlace;
     private String name;
     private Option options;
@@ -23,6 +25,7 @@ public class Player {
             shipsToPlace.add(new Ship(i, true));
         }
         this.name = null;
+        this.won = false;
 
 
     }
@@ -160,7 +163,7 @@ public class Player {
                     if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()) { // equals ?
                         //cell.setMissed(false); //HIT
                         System.out.println("HIT");
-                        otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+                        otherPlayer.board.getMatrix()[x][y].setShot(true);
                         System.out.println(otherPlayer.board.getMatrix()[x][y].getType());
                         return;
 
@@ -168,13 +171,14 @@ public class Player {
                 }
             }
             //TODO: ALERT sunken
-            otherPlayer.board.getMatrix()[x][y].setWasShot(true);
+            otherPlayer.board.getMatrix()[x][y].setShot(true);
 
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
                     if (cell.getType() == type) {
 
                         cell.setSunken(true);
+
                     }
 
 
@@ -204,6 +208,10 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setWon(boolean won) {
+        this.won = won;
     }
 
     public String getName() {

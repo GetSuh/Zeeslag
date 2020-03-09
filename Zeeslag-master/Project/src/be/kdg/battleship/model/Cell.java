@@ -3,9 +3,13 @@ package be.kdg.battleship.model;
 public class Cell {
     private int x;
     private int y;
+
+
     private int type;
     private Ship ship = null;
-    private boolean wasShot;
+
+
+    private boolean shot;
     private boolean marked;
     private boolean missed;
     private boolean sunken;
@@ -21,7 +25,7 @@ public class Cell {
         //this.ship = null;
         this.type = 0;
         this.missed = false;
-        this.wasShot = false;
+        this.shot = false;
         this.marked = false;
         this.sunken = false;
     }
@@ -54,16 +58,16 @@ public class Cell {
         this.marked = marked;
     }
 
-    public void setWasShot(boolean wasShot) {
-        this.wasShot = wasShot;
+    public void setShot(boolean shot) {
+        this.shot = shot;
     }
 
     public void setMissed(boolean missed) {
         this.missed = missed;
     }
 
-    public boolean isWasShot() {
-        return wasShot;
+    public boolean isShot() {
+        return shot;
     }
 
     public boolean isSunken() {

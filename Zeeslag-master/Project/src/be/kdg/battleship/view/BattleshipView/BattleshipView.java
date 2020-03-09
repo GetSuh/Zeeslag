@@ -1,12 +1,11 @@
 package be.kdg.battleship.view.BattleshipView;
 
-import be.kdg.battleship.Option;
+import be.kdg.battleship.model.Option;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,13 +16,13 @@ import javafx.scene.shape.Rectangle;
 public class BattleshipView extends GridPane {
     private Option option;
 
-
-    private Label lblSatus;
-
     private HBox hboxBoard;
+    private Rectangle[][] rectangles;
+
+
+    private Label lblStatus;
     private Button btnFire;
     private Button btnNextTurn;
-    private Rectangle[][] rectangles;
 
 
 
@@ -40,7 +39,7 @@ public class BattleshipView extends GridPane {
         add(hboxBoard,1,3);
         setMargin(hboxBoard,new Insets(10));
 
-        add(lblSatus,1,2);
+        add(lblStatus,1,2);
 
 
         add(btnFire,3,3);
@@ -49,7 +48,7 @@ public class BattleshipView extends GridPane {
 
 
         this.setHgap(10);
-        setAlignment(Pos.CENTER_LEFT);
+        setAlignment(Pos.CENTER);
 
 
 
@@ -57,7 +56,7 @@ public class BattleshipView extends GridPane {
 
     public void initialiseNodes() {
         btnFire = new Button("Fire");
-        lblSatus = new Label("");
+        lblStatus = new Label("");
         hboxBoard = new HBox();
         for (int i = 0; i < option.widthBoard; i++) {
             VBox row = new VBox();
@@ -80,20 +79,19 @@ public class BattleshipView extends GridPane {
 
     }
 
-    public HBox getHboxBoard() {
-        return hboxBoard;
-    }
 
     public Button getBtnFire() {
         return btnFire;
     }
 
-    public Button getBtnNextTurn() {
-        return btnNextTurn;
-    }
 
     public Rectangle[][] getRectangles() {
         return rectangles;
     }
+
+    public Label getLblStatus() {
+        return lblStatus;
+    }
+
 }
 
