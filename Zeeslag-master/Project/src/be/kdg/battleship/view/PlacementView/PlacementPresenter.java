@@ -48,10 +48,7 @@ public class PlacementPresenter {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
-                    if (placementView.getTxtFieldNaam().equals("d")){
-                        System.out.println("no name");
 
-                    }
                     String text = placementView.getTxtFieldNaam().getText();
                     battleship.currentPlayer.setName(text);
                     //TODO: set name

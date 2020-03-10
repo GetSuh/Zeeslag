@@ -15,8 +15,7 @@ public class Player {
     //TODO: naam,datum en beurten opslaan in txt bestand
     private String name;
     private Date date;
-    private int turns;
-
+    public int turns;
     private Option options;
 
     public Player(Option option) {
@@ -30,6 +29,7 @@ public class Player {
         }
         this.name = null;
         this.won = false;
+        this.turns = 0;
 
 
     }
@@ -208,6 +208,10 @@ public class Player {
 
     public List<Ship> getShipsToPlace() {
         return shipsToPlace;
+    }
+
+    public int getTurns() {
+        return turns;
     }
 
     public Board getBoard() {

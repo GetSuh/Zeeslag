@@ -51,7 +51,7 @@ public class BattleshipCompPresenter {
                 else {
                     if (model.checkWin()){
                         model.currentPlayer.setWon(true);
-                        EndScreenView endScreenView = new EndScreenView();
+                        EndScreenView endScreenView = new EndScreenView(model.options);
                         EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
                         view.getScene().setRoot(endScreenView);

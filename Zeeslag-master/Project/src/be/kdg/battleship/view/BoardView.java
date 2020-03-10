@@ -45,6 +45,17 @@ public class BoardView extends BorderPane {
         }
     }
 
+    public void setVisualSize(double size){
+
+        for (int i = 0; i < option.widthBoard; i++) {
+            for (int j = 0; j < option.widthBoard; j++) {
+              rectangles[i][j].setWidth(size);
+                rectangles[i][j].setHeight(size);
+            }
+
+        }
+    }
+
     public Rectangle[][] getRectangles() {
         return rectangles;
     }

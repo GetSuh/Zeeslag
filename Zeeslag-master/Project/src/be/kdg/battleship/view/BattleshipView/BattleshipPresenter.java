@@ -39,13 +39,14 @@ public class BattleshipPresenter {
                 }
                 updateView();
                 if (model.otherPlayer.getBoard().getMatrix()[x][y].isMissed()){
+                    model.currentPlayer.turns++;
                     model.switchPlayer();
                     updateView();
                 }
                 else {
                     if (model.checkWin()){
                         model.currentPlayer.setWon(true);
-                        EndScreenView endScreenView = new EndScreenView();
+                        EndScreenView endScreenView = new EndScreenView(model.options);
                         EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
                         view.getScene().setRoot(endScreenView);
@@ -107,7 +108,11 @@ public class BattleshipPresenter {
                 }
             }
         }
-        view.getLblStatus().setText(model.otherPlayer.getName());
+
+        Integer integer = model.currentPlayer.getTurns() +1;
+        view.getLblStatus().setText("Turn number"+ integer.toString());
+
+        view.getLblName().setText(model.currentPlayer.getName());
 
 
     }

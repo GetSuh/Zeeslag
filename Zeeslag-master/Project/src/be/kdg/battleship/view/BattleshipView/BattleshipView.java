@@ -19,10 +19,12 @@ public class BattleshipView extends GridPane {
     private HBox hboxBoard;
     private Rectangle[][] rectangles;
 
+    private Label lblName;
+
 
     private Label lblStatus;
     private Button btnFire;
-    private Button btnNextTurn;
+
 
 
 
@@ -35,11 +37,15 @@ public class BattleshipView extends GridPane {
 
     public void layoutNodes() {
         setGridLinesVisible(true);
+        VBox vBox = new VBox();
+
 
         add(hboxBoard,1,3);
         setMargin(hboxBoard,new Insets(10));
 
-        add(lblStatus,1,2);
+        vBox.getChildren().addAll(lblName,lblStatus);
+        add(vBox,1,2);
+
 
 
         add(btnFire,3,3);
@@ -56,6 +62,7 @@ public class BattleshipView extends GridPane {
 
     public void initialiseNodes() {
         btnFire = new Button("Fire");
+        lblName =new Label("");
         lblStatus = new Label("");
         hboxBoard = new HBox();
         for (int i = 0; i < option.widthBoard; i++) {
@@ -84,6 +91,9 @@ public class BattleshipView extends GridPane {
         return btnFire;
     }
 
+    public Label getLblName() {
+        return lblName;
+    }
 
     public Rectangle[][] getRectangles() {
         return rectangles;

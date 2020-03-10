@@ -1,5 +1,7 @@
 package be.kdg.battleship.view.EndScreenView;
 
+import be.kdg.battleship.model.Option;
+import be.kdg.battleship.view.BoardView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -12,11 +14,20 @@ import javafx.scene.text.Text;
 public class EndScreenView extends BorderPane {
 
     //TODO: Victory on the left side of the screen and Defeat on the right side
+    private BoardView victoryBoard;
+    private BoardView defeatBoard;
+
+    private Option option;
+
+
+
+
 
     private Button btnSave;
     private Button btnMenu;
 
-    public EndScreenView() {
+    public EndScreenView(Option option) {
+        this.option = option;
         initialiseNodes();
         layoutNodes();
     }
@@ -26,7 +37,11 @@ public class EndScreenView extends BorderPane {
         BorderPane bpVictory = new BorderPane(); //
         Label lblVictory = new Label("Victory");
         bpVictory.setTop(lblVictory);
+
+        bpVictory.setCenter(victoryBoard);
         this.setLeft(bpVictory);
+        setAlignment(bpVictory,Pos.CENTER_LEFT);
+        setMargin(bpVictory,new Insets(10));
 
 
         BorderPane bpDefeat = new BorderPane();
@@ -55,7 +70,20 @@ public class EndScreenView extends BorderPane {
         btnSave = new Button("SAVE");
         btnMenu = new Button("MENU");
 
+        victoryBoard = new BoardView(option);
+        victoryBoard.setVisualSize(10);
 
+        defeatBoard = new BoardView(option);
+
+
+    }
+
+    public BoardView getVictoryBoard() {
+        return victoryBoard;
+    }
+
+    public BoardView getDefeatBoard() {
+        return defeatBoard;
     }
 
     public Button getBtnSave() {

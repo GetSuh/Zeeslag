@@ -10,13 +10,14 @@ public class Computer extends Player {
     private Cell firstCell;
     private Cell cellToRemember;
     private List<Cell> listWithNeighbours;
+    private int listSize;
 
     private Random random;
 
     private Board smartBoard;
 
 
-    public Computer(Option option ) {
+    public Computer(Option option) {
         super(option);
 
         random = new Random();
@@ -31,6 +32,7 @@ public class Computer extends Player {
         //TODO: Na hit , loopen over neighbour > 4 mogelijkheden > als hit dan alleen 2 mogelijkheden
         int x;
         int y;
+
         System.out.println("switch");
 
 
@@ -53,20 +55,21 @@ public class Computer extends Player {
             if (player1.board.getMatrix()[x][y].isShot()) {
                 firstCell = new Cell(x, y, this.smartBoard); // Cell bij houden van de eerste shot en bijhouden op een aparte bord.
                 listWithNeighbours = new ArrayList<>();
-                 listWithNeighbours = getNeighbors(x, y);
+                listWithNeighbours = getNeighbors(x, y);
+                listSize = listWithNeighbours.size();
                 //Opnieuw rollen over de  neighbours
                 Cell cell2 = listWithNeighbours.get(roll(listWithNeighbours.size()));
                 x = cell2.getX();
                 y = cell2.getY();
                 fire(x, y, player1);
-                if (player1.board.getMatrix()[x][y].isMissed()){
+                if (player1.board.getMatrix()[x][y].isMissed()) {
                     listWithNeighbours.remove(cell2);
                     return;
 
                 }
 
                 //TODO: Algoritme verder bijwerken
-                //Als rechts van de cell geraakt is dan >
+
 
 
                 if (player1.board.getMatrix()[x][y].isShot()) {//Na miss de andere 3 buren proberen schieten.
@@ -77,6 +80,8 @@ public class Computer extends Player {
                         if (player1.getBoard().inRange(firstCell.getX() + 1, firstCell.getY())) {
                             //Cell bijhouden van andere kant van eerste geraakte cell
                             cellToRemember = new Cell(firstCell.getX() + 1, firstCell.getY(), this.smartBoard);
+                            listWithNeighbours.clear();
+                            listSize = 0;
                             //blijven schieten in dezelfde richting
                             while (true) {
                                 fire(++x, y, player1);
@@ -144,8 +149,28 @@ public class Computer extends Player {
                 }
             } else return;
 
-        } else if (firstCell != null){
-            
+        } else if (firstCell != null) {
+            if (listWithNeighbours.size() > 1){
+                Cell cell2 = listWithNeighbours.get(roll(listWithNeighbours.size()));
+                x = cell2.getX();
+                y = cell2.getY();
+                fire(x, y, player1);
+                if (player1.board.getMatrix()[x][y].isMissed()) {
+                    listWithNeighbours.remove(cell2);
+                    return;
+
+                }
+                else {
+                    fire(player1);
+                    return;
+                }
+            }
+            else if (listWithNeighbours.size() == 1){
+
+
+            }
+
+
             x = cellToRemember.getX();
             y = cellToRemember.getY();
             if (firstCell.getX() > cellToRemember.getX() || firstCell.getX() < cellToRemember.getX()) {

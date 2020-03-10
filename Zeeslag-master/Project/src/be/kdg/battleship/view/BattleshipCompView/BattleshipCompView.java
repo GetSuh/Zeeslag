@@ -22,7 +22,7 @@ public class BattleshipCompView extends GridPane {
     }
 
     private void layoutNodes() {
-        super.add(boardp1, 0, 4);
+        super.add(boardp1, 1, 3);
         super.add(boardCPU,0,3);
         super.add(btnFire,6,1);
     }
