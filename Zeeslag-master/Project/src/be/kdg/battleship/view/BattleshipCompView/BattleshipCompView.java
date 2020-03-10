@@ -1,51 +1,48 @@
 package be.kdg.battleship.view.BattleshipCompView;
 
+import be.kdg.battleship.model.Option;
+import be.kdg.battleship.view.BoardView;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+
 
 public class BattleshipCompView extends GridPane {
-    private Rectangle[][] rectangles = new Rectangle[10][10];
-    private HBox hboxBoard;
-    private Button btnPlay;
+    private Option option;
+    private BoardView boardp1;
+    private BoardView boardCPU;
+
+    private Button btnFire;
 
 
 
-    public BattleshipCompView() {
+    public BattleshipCompView(Option option) {
+        this.option = option;
         initialiseNodes();
         layoutNodes();
     }
 
     private void layoutNodes() {
-        super.add(hboxBoard, 0, 3);
-        super.add(btnPlay,6,1);
+        super.add(boardp1, 0, 4);
+        super.add(boardCPU,0,3);
+        super.add(btnFire,6,1);
     }
 
     private void initialiseNodes() {
+        boardp1 = new BoardView(option);
+        boardCPU = new BoardView(option);
+        btnFire = new Button("Fire");
 
-        btnPlay = new Button("Play");
-        hboxBoard = new HBox();
-        for (int i = 0; i < 10; i++) {
-            VBox row = new VBox();
-            for (int j = 0; j < 10; j++) {
-                Rectangle r = new Rectangle();
-                r.setX(i);
-                r.setY(j);
-                r.setWidth(45);
-                r.setHeight(45);
-                r.setStroke(Color.WHITE);
-                rectangles[i][j] = r;
-
-
-                row.getChildren().add(r);
-
-
-            }
-            hboxBoard.getChildren().add(row);
-        }
     }
 
+    public BoardView getBoardp1() {
+        return boardp1;
+    }
+
+    public BoardView getBoardCPU() {
+        return boardCPU;
+    }
+
+    public Button getBtnFire() {
+        return btnFire;
+    }
 }

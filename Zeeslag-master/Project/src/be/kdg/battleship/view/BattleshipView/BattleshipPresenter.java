@@ -94,7 +94,6 @@ public class BattleshipPresenter {
                 if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
                     view.getRectangles()[i][j].setFill(Color.RED);
                 }
-
                 else if (model.otherPlayer.getBoard().getMatrix()[i][j].isShot()){
                     view.getRectangles()[i][j].setFill(Color.LIME);
                 }

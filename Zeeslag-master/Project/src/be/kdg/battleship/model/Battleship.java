@@ -42,6 +42,9 @@ public class Battleship {
                     return false;
 
                 }
+                if (player2.getBoard().getMatrix()[i][j].getShip() != null){
+                    return false;
+                }
 
             }
         }

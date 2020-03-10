@@ -38,6 +38,9 @@ public class Player {
 
 
     }
+    public void fire(Player player){
+
+    }
 
     public boolean placeShip(int x, int y, Ship ship) {
         if (placeAble(x, y, ship)) {
@@ -197,9 +200,7 @@ public class Player {
         }
 
     }
-    public void fire(){
 
-    }
 
     public boolean isValidPoint(double x, double y) {
         return x >= 0 && x < options.getWidthBoard() && y >= 0 && y < options.getWidthBoard();

@@ -1,7 +1,10 @@
 package be.kdg.battleship.view.PlacementView;
 
 import be.kdg.battleship.model.Battleship;
+import be.kdg.battleship.model.Computer;
 import be.kdg.battleship.model.Ship;
+import be.kdg.battleship.view.BattleshipCompView.BattleshipCompPresenter;
+import be.kdg.battleship.view.BattleshipCompView.BattleshipCompView;
 import be.kdg.battleship.view.BattleshipView.BattleshipPresenter;
 import be.kdg.battleship.view.BattleshipView.BattleshipView;
 
@@ -80,11 +83,24 @@ public class PlacementPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (battleship.player1.getShipsToPlace().size() <= 0 && battleship.player2.getShipsToPlace().size() <= 0) {
-                    BattleshipView battleshipView = new BattleshipView(battleship.options);
-                    BattleshipPresenter placement2Presenter = new BattleshipPresenter(battleship, battleshipView);
-                    placementView.getScene().setRoot(battleshipView);
-                    battleshipView.getScene().getWindow().setWidth(1280);
-                    battleshipView.getScene().getWindow().setHeight(720);
+                    if (battleship.player2 instanceof Computer){
+                        BattleshipCompView battleshipCompView = new BattleshipCompView(battleship.options);
+                        BattleshipCompPresenter battleshipCompPresenter = new BattleshipCompPresenter(battleship,battleshipCompView);
+                        placementView.getScene().setRoot(battleshipCompView);
+                        battleshipCompView.getScene().getWindow().setWidth(1280);
+                        battleshipCompView.getScene().getWindow().setHeight(720);
+
+                    }
+                    else {
+                        BattleshipView battleshipView = new BattleshipView(battleship.options);
+                        BattleshipPresenter placement2Presenter = new BattleshipPresenter(battleship, battleshipView);
+                        placementView.getScene().setRoot(battleshipView);
+                        battleshipView.getScene().getWindow().setWidth(1280);
+                        battleshipView.getScene().getWindow().setHeight(720);
+                    }
+
+
+
                 } else {
                     //TODO: EXCEPTION
 
