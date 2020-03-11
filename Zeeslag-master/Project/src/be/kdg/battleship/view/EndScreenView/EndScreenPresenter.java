@@ -48,6 +48,29 @@ public class EndScreenPresenter {
                 }
             }
         }
+        for (int i = 0; i < model.options.getWidthBoard(); i++) {
+            for (int j = 0; j < model.options.getWidthBoard(); j++) {
+                if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
+                    view.getDefeatBoard().getRectangles()[i][j].setFill(Color.RED);
+                }
+                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isShot()){
+                    view.getDefeatBoard().getRectangles()[i][j].setFill(Color.LIME);
+                }
+                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
+                    view.getDefeatBoard().getRectangles()[i][j].setFill(Color.PURPLE);
+                    System.out.println("x" +i);
+                    System.out.println("y"+j);
+                }
+                else if (model.otherPlayer.getBoard().getMatrix()[i][j].getShip() != null){
+                    view.getDefeatBoard().getRectangles()[i][j].setFill(Color.GOLD);
+                }
+                else {
+                    view.getDefeatBoard().getRectangles()[i][j].setFill(Color.BLACK);
+
+                }
+            }
+        }
+
 
 
 

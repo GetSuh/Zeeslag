@@ -46,7 +46,16 @@ public class BattleshipCompPresenter {
                 if (model.player2.getBoard().getMatrix()[x][y].isMissed()){
                     model.player2.fire(model.player1);
                     updateView();
+                    if (model.checkWin()){
+                        model.currentPlayer.setWon(true);
+                        EndScreenView endScreenView = new EndScreenView(model.options);
+                        EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
+                        view.getScene().setRoot(endScreenView);
+                        //placementView.getScene().getWindow().sizeToScene();
+                        endScreenView.getScene().getWindow().setWidth(1280);
+                        endScreenView.getScene().getWindow().setHeight(720);
+                    }
                 }
                 else {
                     if (model.checkWin()){

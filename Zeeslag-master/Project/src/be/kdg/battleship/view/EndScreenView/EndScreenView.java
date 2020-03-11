@@ -48,6 +48,9 @@ public class EndScreenView extends BorderPane {
         Label lblDefeat = new Label("Defeat");
         bpDefeat.setTop(lblDefeat);
         this.setRight(bpDefeat);
+        bpDefeat.setCenter(defeatBoard);
+        setAlignment(bpDefeat,Pos.CENTER_RIGHT);
+        setMargin(bpDefeat,new Insets(10));
 
 
         Text text = new Text();
@@ -74,6 +77,7 @@ public class EndScreenView extends BorderPane {
         victoryBoard.setVisualSize(10);
 
         defeatBoard = new BoardView(option);
+        defeatBoard.setVisualSize(10);
 
 
     }

@@ -61,7 +61,7 @@ public class Player {
                     //Cell cell = getCell(i,y);
 
                     this.board.getMatrix()[i][y].setShip(ship);
-                    this.board.getMatrix()[x][i].setType(ship.getType());
+                    this.board.getMatrix()[i][y].setType(ship.getType());
                 }
                 shipsToPlace.remove(ship);
             }
@@ -175,6 +175,8 @@ public class Player {
                     if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()) { // equals ?
                         //cell.setMissed(false); //HIT
                         System.out.println("HIT");
+                        System.out.println(x);
+                        System.out.println(y);
                         otherPlayer.board.getMatrix()[x][y].setShot(true);
                         System.out.println(otherPlayer.board.getMatrix()[x][y].getType());
                         return;

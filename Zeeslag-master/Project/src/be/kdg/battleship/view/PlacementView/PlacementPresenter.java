@@ -36,6 +36,10 @@ public class PlacementPresenter {
         placementView.getBtnSwitchPlayer().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                if (battleship.otherPlayer instanceof Computer){
+                    return;
+                }
+
                 battleship.switchPlayer();
                 updateView();
             }
@@ -71,6 +75,7 @@ public class PlacementPresenter {
 
                 for (Ship ship : battleship.currentPlayer.getShipsToPlace()) {
                     ship.setHorizontal(!ship.isHorizontal());
+                    System.out.println(ship.getType());
                 }
 
 

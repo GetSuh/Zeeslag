@@ -37,16 +37,17 @@ public class Battleship {
     public boolean checkWin(){
         for (int i = 0; i < options.getWidthBoard(); i++) {
             for (int j = 0; j < options.getWidthBoard(); j++) {
-                if (otherPlayer.getBoard().getMatrix()[i][j].getShip() != null){
-
-                    return false;
-
-                }
                 if (player2 instanceof Computer){
                     if (player2.getBoard().getMatrix()[i][j].getShip() != null){
                         return false;
                     }
                 }
+                if (otherPlayer.getBoard().getMatrix()[i][j].getShip() != null){
+
+                    return false;
+
+                }
+
 
 
             }
