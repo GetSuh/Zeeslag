@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 
@@ -29,7 +30,10 @@ public class MenuView extends BorderPane {
     }
 
     private void layoutNodes() {
-        lblTitle.setFont(new Font("Terminal",50));
+        lblTitle.setFont(new Font("Impact",50));
+        lblTitle.setTextFill(Paint.valueOf("green"));
+
+        setStyle("-fx-background-color: #000000;");
 
 
         setTop(lblTitle);
@@ -45,7 +49,7 @@ public class MenuView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        lblTitle = new Label(" Zeeslag ");
+        lblTitle = new Label(" Battleship ");
 
 
         ivPvP = new ImageView("/1P VS 2P.png");

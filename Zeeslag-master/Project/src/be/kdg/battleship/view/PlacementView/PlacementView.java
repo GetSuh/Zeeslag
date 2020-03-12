@@ -27,6 +27,14 @@ public class PlacementView extends GridPane {
     private Button btnUndo; //TODO:undo button
     //TODO: Clickable images of ships
 
+    /* TODO:Exception
+    Bij klikken van start moet de boten geplaats zijn
+
+
+
+
+     */
+
 
 
     private BoardView boardView;
@@ -39,6 +47,7 @@ public class PlacementView extends GridPane {
     }
 
     private void layoutNodes() {
+        setStyle("-fx-background-color: #000000;");
 
         super.add(txtFieldNaam, 1, 0);
 

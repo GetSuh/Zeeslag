@@ -37,7 +37,7 @@ public class BoardView extends BorderPane {
                 r.setY(j);
                 r.setWidth(45);
                 r.setHeight(45);
-                r.setStroke(Color.WHITE);
+                r.setStroke(Color.LIME);
                 rectangles[i][j] = r;
                 row.getChildren().add(r);
             }

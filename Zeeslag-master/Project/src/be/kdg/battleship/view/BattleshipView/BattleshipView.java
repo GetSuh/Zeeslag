@@ -38,6 +38,7 @@ public class BattleshipView extends GridPane {
     public void layoutNodes() {
         setGridLinesVisible(true);
         VBox vBox = new VBox();
+        setStyle("-fx-background-color: #000000;");
 
 
         add(hboxBoard,1,3);
@@ -73,7 +74,7 @@ public class BattleshipView extends GridPane {
                 r.setY(j);
                 r.setWidth(45);
                 r.setHeight(45);
-                r.setStroke(Color.WHITE);
+                r.setStroke(Color.LIMEGREEN);
                 rectangles[i][j] = r;
 
 
