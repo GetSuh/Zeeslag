@@ -35,7 +35,7 @@ public class BattleshipCompPresenter {
                 int y = 0;
                 for (int i = 0; i < model.options.getWidthBoard(); i++) {
                     for (int j = 0; j < model.options.getWidthBoard(); j++) {
-                        if (model.player2.getBoard().getMatrix()[i][j].isMarked()) {
+                        if (model.player2.getBoard().getMatrix()[i][j].isMarked() && !model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
                             x = model.player2.getBoard().getMatrix()[i][j].getX();
                             y = model.player2.getBoard().getMatrix()[i][j].getY();
                             model.player1.fire(x, y, model.player2);
@@ -134,13 +134,10 @@ public class BattleshipCompPresenter {
                 }
                 else if (model.player1.getBoard().getMatrix()[i][j].isMissed()) {
                     view.getBoardp1().getRectangles()[i][j].setFill(Color.PURPLE);
-                    System.out.println("x" +i);
-                    System.out.println("y"+j);
+
                 }
                 else if (model.player1.getBoard().getMatrix()[i][j].getShip() != null){
                     view.getBoardp1().getRectangles()[i][j].setFill(Color.GOLD);
-
-
                 }
                 else {
                     view.getBoardp1().getRectangles()[i][j].setFill(Color.BLACK);

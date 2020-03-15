@@ -29,22 +29,17 @@ public class Computer extends Player {
     public void fire(Player player1) {
         //TODO: scenario shot 1 hit,shot 2 miss > buren
         //TODO: scenario 1ste 3 buren mist dan moet die juist schieten
-
-
-
+        //TODO: na sink wordt cellToRemember niet null en probeert -- te doen terwijl 0-- buiten bord is
 
 
         int x;
         int y;
 
 
-
-        //Als de computer geen cellen heeft die bijhouden wordt dan schiet de computer random
+        //Als de computer geen cellen heeft die bijgehouden wordt dan schiet de computer random
         if (cellToRemember == null) {
-            //Als nog niets geraakt is dan >
 
             //roll als buren bestaan
-
 
             do {
                 x = roll(this.getBoard().matrix.length);
@@ -58,7 +53,6 @@ public class Computer extends Player {
             if (listWithNeighbours.isEmpty()) {
                 //Buren kan alleen bestaan als er al geraakt is van de vorige schot
                 fire(x, y, player1);
-
             }
 
 
@@ -69,9 +63,9 @@ public class Computer extends Player {
                 if (listWithNeighbours.isEmpty()) {
 
                     listWithNeighbours = getNeighbors(x, y);
-                    for (Iterator<Cell> iterator = listWithNeighbours.iterator(); iterator.hasNext();) {
+                    for (Iterator<Cell> iterator = listWithNeighbours.iterator(); iterator.hasNext(); ) {
                         Cell cell = iterator.next();
-                        if (cell.isShot()){
+                        if (cell.isShot()) {
                             iterator.remove();
                         }
                     }
@@ -80,14 +74,17 @@ public class Computer extends Player {
 
                 }
 
-                //Rollen over de buren
+                //Rollen over de buren en dan schieten
 
-                Cell cell2 = listWithNeighbours.get(roll(listWithNeighbours.size()));
-                x = cell2.getX();
-                y = cell2.getY();
+                //TODO: aanpassen
+
+                Cell neighbour = listWithNeighbours.get(roll(listWithNeighbours.size()));
+                x = neighbour.getX();
+                y = neighbour.getY();
                 fire(x, y, player1);
-                if (listWithNeighbours.size() == 1 && cell2.getX() < firstCell.getX() || cell2.getY() < firstCell.getY()){
-                    fire(cell2.getX(),cell2.getY(),player1);
+                //Als er nog maar 1 cell bestaat om te schieten en het het is 1 van de buren
+                if (listWithNeighbours.size() == 1 && neighbour.getX() < firstCell.getX() || neighbour.getY() < firstCell.getY()) {
+                    fire(neighbour.getX(), neighbour.getY(), player1);
                     listWithNeighbours.clear();
                     firstCell = null;
                     cellToRemember = null;
@@ -100,9 +97,9 @@ public class Computer extends Player {
                     //Kijken in welke richting we moeten schieten door de coordinaten vergelijken die van de eerste cell
                     if (player1.board.getMatrix()[x][y].getX() > firstCell.getX() || player1.board.getMatrix()[x][y].getX() < firstCell.getX()) {
                         //Als er een verschil is tussen de X dan is het horizontaal
-                        if (player1.getBoard().inRange(firstCell.getX() +1, firstCell.getY())) {
+                        if (player1.getBoard().inRange(firstCell.getX() + 1, firstCell.getY())) {
                             //Kijken of we de cell kunnen bijhouden of het niet buiten het bord is
-                            cellToRemember = new Cell(firstCell.getX() -1, firstCell.getY(), this.smartBoard);
+                            cellToRemember = new Cell(firstCell.getX() - 1, firstCell.getY(), this.smartBoard);
                             //Na het bijhouden moeten we de lijst met buren clearen
                             listWithNeighbours.clear();
 
@@ -131,6 +128,7 @@ public class Computer extends Player {
                             }
 
                         } else {
+
                             fire(player1);
                             return;
                         }
@@ -138,7 +136,7 @@ public class Computer extends Player {
                     }//X--
                     //Y++
                     if (player1.board.getMatrix()[x][y].getY() > firstCell.getY() || player1.board.getMatrix()[x][y].getY() < firstCell.getY()) {
-                        if (player1.getBoard().inRange(firstCell.getX(), firstCell.getY() +1)) {
+                        if (player1.getBoard().inRange(firstCell.getX(), firstCell.getY() + 1)) {
                             cellToRemember = new Cell(firstCell.getX(), firstCell.getY() - 1, this.smartBoard);
                             listWithNeighbours.clear();
                             while (true) {
@@ -150,10 +148,10 @@ public class Computer extends Player {
                                     listWithNeighbours.clear();
                                     fire(player1);
                                     return;
-
                                 }
                                 if (!player1.getBoard().inRange(x, y + 1)) {
-                                    //andere kant
+                                    //andere kant+
+
                                     fire(player1);
                                     return;
 
@@ -162,8 +160,8 @@ public class Computer extends Player {
                                 if (player1.board.getMatrix()[x][y].isMissed()) {
                                     return;
                                 }
-                                if (player1.board.getMatrix()[x][y].isShot()){
-                                    fire(x,++y,player1);
+                                if (player1.board.getMatrix()[x][y].isShot()) {
+                                    fire(x, ++y, player1);
 
                                 }
                             }
@@ -174,55 +172,59 @@ public class Computer extends Player {
                         }
                     }
                 } else {
-                    listWithNeighbours.remove(cell2);
+                    listWithNeighbours.remove(neighbour);
                     return;
                 }
             } else return;
 
-        } else if (cellToRemember != null && firstCell != null){
+        } else if (cellToRemember != null && firstCell != null) {
 
             x = cellToRemember.getX();
             y = cellToRemember.getY();
 
-            if (firstCell.getX() > x || firstCell.getX() < x) {
-                while (true) {
-                    fire(x, y, player1);
-                    if (player1.isValidPoint(x -1,y)){
-                        x = x -1;
-                    }
+            if (cellToRemember.isSunken()) {
 
-                    if (player1.board.getMatrix()[x][y].isSunken() || !player1.getBoard().inRange(x, y)) {
-                        cellToRemember = null;
-                        firstCell = null;
-                        listWithNeighbours.clear();
-                        fire(player1);
-                        return;
 
-                    }
+                if (firstCell.getX() > x || firstCell.getX() < x) {
+                    while (true) {
+                        fire(x, y, player1);
+                        if (player1.isValidPoint(x - 1, y)) {
+                            x = x - 1;
+                        }
 
-                    if (player1.board.getMatrix()[x][y].isMissed()) {
-                        return;
+                        if (player1.board.getMatrix()[x][y].isSunken() || !player1.getBoard().inRange(x, y)) {
+                            cellToRemember = null;
+                            firstCell = null;
+                            listWithNeighbours.clear();
+                            fire(player1);
+                            return;
 
+                        }
+
+                        if (player1.board.getMatrix()[x][y].isMissed()) {
+                            return;
+
+                        }
                     }
                 }
-            }
-            if (firstCell.getY() > y || firstCell.getY() < y) {
-                while (true) {
-                    fire(x, y, player1);
-                    if (player1.isValidPoint(x,y -1)){
-                        y = y-1;
-                    }
-                    if (player1.board.getMatrix()[x][y].isSunken() || !player1.getBoard().inRange(x, y)) {
-                        cellToRemember = null;
-                        firstCell = null;
-                        listWithNeighbours.clear();
-                        fire(player1);
-                        return;
-                    }
+                if (firstCell.getY() > y || firstCell.getY() < y) {
+                    while (true) {
+                        fire(x, y, player1);
+                        if (player1.isValidPoint(x, y - 1)) {
+                            y = y - 1;
+                        }
+                        if (player1.board.getMatrix()[x][y].isSunken() || !player1.getBoard().inRange(x, y)) {
+                            cellToRemember = null;
+                            firstCell = null;
+                            listWithNeighbours.clear();
+                            fire(player1);
+                            return;
+                        }
 
-                    if (player1.board.getMatrix()[x][y].isMissed()) {
-                        return;
+                        if (player1.board.getMatrix()[x][y].isMissed()) {
+                            return;
 
+                        }
                     }
                 }
             }

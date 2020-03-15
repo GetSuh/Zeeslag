@@ -8,6 +8,8 @@ public class Battleship {
 
     public Player currentPlayer;
     public Player otherPlayer;
+
+
     public Option options;
 
 

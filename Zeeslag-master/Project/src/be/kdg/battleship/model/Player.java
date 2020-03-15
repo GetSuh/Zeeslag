@@ -184,7 +184,7 @@ public class Player {
                     }
                 }
             }
-            //TODO: ALERT sunken
+            //TODO: ALERT sunken?
             otherPlayer.board.getMatrix()[x][y].setShot(true);
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {

@@ -36,7 +36,7 @@ public class PlacementPresenter {
         placementView.getBtnSwitchPlayer().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (battleship.otherPlayer instanceof Computer){
+                if (battleship.otherPlayer instanceof Computer) {
                     return;
                 }
 
@@ -46,15 +46,16 @@ public class PlacementPresenter {
         });
 
 
-
-
         placementView.getTxtFieldNaam().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
 
+
+
                     String text = placementView.getTxtFieldNaam().getText();
                     battleship.currentPlayer.setName(text);
+                    updateView();
                     //TODO: set name
 
                 }
@@ -64,6 +65,10 @@ public class PlacementPresenter {
         placementView.getBtnUndo().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
+
+
+
 
             }
         });
@@ -85,22 +90,20 @@ public class PlacementPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (battleship.player1.getShipsToPlace().size() <= 0 && battleship.player2.getShipsToPlace().size() <= 0) {
-                    if (battleship.player2 instanceof Computer){
+                    if (battleship.player2 instanceof Computer) {
                         BattleshipCompView battleshipCompView = new BattleshipCompView(battleship.options);
-                        BattleshipCompPresenter battleshipCompPresenter = new BattleshipCompPresenter(battleship,battleshipCompView);
+                        BattleshipCompPresenter battleshipCompPresenter = new BattleshipCompPresenter(battleship, battleshipCompView);
                         placementView.getScene().setRoot(battleshipCompView);
                         battleshipCompView.getScene().getWindow().setWidth(1280);
                         battleshipCompView.getScene().getWindow().setHeight(720);
 
-                    }
-                    else {
+                    } else {
                         BattleshipView battleshipView = new BattleshipView(battleship.options);
                         BattleshipPresenter placement2Presenter = new BattleshipPresenter(battleship, battleshipView);
                         placementView.getScene().setRoot(battleshipView);
                         battleshipView.getScene().getWindow().setWidth(1280);
                         battleshipView.getScene().getWindow().setHeight(720);
                     }
-
 
 
                 } else {
@@ -128,7 +131,7 @@ public class PlacementPresenter {
                         //System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
                         //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
 
-                        if (!battleship.currentPlayer.getShipsToPlace().isEmpty()){
+                        if (!battleship.currentPlayer.getShipsToPlace().isEmpty()) {
                             battleship.currentPlayer.placeShip(x, y, battleship.currentPlayer.getShipsToPlace().get(0));
                         }
 
@@ -146,12 +149,13 @@ public class PlacementPresenter {
             for (int j = 0; j < battleship.options.getWidthBoard(); j++) {
                 if (battleship.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
                     placementView.getBoardView().getRectangles()[i][j].setFill(Color.GREEN);
-                }else placementView.getBoardView().getRectangles()[i][j].setFill(Color.BLACK);
+                } else placementView.getBoardView().getRectangles()[i][j].setFill(Color.BLACK);
 
             }
 
 
         }
+        placementView.getTxtFieldNaam().setText(battleship.currentPlayer.getName());
 
 
     }

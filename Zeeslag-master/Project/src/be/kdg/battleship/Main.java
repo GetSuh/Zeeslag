@@ -26,7 +26,6 @@ public class Main extends Application {
 
         Scene scene = new Scene(menuView);
         stage.setScene(scene);
-        stage.getIcons().add(new Image("/wonyoung.png"));
         stage.setTitle("BattleShip");
         stage.setWidth(1280);
         stage.setHeight(720);

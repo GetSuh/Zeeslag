@@ -9,8 +9,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-
+import javafx.scene.text.Font;
 
 
 public class PlacementView extends GridPane {
@@ -48,10 +49,17 @@ public class PlacementView extends GridPane {
 
     private void layoutNodes() {
         setStyle("-fx-background-color: #000000;");
+        Font font = new Font("Impact",15);
 
-        super.add(txtFieldNaam, 1, 0);
 
+        txtFieldNaam.setFont(font);
+        txtFieldNaam.setStyle("-fx-background-color: grey;");
+        super.add(txtFieldNaam, 0, 1);
+
+        lblNaam.setFont(font);
+        lblNaam.setTextFill(Paint.valueOf("green"));
         super.add(lblNaam,0,0);
+
 
         super.add(boardView, 0, 3);
 
@@ -64,7 +72,7 @@ public class PlacementView extends GridPane {
         setMargin(boardView, new Insets(5));
 
         setAlignment(Pos.CENTER);
-        setGridLinesVisible(true);
+
 
         //super.add(hBox,0,0);
 

@@ -10,7 +10,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 
 public class BattleshipView extends GridPane {
@@ -39,10 +41,17 @@ public class BattleshipView extends GridPane {
         setGridLinesVisible(true);
         VBox vBox = new VBox();
         setStyle("-fx-background-color: #000000;");
+        Font font = new Font("Impact",15);
 
 
         add(hboxBoard,1,3);
         setMargin(hboxBoard,new Insets(10));
+
+
+        lblName.setFont(font);
+        lblName.setTextFill(Paint.valueOf("green"));
+        lblStatus.setFont(font);
+        lblStatus.setTextFill(Paint.valueOf("green"));
 
         vBox.getChildren().addAll(lblName,lblStatus);
         add(vBox,1,2);

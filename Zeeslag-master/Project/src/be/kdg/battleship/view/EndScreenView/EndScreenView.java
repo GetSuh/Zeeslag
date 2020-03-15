@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -34,8 +35,15 @@ public class EndScreenView extends BorderPane {
 
     private void layoutNodes() {
         // In de 'Pane' zetten.
+
+        setStyle("-fx-background-color: #000000;");
+        Font font = new Font("Impact",15);
+
+
         BorderPane bpVictory = new BorderPane(); //
         Label lblVictory = new Label("Victory");
+        lblVictory.setFont(font);
+        lblVictory.setTextFill(Paint.valueOf("green"));
         bpVictory.setTop(lblVictory);
 
         bpVictory.setCenter(victoryBoard);
@@ -46,6 +54,8 @@ public class EndScreenView extends BorderPane {
 
         BorderPane bpDefeat = new BorderPane();
         Label lblDefeat = new Label("Defeat");
+        lblDefeat.setTextFill(Paint.valueOf("green"));
+        lblDefeat.setFont(font);
         bpDefeat.setTop(lblDefeat);
         this.setRight(bpDefeat);
         bpDefeat.setCenter(defeatBoard);

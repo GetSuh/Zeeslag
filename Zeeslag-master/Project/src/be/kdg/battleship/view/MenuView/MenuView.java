@@ -31,7 +31,7 @@ public class MenuView extends BorderPane {
 
     private void layoutNodes() {
         lblTitle.setFont(new Font("Impact",50));
-        lblTitle.setTextFill(Paint.valueOf("green"));
+        lblTitle.setTextFill(Paint.valueOf("lime"));
 
         setStyle("-fx-background-color: #000000;");
 

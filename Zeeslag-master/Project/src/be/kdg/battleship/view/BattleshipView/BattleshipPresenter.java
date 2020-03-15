@@ -30,7 +30,7 @@ public class BattleshipPresenter {
                 int y = 0;
                 for (int i = 0; i < model.options.getWidthBoard(); i++) {
                     for (int j = 0; j < model.options.getWidthBoard(); j++) {
-                        if (model.otherPlayer.getBoard().getMatrix()[i][j].isMarked()) {
+                        if (model.otherPlayer.getBoard().getMatrix()[i][j].isMarked() && !model.otherPlayer.getBoard().getMatrix()[i][j].isMissed() ) {
                             x = model.otherPlayer.getBoard().getMatrix()[i][j].getX();
                             y = model.otherPlayer.getBoard().getMatrix()[i][j].getY();
                             model.currentPlayer.fire(x, y, model.otherPlayer);
@@ -70,8 +70,8 @@ public class BattleshipPresenter {
                         Rectangle rectangle = (Rectangle) mouseEvent.getSource();
                         int x = (int) rectangle.getX();
                         int y = (int) rectangle.getY();
-                        for (int k = 0; k < 10; k++) {
-                            for (int l = 0; l < 10; l++) {
+                        for (int k = 0; k < model.options.getWidthBoard(); k++) {
+                            for (int l = 0; l < model.options.getWidthBoard(); l++) {
                                 if (model.otherPlayer.getBoard().getMatrix()[k][l].isMarked()) {
                                     model.otherPlayer.getBoard().getMatrix()[k][l].setMarked(false);
                                     //view.getRectangles()[k][l].setFill(Color.BLACK);
