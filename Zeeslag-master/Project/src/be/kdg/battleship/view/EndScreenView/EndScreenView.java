@@ -12,11 +12,20 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class EndScreenView extends BorderPane {
 
-    //TODO: Victory on the left side of the screen and Defeat on the right side
     private BoardView victoryBoard;
+    private Label lblNameVictory;
+    private Label lblTurnsVictory;
+
     private BoardView defeatBoard;
+    private Label lblNameDefeat;
+    private Label lblTurnsDefeat;
+
+
 
     private Option option;
 
@@ -44,23 +53,43 @@ public class EndScreenView extends BorderPane {
         Label lblVictory = new Label("Victory");
         lblVictory.setFont(font);
         lblVictory.setTextFill(Paint.valueOf("green"));
+
+        lblNameVictory.setFont(new Font("Impact",10));
+        lblNameVictory.setTextFill(Paint.valueOf("green"));
+
+        lblTurnsVictory.setFont(font);
+        lblTurnsVictory.setTextFill(Paint.valueOf("green"));
+
         bpVictory.setTop(lblVictory);
 
-        bpVictory.setCenter(victoryBoard);
+
+        VBox vBoxVictory = new VBox(lblNameVictory, lblTurnsVictory,victoryBoard);
+        bpVictory.setCenter(vBoxVictory);
         this.setLeft(bpVictory);
-        setAlignment(bpVictory,Pos.CENTER_LEFT);
-        setMargin(bpVictory,new Insets(10));
+        setAlignment(bpVictory,Pos.CENTER);
+        setMargin(bpVictory,new Insets(100));
 
 
         BorderPane bpDefeat = new BorderPane();
         Label lblDefeat = new Label("Defeat");
         lblDefeat.setTextFill(Paint.valueOf("green"));
+
+        lblNameDefeat.setFont(new Font("Impact",10));
+        lblNameDefeat.setTextFill(Paint.valueOf("green"));
+
+        lblTurnsDefeat.setFont(font);
+        lblTurnsDefeat.setTextFill(Paint.valueOf("green"));
+
         lblDefeat.setFont(font);
         bpDefeat.setTop(lblDefeat);
+
+        VBox vboxDefeat = new VBox(lblNameDefeat,lblTurnsDefeat,defeatBoard);
+
+
+        bpDefeat.setCenter(vboxDefeat);
         this.setRight(bpDefeat);
-        bpDefeat.setCenter(defeatBoard);
-        setAlignment(bpDefeat,Pos.CENTER_RIGHT);
-        setMargin(bpDefeat,new Insets(10));
+        setAlignment(bpDefeat,Pos.CENTER);
+        setMargin(bpDefeat,new Insets(100));
 
 
         Text text = new Text();
@@ -76,6 +105,11 @@ public class EndScreenView extends BorderPane {
         vBox.setAlignment(Pos.CENTER);
 
 
+
+
+
+
+
     }
 
     private void initialiseNodes() {
@@ -84,10 +118,18 @@ public class EndScreenView extends BorderPane {
         btnMenu = new Button("MENU");
 
         victoryBoard = new BoardView(option);
-        victoryBoard.setVisualSize(10);
+        victoryBoard.setVisualSize(25);
+
+        lblNameVictory = new Label("");
+        lblTurnsVictory = new Label("");
+
 
         defeatBoard = new BoardView(option);
-        defeatBoard.setVisualSize(10);
+
+        lblNameDefeat = new Label("");
+        lblTurnsDefeat = new Label("");
+
+        defeatBoard.setVisualSize(25);
 
 
     }
@@ -106,5 +148,20 @@ public class EndScreenView extends BorderPane {
 
     public Button getBtnMenu() {
         return btnMenu;
+    }
+
+    public Label getLblNameVictory() {
+        return lblNameVictory;
+    }
+
+    public Label getLblTurnsVictory() {
+        return lblTurnsVictory;
+    }
+    public Label getLblNameDefeat() {
+        return lblNameDefeat;
+    }
+
+    public Label getLblTurnsDefeat() {
+        return lblTurnsDefeat;
     }
 }

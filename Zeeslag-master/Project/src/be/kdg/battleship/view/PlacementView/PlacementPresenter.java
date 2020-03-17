@@ -79,9 +79,10 @@ public class PlacementPresenter {
             public void handle(ActionEvent actionEvent) {
 
                 for (Ship ship : battleship.currentPlayer.getShipsToPlace()) {
-                    ship.setHorizontal(!ship.isHorizontal());
-                    System.out.println(ship.getType());
+                    ship.setVertical(!ship.isVertical());
+
                 }
+                updateView();
 
 
             }
@@ -156,6 +157,20 @@ public class PlacementPresenter {
 
         }
         placementView.getTxtFieldNaam().setText(battleship.currentPlayer.getName());
+        if (battleship.currentPlayer.getName() == null){
+            placementView.getLblNaam().setText("Name");
+        }
+        else placementView.getLblNaam().setText(battleship.currentPlayer.getName());
+
+        if (!battleship.currentPlayer.getShipsToPlace().isEmpty()){
+            if ( battleship.currentPlayer.getShipsToPlace().get(0).isVertical()){
+                placementView.getBtnHorizontal().setText("Place ship horizontal");
+            }
+            else {
+                placementView.getBtnHorizontal().setText("Place ship vertical");
+            }
+        }
+
 
 
     }

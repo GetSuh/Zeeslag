@@ -6,6 +6,7 @@ public class Cell {
 
 
     private int type;
+    private int followNumber;
     private Ship ship = null;
 
 
@@ -24,6 +25,7 @@ public class Cell {
         this.board = board;
         //this.ship = null;
         this.type = 0;
+        this.followNumber = 0;
         this.missed = false;
         this.shot = false;
         this.marked = false;
@@ -80,6 +82,14 @@ public class Cell {
 
     public boolean isMarked() {
         return marked;
+    }
+
+    public int getFollowNumber() {
+        return followNumber;
+    }
+
+    public void setFollowNumber(int followNumber) {
+        this.followNumber = followNumber;
     }
 
     public boolean isMissed() {

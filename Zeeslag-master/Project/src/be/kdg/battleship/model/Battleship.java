@@ -1,5 +1,7 @@
 package be.kdg.battleship.model;
 
+import java.time.LocalDateTime;
+
 public class Battleship {
 
     public Player player1;
@@ -11,6 +13,7 @@ public class Battleship {
 
 
     public Option options;
+
 
 
     public Battleship() {

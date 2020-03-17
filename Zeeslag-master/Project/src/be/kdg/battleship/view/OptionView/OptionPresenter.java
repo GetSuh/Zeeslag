@@ -46,7 +46,6 @@ public class OptionPresenter {
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 optionView.getLblValSlider().setText("Value: " + Math.round(t1.doubleValue()));
                 model.getOptions().setWidthBoard((int) Math.round(t1.doubleValue()));
-                System.out.println(model.getOptions().widthBoard);
 
 
             }

@@ -45,7 +45,6 @@ public class BattleshipPresenter {
                 }
                 else {
                     if (model.checkWin()){
-                        model.currentPlayer.setWon(true);
                         EndScreenView endScreenView = new EndScreenView(model.options);
                         EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
@@ -110,7 +109,7 @@ public class BattleshipPresenter {
         }
 
         Integer integer = model.currentPlayer.getTurns() +1;
-        view.getLblStatus().setText("Turn number"+ integer.toString());
+        view.getLblStatus().setText("Turn number "+ integer.toString());
 
         view.getLblName().setText(model.currentPlayer.getName());
 

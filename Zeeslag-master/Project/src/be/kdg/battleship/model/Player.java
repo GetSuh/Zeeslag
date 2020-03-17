@@ -25,8 +25,10 @@ public class Player {
         this.board = new Board(this.options);
         shipsToPlace = new LinkedList<>();
         for (int i = 2; i <= 5; i++) {
-            shipsToPlace.add(new Ship(i, true));
+            shipsToPlace.add(new Ship(i, true,i-1));
         }
+        shipsToPlace.add(new Ship(2, true,5));
+
         this.name = null;
         this.won = false;
         this.turns = 0;
@@ -44,14 +46,15 @@ public class Player {
 
     public boolean placeShip(int x, int y, Ship ship) {
         if (placeAble(x, y, ship)) {
-            System.out.println(ship.isHorizontal());
+            System.out.println(ship.isVertical());
             int length = ship.getType();
 
-            if (ship.isHorizontal()) {
+            if (ship.isVertical()) {
                 for (int i = y; i < y + length; i++) {
                     //Cell cell = getCell(x,i);
                     this.board.getMatrix()[x][i].setShip(ship);
                     this.board.getMatrix()[x][i].setType(ship.getType());
+                    this.board.getMatrix()[x][i].setFollowNumber(ship.getFollowNumber());
 
 
                 }
@@ -62,6 +65,7 @@ public class Player {
 
                     this.board.getMatrix()[i][y].setShip(ship);
                     this.board.getMatrix()[i][y].setType(ship.getType());
+                    this.board.getMatrix()[i][y].setFollowNumber(ship.getFollowNumber());
                 }
                 shipsToPlace.remove(ship);
             }
@@ -77,7 +81,7 @@ public class Player {
     public boolean placeAble(int x, int y, Ship ship) {
         int length = ship.getType();
 
-        if (ship.isHorizontal()) {
+        if (ship.isVertical()) {
             for (int i = y; i < y + length; i++) {
                 if (!isValidPoint(x, i)) {
                     return false;
@@ -95,7 +99,7 @@ public class Player {
                 }
 
             }
-        } else if (!ship.isHorizontal()) {
+        } else if (!ship.isVertical()) {
             for (int i = x; i < x + length; i++) {
                 if (!isValidPoint(i, y))
                     return false;
@@ -161,8 +165,8 @@ public class Player {
 
     public void fire(int x, int y, Player otherPlayer) {
         if (otherPlayer.board.getMatrix()[x][y].getShip() != null) {
-            //Ship bijhouden voor type
-            int type = otherPlayer.board.getMatrix()[x][y].getShip().getType();
+            //Ship bijhouden voor follownumber
+            int followNumber = otherPlayer.board.getMatrix()[x][y].getShip().getFollowNumber();
 
             Ship temporaryShip = otherPlayer.board.getMatrix()[x][y].getShip();
             //Cell markeren net geschoten
@@ -172,7 +176,7 @@ public class Player {
             //Alle cellen checken
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
-                    if (cell.getShip() != null && cell.getShip().getType() == temporaryShip.getType()) { // equals ?
+                    if (cell.getShip() != null && cell.getShip().getFollowNumber() == temporaryShip.getFollowNumber()) { // equals ?
                         //cell.setMissed(false); //HIT
                         System.out.println("HIT");
                         System.out.println(x);
@@ -188,7 +192,7 @@ public class Player {
             otherPlayer.board.getMatrix()[x][y].setShot(true);
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
-                    if (cell.getType() == type) {
+                    if (cell.getFollowNumber() == followNumber) {
                         cell.setSunken(true);
                     }
                 }

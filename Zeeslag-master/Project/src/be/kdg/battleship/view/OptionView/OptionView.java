@@ -10,15 +10,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 
 public class OptionView extends BorderPane {
     private Slider sldBoard;
+
     private Slider sldNumberShips;
+
     private VBox vBox;
+
     private Group root;
+
 
     private Button btnBack;
     private Label lblValSlider;
@@ -32,23 +37,12 @@ public class OptionView extends BorderPane {
     }
 
     private void layoutNodes() {
-        //In de 'Pane' zetten.
 
-        /*Text text = new Text();
-        text.setFont(new Font("sans-serif", 10));
-        VBox box = new VBox(10, text);
+        setStyle("-fx-background-color: #000000;");
 
-        box.setPadding(new Insets(10));
-        box.setAlignment(Pos.CENTER);
-        box.setMinWidth(30); // Min breedte
-        box.setPrefWidth(30); // Dat userfriendly is
-        box.setMaxWidth(30); //Maximum breedte
-        box.getChildren().add(sldBoard); // Je steekt je slider in een box en de box steek je in een pane.
-        //box.getChildren().add(sldNumberShips);*/
-
-        // Klassemethodes gebruiken.
         setCenter(vBox);
         setBottom(btnBack);
+        setAlignment(btnBack,Pos.CENTER);
 
     }
 
@@ -59,6 +53,7 @@ public class OptionView extends BorderPane {
 
 
         Label lblSlider = new Label("Board width/height");
+        lblSlider.setTextFill(Paint.valueOf("green"));
         lblValSlider = new Label(" ");
 
 
@@ -73,58 +68,12 @@ public class OptionView extends BorderPane {
         vBox.setSpacing(10);
         vBox.getChildren().addAll(lblSlider, sldBoard, lblValSlider);
 
-
-       /* slider.setShowTickLabels(false);
-                (observable, oldvalue, newvalue) ->
-                {
-                    int i = newvalue.intValue();
-                    text.setText(Integer.toString(i));
-                } );
-        double value;
-        slider.setValue(value);*/
-
-
     }
 
-
-
-    /*
-    public OptionView(final Slider slider, double position, double min, double max) {
-        slider.setMin(min);
-        slider.setMax(max);
-		int range = (int)(max - min + 0.5);
-		if (range > 200) {
-			slider.setMajorTickUnit(50);
-			slider.setMinorTickCount(10);
-		} else if (range >= 50) {
-			slider.setMajorTickUnit(10);
-			slider.setMinorTickCount(5);
-		} else if (range >= 10) {
-			slider.setMajorTickUnit(5);
-			slider.setMinorTickCount(1);
-		} else {
-			slider.setMajorTickUnit(1);
-		slider.setMinorTickCount(1);
-		}
-        slider.setMajorTickUnit(1);
-        slider.setSnapToTicks(true);
-        slider.setShowTickMarks(false);
-        slider.setShowTickLabels(false);
-        slider.setValue(position);
-        slider.setOpacity(0.25);
-        slider.setBlockIncrement(1.0);
-
-        slider.setOnMouseEntered(e -> {
-            slider.setOpacity(1);
-        });
-        slider.setOnMouseExited(e -> {
-            slider.setOpacity(0.5);
-        });
-    }*/
 
     public Slider getSldBoard() {
-        return sldBoard;
-    }
+    return sldBoard;
+}
 
     public Slider getSldNumberShips() {
         return sldNumberShips;

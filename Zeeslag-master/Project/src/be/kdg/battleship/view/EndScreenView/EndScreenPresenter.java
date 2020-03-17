@@ -7,6 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class EndScreenPresenter {
     private Battleship model;
     private EndScreenView view;
@@ -71,6 +77,16 @@ public class EndScreenPresenter {
             }
         }
 
+        view.getLblNameVictory().setText(model.currentPlayer.getName());
+        Integer integer = model.currentPlayer.turns;
+        view.getLblTurnsVictory().setText(integer.toString());
+
+        view.getLblNameDefeat().setText(model.otherPlayer.getName());
+        integer = model.otherPlayer.turns;
+
+        view.getLblTurnsDefeat().setText(integer.toString());
+
+
 
 
 
@@ -92,10 +108,28 @@ public class EndScreenPresenter {
                 view.getScene().setRoot(menuView);
                 menuView.getScene().getWindow().setWidth(1280);
                 menuView.getScene().getWindow().setHeight(720);
+
+
+
             }
         }); {
 
         }
+        view.getBtnSave().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDateTime localDateTime = LocalDateTime.now();
+
+                Path log = Paths.get("/logfile.txt");
+                System.out.println(log.getFileName() + " bestaat echt: " + Files.exists(log));
+
+
+
+
+            }
+        });
 
     }
 }

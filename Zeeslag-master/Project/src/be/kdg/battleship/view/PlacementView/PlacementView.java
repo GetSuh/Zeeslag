@@ -49,27 +49,28 @@ public class PlacementView extends GridPane {
 
     private void layoutNodes() {
         setStyle("-fx-background-color: #000000;");
-        Font font = new Font("Impact",15);
 
 
-        txtFieldNaam.setFont(font);
-        txtFieldNaam.setStyle("-fx-background-color: grey;");
+
+
+
         super.add(txtFieldNaam, 0, 1);
 
-        lblNaam.setFont(font);
-        lblNaam.setTextFill(Paint.valueOf("green"));
+
         super.add(lblNaam,0,0);
 
 
         super.add(boardView, 0, 3);
 
-        super.add(btnSwitchPlayer,7,1);
-        super.add(btnHorizontal, 5, 1);
-        super.add(btnNext, 6, 1);
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(btnSwitchPlayer,btnHorizontal,btnNext);
+        vBox.setSpacing(25);
+        super.add(vBox,7,3);
 
 
         setHgap(5);
         setMargin(boardView, new Insets(5));
+        setMargin(vBox,new Insets(5));
 
         setAlignment(Pos.CENTER);
 
@@ -80,12 +81,45 @@ public class PlacementView extends GridPane {
 
 
     private void initialiseNodes() {
-        txtFieldNaam = new TextField("");
+        Font font = new Font("Impact",50);
+
+
+
         lblNaam = new Label("Name");
+        lblNaam.setFont(font);
+        font = new Font("Impact",15);
+        lblNaam.setTextFill(Paint.valueOf("green"));
+
+
+
+        txtFieldNaam = new TextField("");
+        txtFieldNaam.setFont(font);
+        txtFieldNaam.setStyle("-fx-background-color: black; -fx-text-fill: green;-fx-border-color: green;-fx-border-width: 1px");
 
         btnSwitchPlayer = new Button("Switch Player");
+        btnSwitchPlayer.setFont(font);
+        btnSwitchPlayer.setMinSize(200,30);
+        btnSwitchPlayer.setTextFill(Paint.valueOf("green"));
+        btnSwitchPlayer.setStyle("-fx-background-color: #000000 ; -fx-border-width: 1px ; -fx-border-color: green");
+
+
         btnNext = new Button("Play");
+        btnNext.setMinSize(200,30);
+        btnNext.setFont(font);
+        btnNext.setTextFill(Paint.valueOf("green"));
+        btnNext.setStyle("-fx-background-color: #000000 ; -fx-border-width: 1px ; -fx-border-color: green");
+
+
+
         btnHorizontal = new Button("Horizontal/ Vertical");
+        btnHorizontal.setMinSize(200,30);
+        btnHorizontal.setFont(font);
+        btnHorizontal.setTextFill(Paint.valueOf("green"));
+        btnHorizontal.setStyle("-fx-background-color: #000000 ; -fx-border-width: 1px ; -fx-border-color: green");
+
+
+
+
         btnUndo = new Button("Undo placement");
 
 
@@ -106,7 +140,9 @@ public class PlacementView extends GridPane {
         return btnHorizontal;
     }
 
-
+    public Label getLblNaam() {
+        return lblNaam;
+    }
 
     public Button getBtnNext() {
         return btnNext;

@@ -237,7 +237,7 @@ public class Computer extends Player {
         do {
             if (getShipsToPlace().get(0) != null) {
                 boolean horizontal = random.nextBoolean();
-                getShipsToPlace().get(0).setHorizontal(horizontal);
+                getShipsToPlace().get(0).setVertical(horizontal);
                 placeShip(roll(this.getBoard().matrix.length), roll(this.getBoard().matrix.length), getShipsToPlace().get(0));
             }
         } while (getShipsToPlace().size() > 0);

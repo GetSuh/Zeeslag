@@ -4,13 +4,16 @@ public class Ship {
 
 
     private int type;
-    private boolean horizontal;
+    private boolean vertical;
+    private int followNumber;
 
 
 
-    public Ship(int type, boolean horizontal) {
+    public Ship(int type, boolean vertical, int followNumber) {
         this.type = type;
-        this.horizontal = horizontal;
+        this.vertical = vertical;
+        this.followNumber = followNumber;
+
 
     }
 
@@ -19,11 +22,15 @@ public class Ship {
         return type;
     }
 
-    public boolean isHorizontal() {
-        return horizontal;
+    public boolean isVertical() {
+        return vertical;
     }
 
-    public void setHorizontal(boolean horizontal) {
-        this.horizontal = horizontal;
+    public void setVertical(boolean vertical) {
+        this.vertical = vertical;
+    }
+
+    public int getFollowNumber() {
+        return followNumber;
     }
 }

@@ -47,7 +47,7 @@ public class BattleshipCompPresenter {
                     model.player2.fire(model.player1);
                     updateView();
                     if (model.checkWin()){
-                        model.currentPlayer.setWon(true);
+
                         EndScreenView endScreenView = new EndScreenView(model.options);
                         EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
@@ -59,7 +59,7 @@ public class BattleshipCompPresenter {
                 }
                 else {
                     if (model.checkWin()){
-                        model.currentPlayer.setWon(true);
+
                         EndScreenView endScreenView = new EndScreenView(model.options);
                         EndScreenPresenter endScreenPresenter = new EndScreenPresenter(model,endScreenView);
 
