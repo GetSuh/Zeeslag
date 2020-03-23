@@ -23,9 +23,9 @@ public class BattleshipPresenter {
 
 
     private void addEventHandlers() {
-        view.getBtnFire().setOnAction(new EventHandler<ActionEvent>() {
+        view.getImgFire().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
+            public void handle(MouseEvent mouseEvent) {
                 int x = 0;
                 int y = 0;
                 for (int i = 0; i < model.options.getWidthBoard(); i++) {
@@ -93,6 +93,7 @@ public class BattleshipPresenter {
             for (int j = 0; j < model.options.getWidthBoard(); j++) {
                 if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
                     view.getRectangles()[i][j].setFill(Color.RED);
+
                 }
                 else if (model.otherPlayer.getBoard().getMatrix()[i][j].isShot()){
                     view.getRectangles()[i][j].setFill(Color.LIME);
@@ -112,6 +113,22 @@ public class BattleshipPresenter {
         view.getLblStatus().setText("Turn number "+ integer.toString());
 
         view.getLblName().setText(model.currentPlayer.getName());
+
+        if (model.currentPlayer.getLastCell() != null){
+            if (model.currentPlayer.getLastCell().isSunken()){
+                view.getLblText().setText("Good job you have sunken a ship!");
+            }
+            else if (model.currentPlayer.getLastCell().isShot()){
+                view.getLblText().setText("Nice hit! keep going!");
+            }
+            else if (model.currentPlayer.getLastCell().isMissed()){
+                view.getLblText().setText("The other player missed! \n It's now your turn to strike!");
+            }
+
+
+        }
+
+
 
 
     }

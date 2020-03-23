@@ -6,6 +6,8 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -23,9 +25,13 @@ public class BattleshipView extends GridPane {
 
     private Label lblName;
 
+    private Label lblText;
 
     private Label lblStatus;
     private Button btnFire;
+
+    private ImageView imgFire;
+
 
 
 
@@ -38,14 +44,16 @@ public class BattleshipView extends GridPane {
     }
 
     public void layoutNodes() {
-        setGridLinesVisible(true);
+
         VBox vBox = new VBox();
         setStyle("-fx-background-color: #000000;");
-        Font font = new Font("Impact",15);
+        Font font = new Font("Impact",50);
 
 
         add(hboxBoard,1,3);
         setMargin(hboxBoard,new Insets(10));
+
+
 
 
         lblName.setFont(font);
@@ -53,14 +61,30 @@ public class BattleshipView extends GridPane {
         lblStatus.setFont(font);
         lblStatus.setTextFill(Paint.valueOf("green"));
 
+
+
+
         vBox.getChildren().addAll(lblName,lblStatus);
         add(vBox,1,2);
 
 
 
-        add(btnFire,3,3);
-        setValignment(btnFire, VPos.TOP);
-        setMargin(btnFire,new Insets(10));
+
+
+
+
+        setValignment(imgFire, VPos.TOP);
+
+
+
+        lblText.setFont(new Font("Impact",20));
+        lblText.setTextFill(Paint.valueOf("green"));
+        lblText.setMinWidth(300);
+
+
+        VBox vBox1 = new VBox(imgFire,lblText);
+        setMargin(vBox1,new Insets(10));
+        add(vBox1,3,3);
 
 
         this.setHgap(10);
@@ -72,6 +96,9 @@ public class BattleshipView extends GridPane {
 
     public void initialiseNodes() {
         btnFire = new Button("Fire");
+        imgFire = new ImageView("/FIRE BUTTON.png");
+
+        lblText = new Label("Welcome to battleship \n click on a cell to mark and press the fire button to fire");
         lblName =new Label("");
         lblStatus = new Label("");
         hboxBoard = new HBox();
@@ -113,5 +140,12 @@ public class BattleshipView extends GridPane {
         return lblStatus;
     }
 
+    public Label getLblText() {
+        return lblText;
+    }
+
+    public ImageView getImgFire() {
+        return imgFire;
+    }
 }
 

@@ -1,22 +1,23 @@
 package be.kdg.battleship.model;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
 
     protected Board board;
-
-
-    private boolean won;
     private List<Ship> shipsToPlace;
-    //TODO: naam,datum en beurten opslaan in txt bestand
     private String name;
-    private Date date;
+
     public int turns;
     private Option options;
+
+    private Cell lastCell;
+    private Ship lastShipPlaced;
+
+
 
     public Player(Option option) {
 
@@ -25,28 +26,35 @@ public class Player {
         this.board = new Board(this.options);
         shipsToPlace = new LinkedList<>();
         for (int i = 2; i <= 5; i++) {
-            shipsToPlace.add(new Ship(i, true,i-1));
+            shipsToPlace.add(new Ship(i, true, i - 1));
         }
-        shipsToPlace.add(new Ship(2, true,5));
 
-        this.name = null;
-        this.won = false;
+        //shipsToPlace.add(new Ship(2,true,1));
+        //shipsToPlace.add(new Ship(3,true,2));
+
+        lastCell = null;
+
+        this.name = "no name";
+
         this.turns = 0;
 
 
     }
 
     public void placeShip() {
+        //Polymorfisme
 
 
     }
-    public void fire(Player player){
+
+    public void fire(Player player) {
+        //Polymorfisme
 
     }
 
     public boolean placeShip(int x, int y, Ship ship) {
         if (placeAble(x, y, ship)) {
-            System.out.println(ship.isVertical());
+
             int length = ship.getType();
 
             if (ship.isVertical()) {
@@ -55,6 +63,7 @@ public class Player {
                     this.board.getMatrix()[x][i].setShip(ship);
                     this.board.getMatrix()[x][i].setType(ship.getType());
                     this.board.getMatrix()[x][i].setFollowNumber(ship.getFollowNumber());
+                    this.lastShipPlaced = ship;
 
 
                 }
@@ -66,6 +75,7 @@ public class Player {
                     this.board.getMatrix()[i][y].setShip(ship);
                     this.board.getMatrix()[i][y].setType(ship.getType());
                     this.board.getMatrix()[i][y].setFollowNumber(ship.getFollowNumber());
+                    this.lastShipPlaced = ship;
                 }
                 shipsToPlace.remove(ship);
             }
@@ -132,30 +142,30 @@ public class Player {
         //TODO: anders uitwerken
 
         List<Cell> neighbours = new ArrayList<>();
-        System.out.println("x = " + x + " Y = " + y);
+
         NeighbourCell neighbourCell = new NeighbourCell(x + 1, y);
         if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
+
         }
         neighbourCell = new NeighbourCell(x - 1, y);
         if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
+
         }
         neighbourCell = new NeighbourCell(x, y + 1);
         if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
+
         }
         neighbourCell = new NeighbourCell(x, y - 1);
         if (isValidPoint(neighbourCell.getX(), neighbourCell.getY())) {
             Cell currentCell = board.getMatrix()[neighbourCell.getX()][neighbourCell.getY()];
             neighbours.add(currentCell);
-            System.out.println("X neighbour = " + neighbourCell.getX() + " Y neighbour = " + neighbourCell.getY());
+
         }
         return neighbours;
 
@@ -178,22 +188,22 @@ public class Player {
                 for (Cell cell : matrix) {
                     if (cell.getShip() != null && cell.getShip().getFollowNumber() == temporaryShip.getFollowNumber()) { // equals ?
                         //cell.setMissed(false); //HIT
-                        System.out.println("HIT");
-                        System.out.println(x);
-                        System.out.println(y);
+
                         otherPlayer.board.getMatrix()[x][y].setShot(true);
-                        System.out.println(otherPlayer.board.getMatrix()[x][y].getType());
+                        lastCell = otherPlayer.board.getMatrix()[x][y];
+
                         return;
 
                     }
                 }
             }
-            //TODO: ALERT sunken?
+
             otherPlayer.board.getMatrix()[x][y].setShot(true);
             for (Cell[] matrix : otherPlayer.board.getMatrix()) {
                 for (Cell cell : matrix) {
                     if (cell.getFollowNumber() == followNumber) {
                         cell.setSunken(true);
+                        lastCell = cell;
                     }
                 }
             }
@@ -201,7 +211,8 @@ public class Player {
 
         } else {
             otherPlayer.board.getMatrix()[x][y].setMissed(true);
-            System.out.println("MISS");//MISS
+            lastCell =  otherPlayer.board.getMatrix()[x][y];
+
 
         }
 
@@ -228,12 +239,17 @@ public class Player {
         this.name = name;
     }
 
-    public void setWon(boolean won) {
-        this.won = won;
-    }
 
     public String getName() {
         return name;
+    }
+
+    public Cell getLastCell() {
+        return lastCell;
+    }
+
+    public Ship getLastShipPlaced() {
+        return lastShipPlaced;
     }
 }
 

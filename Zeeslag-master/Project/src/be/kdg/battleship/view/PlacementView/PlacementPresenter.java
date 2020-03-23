@@ -1,6 +1,7 @@
 package be.kdg.battleship.view.PlacementView;
 
 import be.kdg.battleship.model.Battleship;
+import be.kdg.battleship.model.Cell;
 import be.kdg.battleship.model.Computer;
 import be.kdg.battleship.model.Ship;
 import be.kdg.battleship.view.BattleshipCompView.BattleshipCompPresenter;
@@ -8,6 +9,8 @@ import be.kdg.battleship.view.BattleshipCompView.BattleshipCompView;
 import be.kdg.battleship.view.BattleshipView.BattleshipPresenter;
 import be.kdg.battleship.view.BattleshipView.BattleshipView;
 
+import be.kdg.battleship.view.MenuView.MenuPresenter;
+import be.kdg.battleship.view.MenuView.MenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
@@ -18,14 +21,14 @@ import javafx.scene.shape.Rectangle;
 
 
 public class PlacementPresenter {
-    private Battleship battleship;
-    private PlacementView placementView;
+    private Battleship model;
+    private PlacementView view;
 
-    public PlacementPresenter(Battleship battleship, PlacementView placementView) {
-        this.battleship = battleship;
-        this.placementView = placementView;
+    public PlacementPresenter(Battleship model, PlacementView view) {
+        this.model = model;
+        this.view = view;
 
-        battleship.setPlayers(battleship.player1, battleship.player2);
+        model.setPlayers(model.player1, model.player2);
 
         addEventHandlers();
         updateView();
@@ -33,28 +36,42 @@ public class PlacementPresenter {
 
     private void addEventHandlers() {
 
-        placementView.getBtnSwitchPlayer().setOnAction(new EventHandler<ActionEvent>() {
+
+        view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (battleship.otherPlayer instanceof Computer) {
+                MenuView view = new MenuView();
+                MenuPresenter menuPresenter = new MenuPresenter(new Battleship(),view);
+                PlacementPresenter.this.view.getScene().setRoot(view);
+                view.getScene().getWindow().setWidth(1280);
+                view.getScene().getWindow().setHeight(720);
+
+
+            }
+        });
+
+        view.getBtnSwitchPlayer().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (model.otherPlayer instanceof Computer) {
                     return;
                 }
 
-                battleship.switchPlayer();
+                model.switchPlayer();
                 updateView();
             }
         });
 
 
-        placementView.getTxtFieldNaam().setOnKeyPressed(new EventHandler<KeyEvent>() {
+        view.getTxtFieldNaam().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
 
 
 
-                    String text = placementView.getTxtFieldNaam().getText();
-                    battleship.currentPlayer.setName(text);
+                    String text = view.getTxtFieldNaam().getText();
+                    model.currentPlayer.setName(text);
                     updateView();
                     //TODO: set name
 
@@ -62,9 +79,19 @@ public class PlacementPresenter {
             }
         });
 
-        placementView.getBtnUndo().setOnAction(new EventHandler<ActionEvent>() {
+        view.getBtnUndo().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
+                for (Cell[] matrix : model.currentPlayer.getBoard().getMatrix()) {
+                    for (Cell cell : matrix) {
+                        if (cell.getShip() != null && cell.getShip().getFollowNumber() == model.currentPlayer.getLastShipPlaced().getFollowNumber()){
+                            cell.setShip(null);
+                        }
+                    }
+                }
+                model.currentPlayer.getShipsToPlace().add(0, model.currentPlayer.getLastShipPlaced());
+                updateView();
 
 
 
@@ -74,11 +101,11 @@ public class PlacementPresenter {
         });
 
 
-        placementView.getBtnHorizontal().setOnAction(new EventHandler<ActionEvent>() {
+        view.getBtnHorizontal().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                for (Ship ship : battleship.currentPlayer.getShipsToPlace()) {
+                for (Ship ship : model.currentPlayer.getShipsToPlace()) {
                     ship.setVertical(!ship.isVertical());
 
                 }
@@ -87,28 +114,27 @@ public class PlacementPresenter {
 
             }
         });
-        placementView.getBtnNext().setOnAction(new EventHandler<ActionEvent>() {
+        view.getBtnNext().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (battleship.player1.getShipsToPlace().size() <= 0 && battleship.player2.getShipsToPlace().size() <= 0) {
-                    if (battleship.player2 instanceof Computer) {
-                        BattleshipCompView battleshipCompView = new BattleshipCompView(battleship.options);
-                        BattleshipCompPresenter battleshipCompPresenter = new BattleshipCompPresenter(battleship, battleshipCompView);
-                        placementView.getScene().setRoot(battleshipCompView);
+                if (model.player1.getShipsToPlace().size() <= 0 && model.player2.getShipsToPlace().size() <= 0) {
+                    if (model.player2 instanceof Computer) {
+                        BattleshipCompView battleshipCompView = new BattleshipCompView(model.options);
+                        BattleshipCompPresenter battleshipCompPresenter = new BattleshipCompPresenter(model, battleshipCompView);
+                        view.getScene().setRoot(battleshipCompView);
                         battleshipCompView.getScene().getWindow().setWidth(1280);
                         battleshipCompView.getScene().getWindow().setHeight(720);
 
                     } else {
-                        BattleshipView battleshipView = new BattleshipView(battleship.options);
-                        BattleshipPresenter placement2Presenter = new BattleshipPresenter(battleship, battleshipView);
-                        placementView.getScene().setRoot(battleshipView);
+                        BattleshipView battleshipView = new BattleshipView(model.options);
+                        BattleshipPresenter placement2Presenter = new BattleshipPresenter(model, battleshipView);
+                        view.getScene().setRoot(battleshipView);
                         battleshipView.getScene().getWindow().setWidth(1280);
                         battleshipView.getScene().getWindow().setHeight(720);
                     }
 
 
                 } else {
-                    //TODO: EXCEPTION
 
                 }
 
@@ -117,9 +143,9 @@ public class PlacementPresenter {
         });
 
 
-        for (int i = 0; i < battleship.options.getWidthBoard(); i++) {
-            for (int j = 0; j < battleship.options.getWidthBoard(); j++) {
-                placementView.getBoardView().getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
+        for (int i = 0; i < model.options.getWidthBoard(); i++) {
+            for (int j = 0; j < model.options.getWidthBoard(); j++) {
+                view.getBoardView().getRectangles()[i][j].setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         Rectangle rectangle = (Rectangle) mouseEvent.getSource();
@@ -127,13 +153,10 @@ public class PlacementPresenter {
 
                         int x = (int) rectangle.getX();
                         int y = (int) rectangle.getY();
-                        System.out.println(x);
-                        System.out.println(y);
-                        //System.out.println(battleship.player1.placeAble(x, y, new Ship(1, false)));
-                        //System.out.println( battleship.player1.placeShip(x, y, new Ship(1, false)));
 
-                        if (!battleship.currentPlayer.getShipsToPlace().isEmpty()) {
-                            battleship.currentPlayer.placeShip(x, y, battleship.currentPlayer.getShipsToPlace().get(0));
+
+                        if (!model.currentPlayer.getShipsToPlace().isEmpty()) {
+                            model.currentPlayer.placeShip(x, y, model.currentPlayer.getShipsToPlace().get(0));
                         }
 
 
@@ -146,28 +169,28 @@ public class PlacementPresenter {
 
     private void updateView() {
 
-        for (int i = 0; i < battleship.options.getWidthBoard(); i++) {
-            for (int j = 0; j < battleship.options.getWidthBoard(); j++) {
-                if (battleship.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
-                    placementView.getBoardView().getRectangles()[i][j].setFill(Color.GREEN);
-                } else placementView.getBoardView().getRectangles()[i][j].setFill(Color.BLACK);
+        for (int i = 0; i < model.options.getWidthBoard(); i++) {
+            for (int j = 0; j < model.options.getWidthBoard(); j++) {
+                if (model.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
+                    view.getBoardView().getRectangles()[i][j].setFill(Color.GREEN);
+                } else view.getBoardView().getRectangles()[i][j].setFill(Color.BLACK);
 
             }
 
 
         }
-        placementView.getTxtFieldNaam().setText(battleship.currentPlayer.getName());
-        if (battleship.currentPlayer.getName() == null){
-            placementView.getLblNaam().setText("Name");
+        view.getTxtFieldNaam().setText(model.currentPlayer.getName());
+        if (model.currentPlayer.getName() == null){
+            view.getLblNaam().setText("Name");
         }
-        else placementView.getLblNaam().setText(battleship.currentPlayer.getName());
+        else view.getLblNaam().setText(model.currentPlayer.getName());
 
-        if (!battleship.currentPlayer.getShipsToPlace().isEmpty()){
-            if ( battleship.currentPlayer.getShipsToPlace().get(0).isVertical()){
-                placementView.getBtnHorizontal().setText("Place ship horizontal");
+        if (!model.currentPlayer.getShipsToPlace().isEmpty()){
+            if ( model.currentPlayer.getShipsToPlace().get(0).isVertical()){
+                view.getBtnHorizontal().setText("Place ship horizontal");
             }
             else {
-                placementView.getBtnHorizontal().setText("Place ship vertical");
+                view.getBtnHorizontal().setText("Place ship vertical");
             }
         }
 

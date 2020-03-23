@@ -2,6 +2,7 @@ package be.kdg.battleship.view.OptionView;
 
 import be.kdg.battleship.model.Battleship;
 import be.kdg.battleship.model.Cell;
+import be.kdg.battleship.model.Ship;
 import be.kdg.battleship.view.MenuView.MenuPresenter;
 import be.kdg.battleship.view.MenuView.MenuView;
 import javafx.beans.value.ChangeListener;
@@ -50,6 +51,23 @@ public class OptionPresenter {
 
             }
         });
+        optionView.getSldNumberShips().valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                optionView.getLblValShips().setText("Value : " + Math.round(t1.doubleValue()));
+
+
+                model.getOptions().setShipsWantedToPlace((int) Math.round(t1.doubleValue()));
+                System.out.println(model.getOptions().getShipsWantedToPlace());
+
+
+
+
+            }
+        });
+
+
+
 
         optionView.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -57,9 +75,16 @@ public class OptionPresenter {
                 MenuView view = new MenuView();
                 MenuPresenter menuPresenter = new MenuPresenter(model,view);
 
-                System.out.println("width"+model.getOptions().widthBoard);
+
                 model.player1.getBoard().setMatrix(new Cell[model.getOptions().widthBoard][model.getOptions().widthBoard]);
                 model.player2.getBoard().setMatrix(new Cell[model.getOptions().widthBoard][model.getOptions().widthBoard]);
+
+                if (model.options.getShipsWantedToPlace() > 0){
+                    for (int i = 0; i < model.options.getShipsWantedToPlace(); i++) {
+                        model.player1.getShipsToPlace().add(new Ship(2, true, 5 + i));
+                        model.player2.getShipsToPlace().add(new Ship(2, true, 5 + i));
+                    }
+                }
 
                 optionView.getScene().setRoot(view);
                 view.getScene().getWindow().setWidth(1280);

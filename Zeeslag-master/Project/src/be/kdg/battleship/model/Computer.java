@@ -182,7 +182,7 @@ public class Computer extends Player {
             x = cellToRemember.getX();
             y = cellToRemember.getY();
 
-            if (cellToRemember.isSunken()) {
+            if (cellToRemember.isShot()) {
 
 
                 if (firstCell.getX() > x || firstCell.getX() < x) {

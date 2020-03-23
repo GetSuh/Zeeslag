@@ -9,11 +9,11 @@ public class Option {
 
     public Option() {
         this.widthBoard = DEFAULT;
+        this.shipsWantedToPlace = 0;
     }
 
     public void setWidthBoard(int widthBoard) {
 
-        //TODO: exception
         if (widthBoard > DEFAULT && widthBoard < MAX);
         this.widthBoard = widthBoard;
     }
@@ -24,5 +24,9 @@ public class Option {
 
     public void setShipsWantedToPlace(int shipsWantedToPlace) {
         this.shipsWantedToPlace = shipsWantedToPlace;
+    }
+
+    public int getShipsWantedToPlace() {
+        return shipsWantedToPlace;
     }
 }

@@ -5,8 +5,14 @@ import be.kdg.battleship.view.MenuView.MenuPresenter;
 import be.kdg.battleship.view.MenuView.MenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,7 +29,7 @@ public class EndScreenPresenter {
     public EndScreenPresenter(Battleship model, EndScreenView view) {
         this.model = model;
         this.view = view;
-        addEventHandlers ();
+        addEventHandlers();
         updateView();
 
     }
@@ -32,23 +38,18 @@ public class EndScreenPresenter {
         ////Informatie van view ophalen en doorsturen naar model.
         for (int i = 0; i < model.options.getWidthBoard(); i++) {
             for (int j = 0; j < model.options.getWidthBoard(); j++) {
-                if (model.currentPlayer.getBoard().getMatrix()[i][j].isSunken()){
+                if (model.currentPlayer.getBoard().getMatrix()[i][j].isSunken()) {
                     view.getVictoryBoard().getRectangles()[i][j].setFill(Color.RED);
-                }
-                else if (model.currentPlayer.getBoard().getMatrix()[i][j].isShot()){
+                } else if (model.currentPlayer.getBoard().getMatrix()[i][j].isShot()) {
                     view.getVictoryBoard().getRectangles()[i][j].setFill(Color.LIME);
-                }
-                else if (model.currentPlayer.getBoard().getMatrix()[i][j].isMissed()) {
+                } else if (model.currentPlayer.getBoard().getMatrix()[i][j].isMissed()) {
                     view.getVictoryBoard().getRectangles()[i][j].setFill(Color.PURPLE);
-                    System.out.println("x" +i);
-                    System.out.println("y"+j);
-                }
-                else if (model.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null){
+                  
+                } else if (model.currentPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
                     view.getVictoryBoard().getRectangles()[i][j].setFill(Color.GOLD);
 
 
-                }
-                else {
+                } else {
                     view.getVictoryBoard().getRectangles()[i][j].setFill(Color.BLACK);
 
                 }
@@ -56,21 +57,17 @@ public class EndScreenPresenter {
         }
         for (int i = 0; i < model.options.getWidthBoard(); i++) {
             for (int j = 0; j < model.options.getWidthBoard(); j++) {
-                if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()){
+                if (model.otherPlayer.getBoard().getMatrix()[i][j].isSunken()) {
                     view.getDefeatBoard().getRectangles()[i][j].setFill(Color.RED);
-                }
-                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isShot()){
+                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isShot()) {
                     view.getDefeatBoard().getRectangles()[i][j].setFill(Color.LIME);
-                }
-                else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
+                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].isMissed()) {
                     view.getDefeatBoard().getRectangles()[i][j].setFill(Color.PURPLE);
-                    System.out.println("x" +i);
-                    System.out.println("y"+j);
-                }
-                else if (model.otherPlayer.getBoard().getMatrix()[i][j].getShip() != null){
+                    System.out.println("x" + i);
+                    System.out.println("y" + j);
+                } else if (model.otherPlayer.getBoard().getMatrix()[i][j].getShip() != null) {
                     view.getDefeatBoard().getRectangles()[i][j].setFill(Color.GOLD);
-                }
-                else {
+                } else {
                     view.getDefeatBoard().getRectangles()[i][j].setFill(Color.BLACK);
 
                 }
@@ -87,47 +84,45 @@ public class EndScreenPresenter {
         view.getLblTurnsDefeat().setText(integer.toString());
 
 
-
-
-
     }
 
     private void addEventHandlers() {
         //Nodes van de view ophalen, en event erop zetten.
-        view.getBtnMenu().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                /*PlacementView placementView = new PlacementView(model.options);
-                PlacementPresenter placementPresenter = new PlacementPresenter(model,placementView);
-                endScreenView.getScene().setRoot(placementView); // nieuwe scene wordt aangemaakt
-                placementView.getScene().getWindow().setWidth(1600); // nieuwe scherm breedte en hoogte
-                placementView.getScene().getWindow().setHeight(900);*/
 
+
+        view.getImgMenu().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
                 MenuView menuView = new MenuView();
-                MenuPresenter menuPresenter = new MenuPresenter(new Battleship(),menuView);
+                MenuPresenter menuPresenter = new MenuPresenter(new Battleship(), menuView);
                 view.getScene().setRoot(menuView);
                 menuView.getScene().getWindow().setWidth(1280);
                 menuView.getScene().getWindow().setHeight(720);
-
-
-
             }
-        }); {
+        });
 
-        }
-        view.getBtnSave().setOnAction(new EventHandler<ActionEvent>() {
+
+
+        view.getImgSave().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
+            public void handle(MouseEvent mouseEvent) {
 
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDateTime localDateTime = LocalDateTime.now();
-
-                Path log = Paths.get("/logfile.txt");
+                Path log = Paths.get("resources/logfile.txt");
                 System.out.println(log.getFileName() + " bestaat echt: " + Files.exists(log));
 
 
+                try {
+                    model.writeScores();
 
+                } catch (IOException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Unable to save");
+                    alert.setContentText(e.getMessage());
+                    alert.showAndWait();
 
+                    //TODO: geen printstrack
+                }
+                view.getImgSave().setDisable(true);
             }
         });
 

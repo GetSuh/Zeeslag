@@ -25,8 +25,8 @@ public class PlacementView extends GridPane {
     private Button btnHorizontal;
     private Button btnNext;
     private Button btnSwitchPlayer;
-    private Button btnUndo; //TODO:undo button
-    //TODO: Clickable images of ships
+    private Button btnUndo;
+    private Button btnBack;
 
     /* TODO:Exception
     Bij klikken van start moet de boten geplaats zijn
@@ -63,7 +63,10 @@ public class PlacementView extends GridPane {
         super.add(boardView, 0, 3);
 
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(btnSwitchPlayer,btnHorizontal,btnNext);
+        Label labelControls = new Label("Click on a cell to place a ship \n ship length 2-5 + extra ships");
+        labelControls.setFont(new Font("Impact",20));
+        labelControls.setTextFill(Paint.valueOf("green"));
+        vBox.getChildren().addAll(btnSwitchPlayer,btnHorizontal,btnNext,btnUndo,btnBack,labelControls);
         vBox.setSpacing(25);
         super.add(vBox,7,3);
 
@@ -82,6 +85,14 @@ public class PlacementView extends GridPane {
 
     private void initialiseNodes() {
         Font font = new Font("Impact",50);
+
+        //Alternatief > met css bestand maar geen tijd
+
+        btnBack = new Button("Back");
+        btnBack.setMinSize(200,30);
+        btnBack.setFont(new Font("Impact",15));
+        btnBack.setTextFill(Paint.valueOf("green"));
+        btnBack.setStyle("-fx-background-color: #000000 ; -fx-border-width: 1px ; -fx-border-color: green");
 
 
 
@@ -121,6 +132,10 @@ public class PlacementView extends GridPane {
 
 
         btnUndo = new Button("Undo placement");
+        btnUndo.setMinSize(200,30);
+        btnUndo.setFont(font);
+        btnUndo.setTextFill(Paint.valueOf("green"));
+        btnUndo.setStyle("-fx-background-color: #000000 ; -fx-border-width: 1px ; -fx-border-color: green");
 
 
 
@@ -154,5 +169,9 @@ public class PlacementView extends GridPane {
 
     public TextField getTxtFieldNaam() {
         return txtFieldNaam;
+    }
+
+    public Button getBtnBack() {
+        return btnBack;
     }
 }

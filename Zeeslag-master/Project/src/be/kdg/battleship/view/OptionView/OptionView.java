@@ -17,8 +17,10 @@ import javafx.scene.text.Text;
 
 public class OptionView extends BorderPane {
     private Slider sldBoard;
+    private Label lblValSlider;
 
     private Slider sldNumberShips;
+    private Label lblValShips;
 
     private VBox vBox;
 
@@ -26,7 +28,7 @@ public class OptionView extends BorderPane {
 
 
     private Button btnBack;
-    private Label lblValSlider;
+
 
 
     public OptionView() {
@@ -41,8 +43,9 @@ public class OptionView extends BorderPane {
         setStyle("-fx-background-color: #000000;");
 
         setCenter(vBox);
-        setBottom(btnBack);
+
         setAlignment(btnBack,Pos.CENTER);
+        setMargin(btnBack,new Insets(50));
 
     }
 
@@ -59,14 +62,26 @@ public class OptionView extends BorderPane {
 
         sldBoard = new Slider(10, 20, 15); //
         sldBoard.setShowTickLabels(true);
+
         sldBoard.setValue(10);
         sldBoard.setMinorTickCount(1);
+
+        Label lblSliderShips = new Label("Extra ships with a length of 2 to place");
+        lblSliderShips.setTextFill(Paint.valueOf("green"));
+        lblValShips = new Label(" ");
+
+        sldNumberShips = new Slider(0,4,2);
+        sldNumberShips.setShowTickLabels(true);
+        sldNumberShips.setValue(0);
+        sldNumberShips.setMinorTickCount(1);
+
+
 
 
         vBox = new VBox();
         vBox.setPadding(new Insets(20));
         vBox.setSpacing(10);
-        vBox.getChildren().addAll(lblSlider, sldBoard, lblValSlider);
+        vBox.getChildren().addAll(lblSlider, sldBoard, lblValSlider , lblSliderShips , sldNumberShips , lblValShips , btnBack);
 
     }
 
@@ -85,5 +100,9 @@ public class OptionView extends BorderPane {
 
     public Button getBtnBack() {
         return btnBack;
+    }
+
+    public Label getLblValShips() {
+        return lblValShips;
     }
 }

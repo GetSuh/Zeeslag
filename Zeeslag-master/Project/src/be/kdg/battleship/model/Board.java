@@ -8,8 +8,6 @@ public class Board {
     //public static final int HEIGTH = 10;
 
 
-    public int ships = 5;
-
     protected Cell[][] matrix;
 
     public Board(Option option) {
@@ -38,9 +36,6 @@ public class Board {
         }
     }
 
-    public void setOption(Option option) {
-        this.option = option;
-    }
 
     public Cell[][] getMatrix() {
         return matrix;

@@ -1,6 +1,11 @@
 package be.kdg.battleship.model;
 
+import javax.imageio.IIOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Battleship {
 
@@ -67,5 +72,19 @@ public class Battleship {
 
     public Option getOptions() {
         return options;
+    }
+
+    public void writeScores() throws IOException {
+
+        BufferedWriter writer = new BufferedWriter(
+                new FileWriter("resources/logfile.txt", true)  //Set true for append mode
+        );
+        writer.newLine();   //Add new line
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String tekst = currentPlayer.getName() + " Turns: " + currentPlayer.turns + " " + dtf.format(localDateTime);
+        writer.write(tekst);
+        writer.close();
+
     }
 }

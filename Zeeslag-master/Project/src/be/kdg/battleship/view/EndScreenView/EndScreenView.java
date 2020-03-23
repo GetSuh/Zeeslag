@@ -5,6 +5,7 @@ import be.kdg.battleship.view.BoardView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
@@ -34,7 +35,10 @@ public class EndScreenView extends BorderPane {
 
 
     private Button btnSave;
+    private ImageView imgSave;
+
     private Button btnMenu;
+    private ImageView imgMenu;
 
     public EndScreenView(Option option) {
         this.option = option;
@@ -97,7 +101,7 @@ public class EndScreenView extends BorderPane {
 
 
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(btnSave, btnMenu,text);
+        vBox.getChildren().addAll(imgSave, imgMenu,text);
         setCenter(vBox);
         setAlignment(vBox, Pos.CENTER);
         vBox.setPadding(new Insets(10,50,50,50));
@@ -115,7 +119,10 @@ public class EndScreenView extends BorderPane {
     private void initialiseNodes() {
         // Nodes maken zoals button = new button, en eigenschappen toevoegen
         btnSave = new Button("SAVE");
+        imgSave = new ImageView("SAVE.png");
+
         btnMenu = new Button("MENU");
+        imgMenu = new ImageView("MENU.png");
 
         victoryBoard = new BoardView(option);
         victoryBoard.setVisualSize(25);
@@ -146,9 +153,6 @@ public class EndScreenView extends BorderPane {
         return btnSave;
     }
 
-    public Button getBtnMenu() {
-        return btnMenu;
-    }
 
     public Label getLblNameVictory() {
         return lblNameVictory;
@@ -163,5 +167,13 @@ public class EndScreenView extends BorderPane {
 
     public Label getLblTurnsDefeat() {
         return lblTurnsDefeat;
+    }
+
+    public ImageView getImgSave() {
+        return imgSave;
+    }
+
+    public ImageView getImgMenu() {
+        return imgMenu;
     }
 }
